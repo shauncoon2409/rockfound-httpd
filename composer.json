@@ -1,4 +1,5 @@
 {
+  "minimum-stability" : "dev",
   "repositories": [
     {
       "type": "composer",
@@ -9,7 +10,10 @@
     "php": ">=5.4",
     "johnpbloch/wordpress": "4.1",
     "composer/installers": "v1.0.12",
-    "vlucas/phpdotenv": "1.0.9"
+    "vlucas/phpdotenv": "1.0.9",
+    "jarednova/timber": "dev-master",
+    "wpackagist-plugin/wordpress-seo": "~1.7",
+    "wpackagist-plugin/advanced-custom-fields": "~4.3"
   },
   "extra": {
     "installer-paths": {
