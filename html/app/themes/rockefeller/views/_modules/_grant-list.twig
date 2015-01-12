@@ -1,0 +1,29 @@
+{% set module = grantList %}
+<div class="module-grid grant-list module-wrapper">
+	<div class="grid-container module-container {{ module.containerClasses }}">
+		<div class="sort-list-filters">
+			<span class="label">Sort by</span>
+			<span class="sort" data-sort="date:asc">Newest <span class="asc-icon"></span></span>
+			<span class="sort" data-sort="date:desc">Oldest <span class="desc-icon"></span></span>
+		</div>
+
+		<div id="grant-list-block">
+		{% for grant in module.blocks %}
+			<div href="{{ grant.link }}" class="list-block mix" data-date="{{ grant.sortDate }}">
+				<div class="grant-summary">
+					<a class="grant-link" href="{{ grant.link }}"><b>Grant</b> {{ grant.linktext }}</a>
+					<p><a href="{{ grant.link }}">{{ grant.title }}</a> {{ grant.excerpt }}</p>
+				</div>
+
+				{% if grant.meta|length > 0 %}
+				<ul class="grant-meta">
+				{% for label, value in grant.meta %}
+					<li>{{ label }} <b>{{ value|raw }}</b></li>
+				{% endfor %}
+				</ul>
+				{% endif %}
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+</div>

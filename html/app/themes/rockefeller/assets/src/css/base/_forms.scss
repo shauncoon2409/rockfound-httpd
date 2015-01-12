@@ -1,0 +1,93 @@
+fieldset {
+  background: lighten($base-border-color, 10);
+  border: 1px solid $base-border-color;
+  margin: 0 0 ($base-line-height / 2) 0;
+  padding: $base-line-height;
+}
+
+input,
+label,
+select {
+  display: block;
+  @include Calibre-Regular;
+  font-size: $form-font-size;
+}
+
+label {
+  @include Calibre-Regular;
+  display: block;
+  color: $gray;
+  margin-bottom: ($base-line-height / 4) * 1em;
+  padding-top: em(3, 18);
+  padding-bottom: em(3, 18);
+  font-size: em(18);
+  line-height: em(24, 18);
+
+  abbr {
+    display: none;
+  }
+}
+
+textarea,
+#{$all-text-inputs},
+select[multiple=multiple] {
+  @include box-sizing(border-box);
+  @include transition(border-color);
+  background-color: white;
+  border-radius: $form-border-radius;
+  border: 0;
+  box-shadow: $form-box-shadow;
+  @include Calibre-Regular;
+  font-size: $form-font-size;
+  padding: ($base-line-height / 3) * 1em  ($base-line-height / 3) * 1em;
+  margin-bottom: ($base-line-height / 4) * 1em;
+  width: 100%;
+  height: em(30);
+  line-height: em(30) - 0.66em;
+  background: $form-bg-color;
+
+  &:hover {
+    border-color: $form-border-color-hover;
+  }
+
+  &:focus {
+    border-color: $form-border-color-focus;
+    box-shadow: $form-box-shadow-focus;
+    outline: none;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="search"] {
+  @include appearance(none);
+}
+
+input[type="checkbox"], input[type="radio"] {
+  display: inline;
+  margin-right: $base-line-height / 4;
+}
+
+input[type="file"] {
+  margin-bottom: $base-line-height / 2;
+  padding-bottom: ($base-line-height / 3);
+  width: 100%;
+}
+
+select {
+  width: auto;
+  max-width: 100%;
+  margin-bottom: $base-line-height;
+}
+
+.input.error {
+  font-size: em(12);
+  position: relative;
+  top: -5px;
+}
+
+input[placeholder] { text-overflow: ellipsis; }
+::-moz-placeholder { text-overflow: ellipsis; }
+input:-moz-placeholder { text-overflow: ellipsis; }

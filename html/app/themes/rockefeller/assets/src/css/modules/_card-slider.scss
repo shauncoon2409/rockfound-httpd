@@ -1,0 +1,197 @@
+.module-card-slider {
+	$card-w: 720px;
+	$card-w-tablet: 500px;
+	$card-w-mobile: 300px;
+	$card-h: 400px;
+	$shadow: em(8);
+	$corner: 25px;
+	
+	.card-slideshow-header {
+		@extend %clearfix;
+		padding: em(15, 24) em(20, 24);
+	}
+
+	.module-title {
+		@extend %horiztonal-block-title;
+	}
+
+	.card-slider-pager {
+		float: right;
+		font-size: em(24);
+		line-height: 1em;
+		@include Calibre-Light;
+	}
+	.card-pager {
+		position: relative;
+		top: em(4, 24);
+		padding:0 em(5, 24);
+		color: $base-font-color;
+	}
+
+	.card-shadowbox {
+		overflow: hidden;
+		background-color: $shadowbox-bg;
+		border-top:$base-border;
+		border-bottom:$base-border;
+	}
+
+	.card-slideshow {
+		list-style-type: none;
+		counter-reset: item;
+
+		&.card-slider-box {
+			position: relative;
+			width: em($card-w);
+			height: em($card-h);
+			padding: 0;
+
+			// position container box
+			float: right;
+			margin-right: 5%;
+
+			@include breakpoint($tablet) {
+				width: em($card-w-tablet);
+			}
+			@include breakpoint($phone) {
+				width: em($card-w-mobile);
+			}
+		}
+
+		.card {
+			position: absolute;
+			top:em($corner);
+			left: 0;
+			width: 100%;
+			height: em($card-h - $corner);
+			padding:em(15) em(50);
+			margin: 0;
+			box-shadow: 0 0 $shadow em(1) rgba(0, 0, 0, 0.06);
+			background: white;
+			@include backface-visibility(hidden);
+			cursor: pointer;
+
+			&::after {
+				content: '';
+				position: absolute;
+				display: block;
+				top:em($corner) * -1;
+				left:0;
+				width: em($card-w - $corner);
+				height: em($corner);
+				background:white;
+				box-shadow: 0 ($shadow * -1) $shadow em(1) rgba(0, 0, 0, 0.06);
+
+				@include breakpoint($tablet) {
+					width: em($card-w-tablet - $corner);
+				}
+				@include breakpoint($phone) {
+					width: em($card-w-mobile - $corner);
+				}
+			}
+			&::before {
+				content: '';
+				position: absolute;
+				display: block;
+				top:em($corner) * -1;
+				right:0;
+				@include triangle(em($corner), $gray transparent, down-left);
+
+				// Debug: Show card numbers
+				/*
+				content: counter(item);
+				counter-increment: item;
+				text-align: center;
+				@include Calibre-Bold;
+				line-height: 2em;
+				text-indent: 2px;
+				color: white;
+				*/
+			}
+		}
+
+		.card-title {
+			color: $gray;
+			font-size: em(14);
+			line-height: em(24, 14);
+			text-transform: uppercase;
+			margin:0;
+		}
+		.card-link {
+			display: block;
+			color: $light-text;
+			font-size: em(12);
+			line-height: em(24, 12);
+			margin-top: em(10, 12);
+		}
+		.card-subnav {
+			font-size: em(14);
+			line-height: em(21, 14);
+
+			a {
+				text-decoration: underline;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+
+
+		// Map Card Styles
+		.map-card {
+			.card-title {
+				@include Calibre-Light;
+				font-size: em(30);
+				line-height: em(38, 30);
+				text-transform: none;
+			}
+
+			a {
+				color: $yellow;
+			}
+		}
+
+
+		// Quote Card Styles
+		.card-quote-text {
+			font-size: em(24);
+			line-height: em(28,24);
+			@include Calibre-Light;
+			color: $blue;
+			border-left: em(10, 24) solid $blue;
+
+			&::before {
+				content: "“";
+				margin-left: -0.25em;
+			}
+			&::after {
+				content: "”";
+			}
+
+			@include breakpoint($tablet) {
+				margin-top: em(0);
+			}
+		}
+
+		// Image text card 
+		.img-text-card {
+			padding-top: em(80);
+			
+			@include breakpoint($tablet) {
+				padding-top: em(20);
+			}
+
+			.card-title {
+				line-height: 1em;
+				margin-bottom: em(5, 14);
+			}
+
+			img {
+				display: block;
+				float: left;
+				margin-right: em(15);
+				margin-bottom: em(20);
+			}
+		}
+	}
+}

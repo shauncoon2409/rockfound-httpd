@@ -1,0 +1,54 @@
+{% set module = grid6 %}
+<section class="module-grid {{ module.gridtype }} module-wrapper">
+	{% if module.title %}
+	<div class="grid-heading module-heading simple">
+		<h2 class="heading-title">{{ module.title }}</h2>
+		{% if module.info %}<p class="heading-info">{{ module.info }}</p>{% endif %}
+	</div>
+	{% endif %}
+
+	<div class="grid-container module-container {{ module.containerClasses }}">
+	{% for block in module.blocks %}
+		
+		{% set blockClasses = "x1of3 tab-x1of2 pho-x100p topic-block fadein-block " ~ cycle(['left', 'middle', 'right'], loop.index0) %}
+
+		{% if module.gridtype == 'grid-6-3' %}
+		<a href="{{ block.link }}" class="{{ blockClasses }}">
+			<span class="c-bracket top right"></span> <span class="c-bracket bottom right"></span>
+			<span class="c-bracket top left"></span> <span class="c-bracket bottom left"></span>
+
+			<span class="tb-content {{ (block.image) ? 'with-image' : '' }}">
+				<span class="tb-name"><span>{{ block.title }}</span></span>
+				<span class="tb-info"><span>{{ block.info }}</span></span>
+			</span>
+		</a>
+
+		{% elseif module.gridtype == 'grid-6-2' %}
+		<div class="{{ blockClasses }}">
+			<span class="tb-content">
+				<span class="tb-name"><span>{{ block.title }}</span></span>
+				<span class="tb-info"><span>{{ block.info }}</span></span>
+			</span>
+		</div>
+
+		{% else %}
+		<div class="{{ blockClasses }}">
+			<span class="c-bracket top right"></span> <span class="c-bracket bottom right"></span>
+			<span class="c-bracket top left"></span> <span class="c-bracket bottom left"></span>
+
+			<span class="tb-content {{ (block.image) ? 'with-image' : '' }}">
+				<a href="{{ block.link }}" class="tb-name">
+					<span>
+						{% if block.image %}<b class="tb-image" style="background-image:url('{{ block.image }}');"></b>{% endif %}
+						{{ block.title }}
+					</span>
+				</a>
+				<span class="tb-info">{{ block.info }}</span>
+				{% if block.taglink  %}<a href="{{ block.taglink }}" class="tb-tag">{{ block.tag }}</a>{% endif %}
+			</span>
+		</div>
+		{% endif %}
+
+	{% endfor %}
+	</div>
+</section>

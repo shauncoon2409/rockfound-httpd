@@ -1,0 +1,394 @@
+$base-grid-height: 160;
+
+@import "grid--mixins";
+
+
+// Standard grid classes
+@include make-grid($base-grid-height);
+@include make-margins(mb, left);
+@include make-margins(ma, right);
+
+// Tablet Grid classes
+@include breakpoint( $tablet ) {
+	@include make-grid($base-grid-height, tab-);
+	@include make-margins(tab-mb, left);
+	@include make-margins(tab-ma, right);
+}
+
+// Tablet Grid classes
+@include breakpoint( $phone ) {
+	@include make-grid($base-grid-height, pho-);
+	@include make-margins(pho-mb, left);
+	@include make-margins(pho-ma, right);
+}
+
+
+.background {
+	&.extra-light-gray {
+		background-color: $extra-light-gray;
+	}
+}
+
+// Build Grid Classes
+.module-grid {
+	clear: left;
+	overflow:hidden;
+
+	.reverse {
+		clear: none;
+		float: right;
+	}
+
+	a, a:hover {
+		color: $base-font-color;
+	}
+
+
+	// Colors
+	@each $class, $color in $colors {
+		.#{$class}
+		{
+			@include color-block($color);
+		}
+	}
+
+
+	// Block components
+	.text-block {
+		@include align-title-bottom;
+	}
+	.image-block {
+		@include align-title-bottom;
+		color: white;
+
+		&.with-text::after {
+			content: '';
+			position: absolute;
+			display: block;
+			top:0;
+			bottom:0;
+			left:0;
+			right:0;
+			@include linear-gradient(transparent, #000);
+			opacity: 0.65;
+			z-index: 2;
+		}
+
+		.gb-title {
+			z-index: 5;
+		}
+
+		&:hover, a, a:hover {
+			color: white;
+		}
+	}
+
+
+	// Text Styles
+	.small-text {	
+		.gb-title {
+			padding:em(10);
+			@include Calibre-Regular;
+			font-size: em(16);
+			line-height: em(18);
+
+			time {
+				display: block;
+				font-size: em(13, 18);
+				line-height: em(20, 13);
+			}
+		}
+	}
+	.large-text {
+		.gb-title {
+			padding:em(5, 36) em(20, 36);
+			@include Calibre-Light;
+			font-size: em(36);
+			line-height: 1em;
+
+			time {
+				@include Calibre-Regular;
+				display: block;
+				font-size: em(13, 36);
+				line-height: em(20, 13);
+			}
+		}
+	}
+	.text-right {
+		text-align: right;
+	}
+
+
+	.feed-text {
+		display: block;
+		@include Acta-BookItalic;
+		font-size: em(18);
+		line-height: em(24, 18);
+		text-align: center;
+		max-width: 75%;
+		margin-left:auto;
+		margin-right:auto;
+		margin-bottom: 0.25em;
+		color: $base-font-color;
+	}
+	.feed-byline {
+		@include Calibre-Medium;
+		display: block;
+		font-size: em(14);
+		line-height: em(26, 14);
+		text-align: center;
+		color: $light-text;
+
+		a, a:hover {
+			color: $light-text;
+		}
+	}
+
+	.feed-block {
+		@include center-center;
+	}
+}
+
+
+.grid-block {
+	color: $base-font-color;
+	@include transition(all .5s ease-in-out);
+
+	&:hover {
+		background: $extra-light-gray;
+		color: $base-font-color;
+	}
+}
+
+.more-block {
+	@extend .grid-block;
+	position: relative;
+	overflow: hidden;
+	padding-top: em(50);
+	text-align: center;	
+
+	.extra-text {
+		position: absolute;
+		left:0;
+		width: 100%;
+		@include Calibre-Medium;
+		font-size: em(18);
+		line-height: 1em;
+	}
+
+	.fa {
+		position: relative;
+		font-size: em(65);
+		line-height: em(40, 65);
+	}
+}
+
+@mixin split-block() {
+	@extend .grid-block;
+	display: table;
+	border-collapse: collapse;
+
+	.sub-block {
+		@include transition(all .25s ease-in-out);
+		overflow: hidden;
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.image-block {
+		display: table-cell;
+		@extend .y1;
+		@include corner-cutout('right');
+	}
+
+	.content + .image-block {
+		@include corner-cutout('left');
+	}
+}
+
+.half-image {
+	@include split-block;
+
+	@include breakpoint( $phone ) {
+		display: block;
+	}
+
+	.sub-block {
+		width: 50%;
+
+		@include breakpoint( $phone ) {
+			display: block;
+			width: auto;
+		}
+	}
+}
+
+.quarter-image {
+	@include split-block;
+
+	.content {
+		width: 66%;
+	}
+	.image-block {
+		width: 34%;
+	}
+}
+
+
+.quote-block {
+	@extend .quarter-image;
+
+	.text-right {
+		padding-left: em(30);
+	}
+
+	.quote-text {
+		padding:em(10);
+		padding-top: em(40);
+		border: 0;
+
+		p {
+			@include Calibre-Light;
+			font-size: em(18);
+			line-height: em(22, 18);
+		}
+
+		cite {
+			@include Calibre-Medium;
+			font-size: em(14);
+			line-height: em(18, 14);
+			text-decoration: underline;
+		}
+	}
+}
+
+.article-block {
+	position: relative;
+
+	.content {
+		position: absolute;
+		left:0;
+		right:0;
+		padding: em(20);
+		padding-bottom: 0;
+		bottom:em(20);
+	}
+
+	.gb-title {
+		@include Calibre-Light;
+		font-size: em(36);
+		line-height: 1em;
+		max-height: 2em;
+		overflow: hidden;
+	}
+	.topic, li {
+		font-size: em(14);
+		line-height: em(18, 14);
+		@include Calibre-Medium;
+	}
+	a {
+		border-bottom: 1px solid rgba(255, 255, 255, .5);
+
+		&:hover {border-bottom: transparent;}
+	}
+	ul {
+		@extend %inline-list;
+
+		li {
+			&::after {
+				content: ', ';
+			}
+			&:last-child::after {
+				content: none;
+			}
+		}
+	}
+}
+
+
+.list-block {
+	$gutter: 180;
+
+	position: relative;
+	overflow: hidden;
+	clear: both;
+	padding-top: em(20);
+	padding-bottom: em(20);
+
+	&.has-image {
+		padding-left: em($gutter);
+
+		@include breakpoint( $phone ) {
+			padding-left: 0;
+		}
+	}
+	&::before {
+		content:'';
+		position: absolute;
+		display: block;
+		width: em(320);
+		height: 1px;
+		background: $light-gray;
+		top:0;
+		left:0;
+	}
+
+	.image-block {
+		float: left;
+		display: block;
+		width: em(160);
+		height: em(150);
+		max-width: em( ($gutter - 20) );
+		margin-left: em($gutter) * -1;
+		margin-top: em(-19);
+
+		@include breakpoint( $phone ) {
+			float: none;
+			margin-left: 0;
+		}
+	}
+
+	.list-topic {
+		@include Calibre-Medium;
+		font-size: em(14);
+		line-height: em(24,14);
+		text-transform: uppercase;
+		margin-bottom: em(5, 14);
+	}
+
+	.person-info {
+		position: absolute;
+		bottom: em(20);
+		font-size: 1em;
+
+		.name {
+			display: block;
+			@include Calibre-Light;
+			font-size: em(36);
+			line-height: 1em;
+		}
+		.position {
+			display: block;
+			@include Calibre-Medium;
+		}
+
+		@include breakpoint( $phone ) {
+			position: static;
+			padding-left: em(20);
+			padding-right: em(20);
+		}
+	}
+
+	p {
+		@include Calibre-Light;
+		font-size: em(18);
+		line-height: em(24,18);
+		max-width: em(550);
+
+		a {
+			@include Calibre-Semibold;
+
+		}
+	}
+
+}

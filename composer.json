@@ -13,7 +13,8 @@
     "vlucas/phpdotenv": "1.0.9",
     "jarednova/timber": "dev-master",
     "wpackagist-plugin/wordpress-seo": "~1.7",
-    "wpackagist-plugin/advanced-custom-fields": "~4.3"
+    "wpackagist-plugin/advanced-custom-fields": "~4.3",
+    "roots/soil": "~3"
   },
   "extra": {
     "installer-paths": {

@@ -48,7 +48,4 @@
 
 	new StarterSite();
 
-	function myfoo($text){
-    	$text .= ' bar!';
-    	return $text;
-	}
+	require_once('functions/theme-setup.php');

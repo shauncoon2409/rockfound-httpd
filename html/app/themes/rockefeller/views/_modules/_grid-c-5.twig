@@ -1,0 +1,59 @@
+{% set module = gridC5 %}
+<div class="module-grid {{ (module.narrow) ? 'grid-7' : 'grid-5' }} module-wrapper">
+	<div class="grid-container module-container offset-header borderless">
+	{% set half = (module.blocks|length / 2)|round(1, 'floor') %}
+
+		{{ (module.narrow) ? '<div class="x2of3">' : '' }}
+		{% for column in module.blocks|batch(half) %}
+			<div class="x1of2 pho-x100p">
+			{% for block in column %}
+				{% if block.type == 'instagram-block' %}
+				{% set image %}
+				<div class="image-block">
+					<div class="fadein-block sub-image y1" style="background-image:url('{{ block.image }}');"></div>
+				</div>
+				{% endset %}
+				<div class="{{ (module.narrow) ? 'half-image' : 'quarter-image' }} instagram-block y1">
+					{{ block.image_after ? '' : image }}
+					<div class="content sub-block">
+						<span class="feed-text">{{ block.text }}</span>
+						<span class="feed-byline">
+							<span class="icon icon-instagram"></span> by {{ block.author }} 
+							{% if not module.narrow %} {{ block.time }} &bullet; <a href="#like">Like</a>{% endif %}
+						</span>
+					</div>
+					{{ block.image_after ? image : '' }}
+				</div>
+
+				{% elseif block.type == 'tweet-block' %}
+				<div class="tweet-block y1">
+					<div class="feed-block">
+						<span class="feed-text">{{ block.text }}</span>
+						<span class="feed-byline">
+							<span class="icon icon-twitter"></span> 
+							by {{ block.author }} {{ block.time }} &bullet; 
+							<a href="https://twitter.com/intent/retweet?tweet_id={{ block.id }}">Retweet</a>
+						</span>
+					</div>
+				</div>
+
+				{% elseif block.type == 'article-block' %}
+				<article class="article-block {{ block.color }} y1">
+					<div class="content">
+						<h2 class="gb-title">{{ block.text }}</h2>
+						<h3 class="topic">Approaches</h3>
+						<ul>
+							{% for approach in block.approaches %}
+							<li><a href="{{ approach.link|default('javascript:;') }}">{{ approach.name }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+				</article>
+				{% endif %}
+			{% endfor %}
+			</div>
+		{% endfor %}
+		{{ (module.narrow) ? '</div>' : '' }}
+
+	</div>
+</div>

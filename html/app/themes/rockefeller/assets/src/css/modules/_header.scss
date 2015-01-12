@@ -1,0 +1,288 @@
+.module-header {
+	position: relative;
+	@extend %clearfix;
+	min-height: em(420);
+	background: no-repeat top center;
+	
+	@include breakpoint($tablet) {
+		background-size: cover;
+	}
+
+	.module-wrapper {
+		position: relative;
+		padding-top: em(100);
+
+		@include breakpoint($phone) {
+			padding: em(20);
+			padding-top: em(70);
+		}
+	}
+
+	a {
+		color: white;
+		text-decoration: underline;
+	}
+
+
+	.header-content-wrapper {
+		@include span(9);
+		@include push(2);
+
+		@include breakpoint($narrow-desktop) {
+			@include span(12);
+			@include push(2);
+		}
+		@include breakpoint($tablet) {
+			@include full;
+			@include push(1);
+		}
+		@include breakpoint( $phone ) {
+			@include push(0);
+		}
+	}
+
+	.header-title {
+		position: relative;
+		margin:0;
+		@include push(1);
+		margin-bottom: em(10, 80);
+		padding:0;
+		z-index: 10;
+		@include Acta-Medium;
+		color: white;
+		font-size: em(80);
+		line-height: 1em;
+
+		@include breakpoint($tablet) {
+			@include full;
+		}
+		@include breakpoint( $phone ) {
+			@include push(0);
+		}
+	}
+	.header-content {
+		margin:0;
+		padding:0;
+		@include Calibre-Regular;
+		font-size: em(18);
+		line-height: em(24, 18);
+		color: white;
+	}
+	.header-sub-links {
+		@include Calibre-Regular;
+		font-size: em(14);
+		line-height: em(24, 14);
+		color: white;
+
+		a, a:hover {
+			color: white;
+		}
+	}
+
+
+	// Alternate views
+	&.internal {
+		min-height: em(260);
+
+		.module-wrapper {
+			padding-top: em(80);
+		}
+
+		.header-title {
+			@include push(2);
+			margin-bottom: 0;
+
+			@include breakpoint($tablet) {
+				@include push(1);
+			}
+			@include breakpoint($phone) {
+				@include push(0);
+			}
+		}
+		.header-content-wrapper {
+			margin-bottom: em(45);
+			@include suffix(1);
+
+			@include breakpoint($phone) {
+				@include suffix(0);
+			}
+		}
+	}
+
+	&.homepage {
+		min-height: em(620);
+
+		.module-wrapper {
+			padding-top: em(300);
+		}
+
+		.header-title.with-content, .header-content {
+			float: left;
+			width: 33.3%;
+		}
+	}
+	&.has-side-image {
+		padding-right: em(300);	
+	}
+	.side-image {
+		display: block;
+		position: absolute;
+		z-index: 1;
+		right:0;
+		top:0;
+		bottom: 0;
+		width: em(300);
+		background: no-repeat top center;
+		background-size: cover;
+	}
+
+
+	// Colors
+	@each $class, $color in $colors {
+		&.#{$class}
+		{
+			background: $color;
+		}
+	}
+
+	&.white {
+		.header-title {
+			color: $slate;
+		};
+
+		.header-content, .header-sub-links, a {
+			color: $light-text;
+		}
+	}
+}
+
+.topic-controller-carousel {
+	position: relative;
+}
+
+.homepage .home-carousel-pager {
+	position: absolute;
+	top:0;
+	bottom: 0;
+	width: em(225);
+	z-index: 30;
+	text-decoration: none;
+	border:0 solid black;
+
+
+	.topic-arrow {
+		position: absolute;
+		top: em(360);
+		width: em(50);
+		height: em(140);
+		background: rgba(0,0,0,0.25);
+	}
+
+	.topic-content {
+		display: block;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding-top: em(360);
+	}
+	.topic-preview {
+		display: block;
+		width: em(225);
+		height: em(140);
+		background-size: cover;
+	}
+	.topic-title {
+		@include Acta-Medium;
+		display: block;
+		font-size: em(24);
+		line-height: 0.9em;
+		padding: em(15, 24);
+		padding-right: em(40, 24);
+	}
+	.arrow-icon {
+		font-size: em(40);
+		padding-top: em(46, 40);
+		width: 100%;
+		text-align: center;
+	}
+
+	@each $class, $color in $colors {
+		&.#{$class}
+		{
+			background: $color;
+			border-color: $color;
+		}
+	}
+
+	&.carousel-prev {
+		left:0;
+		
+		.topic-arrow {
+			right: em(-50);
+		}
+	}
+	&.carousel-next {
+		right:0;
+
+		.topic-arrow {
+			left: em(-50);
+		}
+	}
+}
+
+.header-badge {
+	position: absolute;
+	top:0;
+	left:0;
+	padding: em(5) em(35);
+	background: $slate;
+	width: auto;
+	min-width: em(250);
+	color: white;
+
+	img {
+		float: left;
+		height: em(30);
+		margin-right: em(10);
+	}
+
+	.nav-block {
+		float: left;
+		display: block;
+
+		span {
+			display: block;
+			font-size: em(12);
+			line-height: em(14, 12);
+		}
+	}
+	.breadcrumb {
+		@include Calibre-Bold;
+	}
+	.current-page {
+		@include Calibre-Regular;
+	}
+}
+
+.header-mission-statement {
+	position: absolute;
+	z-index: 4000;
+	font-size: 1em;
+	padding-top: em(10);
+
+	img {
+		max-height: em(24);
+		width: auto;
+		max-width: none;
+		padding-top: em(5);
+	}
+	.tagline-text {
+		@include Acta-Medium;
+		font-size: em(18);
+		line-height: em(24, 18);
+		color: white;
+	}
+}

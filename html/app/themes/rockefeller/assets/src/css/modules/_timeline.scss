@@ -1,0 +1,219 @@
+.timeline-header {
+	position: relative;
+	border-bottom: $base-border;
+	border-top: $base-border;
+	padding: em(65) em(10) em(25) em(10);
+
+	.module-title {
+		@extend %horiztonal-block-title;
+		padding-right: em(30);
+	}
+
+	.filter, .filter-label {
+		display: inline-block;
+		@include Calibre-Medium;
+		font-size: em(13);
+		line-height: em(24, 13);
+		text-transform: uppercase;
+		padding-left: em(10, 13);
+		
+		&::after {
+			content: '';
+			display: inline-block;
+			height: 0.75em;
+			width: 1px;
+			background: $light-gray;
+			margin-left: em(10);
+
+		}
+
+		&:last-child::after {
+			content: none;
+		}
+	}
+
+	.filter {
+		cursor: pointer;
+	}
+
+	.active {
+		color: $yellow;
+	}
+
+	.date-subhead {
+		position: absolute;
+		right:em(20, 30);
+		top:em(65, 30);
+		@include Calibre-Regular;
+		font-size: em(30);
+		line-height: em(24, 30);
+		color: $yellow;
+	}
+
+	ul {
+		display: inline-block;
+	}
+}
+
+
+.module-timeline {
+	position: relative;
+}
+.timeline-nav-wrapper {
+	position: absolute;
+	top:em(115);
+	bottom: 0;
+	right: em(20);
+	max-height: em(600);
+	overflow: hidden;
+	z-index: 50;
+
+
+	&::after {
+		position: absolute;
+		content:'';
+		display: block;
+		width: 1px;
+		background: $light-gray;
+		top:0;
+		bottom: 0;
+		left:50%;
+	}
+
+	.timeline-nav {
+		display: block;
+		position: relative;
+		width: em(60);
+	}
+
+	.marker {
+		display: block;
+		position: relative;
+		z-index: 5;
+
+		a {
+			display: block;
+			width: em(8);
+			height: em(8);
+			background: $light-gray;
+			border-radius: 2em;
+			margin-top:em(60);
+			margin-left: auto;
+			margin-right: auto;
+			
+			span {
+				display: none;
+			}
+		}
+	}
+
+	.active-marker {
+		display: block;
+		position: absolute;
+		top:0;
+		left: 50%;
+		// margin-top: -0.5em;
+		margin-left: em(-25, 36);
+		width: em(50, 36);
+		height: em(50, 36);
+		font-size: em(36);
+		line-height: em(50, 36);
+		text-align: center;
+		border-radius: em(100, 36);
+		@include Calibre-Light;
+		background: $yellow;
+		color: white;
+		z-index: 50;
+	}
+}
+.timeline-container {
+	position: relative;
+	background: $extra-light-gray;
+	max-height: em(600);
+	height:auto;
+	overflow: auto;
+	padding-bottom: em(280);
+
+	@include breakpoint($phone)
+	{
+		max-height: em(400);
+	}
+}
+
+
+
+
+.timeline-event {
+	// overflow: hidden;
+	clear: both;
+	position: relative;
+	margin-top: em(25);
+	margin-bottom: em(25);
+	background: white;
+
+	// Default state
+	.image-block {
+		@include corner-cutout('right', white);
+
+		position: absolute;
+		top:50%;
+		left:0;
+		width: em(230);
+		height: em(230);
+		margin-top: em(-115);
+		z-index: 20;
+
+		.sub-image {
+			position: relative;
+			z-index: 50;
+		}
+
+		img {
+			display: block;
+		}
+
+	}
+	.content {
+		@include transition(all 0.7s ease);
+		min-height: em(230);
+		margin-left: em(280);
+		position: relative;
+		z-index: 10;
+		padding: em(40);
+		padding-left: em(70);
+
+	}
+
+	// Active state
+	&.active {
+		.content {
+			padding-top: em(85);
+			padding-bottom: em(85);
+			margin-left: em(0);
+			padding-left: em(355);
+			box-shadow: 0 0 0.75em 0 rgba(0, 0, 0, 0.1);
+		}
+
+	}
+}
+.te-title {
+	max-width: em(600, 30);
+	@include Calibre-Light;
+	font-size: em(30);
+	line-height: em(36, 30);
+}
+.te-meta {
+	max-width: em(600, 14);
+	@include Calibre-Medium;
+	font-size: em(14);
+	line-height: em(32, 14);
+	text-transform: uppercase;
+
+	a, a:hover {
+		color: $base-font-color;
+	}
+
+	.read-more {
+		color: $light-text;
+	}
+}

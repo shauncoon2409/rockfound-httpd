@@ -1,0 +1,37 @@
+{% set module = gridA3_1 %}
+<div class="module-grid grid-layout-a3-1 module-wrapper">
+	<div class="grid-container module-container {{ module.containerClasses }}">
+	{% for column in module.blocks|batch(2) %}
+		<div class="x1of2 tab-x100p">
+		{% for block in column %}
+			{% if block.type == 'more-block' %}
+				<div class="striped y1 x2of3 pho-x1of2 fadein-block"></div>
+				<a href="javascript:;" class="fadein-block more-block y1 x1of3 pho-x1of2">
+					<i class="icon icon-angle-right"></i>
+				</a>
+
+			{% else %}
+				{% set image_before = (loop.index0 is even) and (block.image|length > 0) %}
+				{% set image %}
+					<div class="quote-image image-block sub-block">
+						<div class="sub-image fadein-block" style="background-image:url('{{ block.image }}');"></div>
+					</div>
+				{% endset %}
+				<a href="{{ block.link|default('javascript:;') }}" class="quote-block">
+					{{ (image_before) ? image : '' }}
+					<blockquote class="content quote-text fadein-block sub-block {{ (loop.index0 is odd) ? 'text-right' }}">
+						<p>{{ block.qtext }}</p>
+						<cite>{{ block.qcite }}</cite>
+					</blockquote>
+					{{ (image_before) ? '' : image }}
+				</a>
+			{% endif %}
+		{% endfor %}
+
+		{% if column|length == 1 %}
+			<div class="striped y1 x100p fadein-block"></div>
+		{% endif %}
+		</div>
+	{% endfor %}
+	</div>
+</div>

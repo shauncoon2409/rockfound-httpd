@@ -1,0 +1,28 @@
+{% set module = regionsMap %}
+<section class="module-regions-map">
+	<div class="regions-map {{ module.mapType }}">
+		<div class="module-wrapper">
+			<div class="header-badge">
+				<img src="/images/rock_globe.png" alt="">
+				<span class="nav-block">
+					<span class="breadcrumb">Our Work / Regions /</span>
+					<span class="current-page">[current region]</span>
+				</span>
+			</div>
+
+			<div class="region-selector" id="region-selector"></div>
+
+			<svg id="regionsMap" class="map-image"></svg>
+		</div>
+	</div>
+
+	<div class="region-map-data module-wrapper">
+		{% for region in module.regionData %}
+			<div class="region-info" data-name="{{ region.name }}" data-info-url="{{ region.dataInfo }}"></div>
+		{% endfor %}
+
+		<div class="empty-set">
+			<p>No data found for selected region.</p>
+		</div>
+	</div>
+</section>

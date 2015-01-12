@@ -1,0 +1,294 @@
+.coupled-module-header {
+	overflow: hidden;
+	border-top: $base-border;
+	border-bottom: $base-border;
+	padding: em(10);
+
+	.module-title {
+		float: left;
+		@include Calibre-Semibold;
+		font-size: em(24);
+		.topic {
+			@include Calibre-Regular;
+		}
+	}
+
+	.coupled-module-pager {
+		float: right;
+		@include Calibre-Semibold;
+		font-size: em(24);
+	}
+}
+
+.coupled-module-content {
+	border-right:4px solid $sea-blue;
+}
+
+.cm-full-set {
+	@include outer-container;
+}
+
+
+$tablet-right-gutter: 7%;
+$tablet-left-gutter: 25%;
+
+.cm-prompt {
+	position: relative;
+	padding-left: 20%;
+	padding-right: 20%;
+	padding-top: em(100);
+	padding-bottom: em(40);
+	border-bottom: $base-border;
+
+	@include breakpoint( $narrow-desktop ) {
+		padding-left:$tablet-right-gutter;
+		padding-right: $tablet-left-gutter;
+	}
+	@include breakpoint( $phone ) {
+		padding-top: em(120);
+		padding-left: em(20);
+		padding-right: em(20);
+	}
+
+	.cm-pager {
+		position: absolute;
+		width: 20%;
+
+		@include breakpoint( $phone ) {
+			top:0;
+			height: em(100);
+			border-bottom: $base-border;
+		}
+
+		&.slick-disabled {
+			display: none !important;
+		}
+
+		.pager-text {
+			position: absolute;
+			top:50%;
+			line-height: 1em;
+			margin-top: -0.5em;
+			font-size: em(40);
+
+			.fa {
+				position: relative;
+				top: 0.15em;
+				background: white;
+			}
+			.extra {
+				@include Calibre-Semibold;
+				display: inline-block;
+				font-size: em(24, 40);
+				line-height: 1em;
+				text-transform: uppercase;
+			}
+		}
+
+		.preview-text {
+			position: absolute;
+			left: em(20);
+			bottom: em(40);
+			color: $sea-blue;
+
+			@include breakpoint( $phone ) {
+				bottom: em(10);
+			}
+		}
+
+		.next-response {
+			display: block;
+			@include Calibre-Medium;
+			font-size: em(14);
+			line-height: em(26, 14);
+			text-transform: uppercase;
+			padding-bottom: em(20, 14);
+		}
+		.next-response-text {
+			display: block;
+			@include Acta-Book;
+			font-size: em(12);
+			line-height: em(14, 12);
+			padding-right: em(20, 12);
+		}
+
+
+		&.cm-prev {
+			left:0;
+			top:0;
+			bottom:0;
+
+			@include breakpoint( $narrow-desktop ) {
+				width:$tablet-right-gutter;
+			}
+			@include breakpoint( $phone ) {
+				width: 25%;
+			}
+
+			.pager-text {
+				left:0;
+				width: 100%;
+				text-align: center;
+			}
+		}
+		&.cm-next {
+			right:0;
+			top:0;
+			bottom:0;
+			border-left: $base-border;
+
+			@include breakpoint( $narrow-desktop ) {
+				width:$tablet-left-gutter;
+			}
+			@include breakpoint( $phone ) {
+				width: 75%;
+			}
+
+			.pager-text {
+				left:em(20, 40);
+
+				@include breakpoint( $phone ) {
+					left:auto;
+					right: em(20, 40);
+				}
+			}
+
+			.preview-text {
+				@include breakpoint( $phone ) {
+					padding-right: em(40);
+				}
+			}
+
+			&:hover {
+				background: $off-white;
+
+				.pager-text {
+					color: $sea-blue;
+				}
+
+				.fa {
+					background: $off-white;
+				}
+			}
+
+		}
+	}
+}
+.prompt-title {
+	@include Acta-Book;
+	font-size: em(36);
+	line-height: em(40, 36);
+	max-width: em(580, 36);
+
+	@include breakpoint( $phone ) {
+		font-size: em(28);
+	}
+
+	&::first-letter {
+		@include Acta-Medium;
+		float: left; 
+		color: $sea-blue; 
+		font-size: em(150, 36);
+		line-height: 0.85em;
+		padding-right: 0.1em;
+	}
+}
+.prompt-meta {
+	clear: left;
+	@include Calibre-Light;
+	margin-right: em(20);
+
+	@include breakpoint( $phone ) {
+		margin-right: 0;
+	}
+}
+
+
+
+.cm-response {
+	overflow: hidden;
+	margin-left: 20%;
+	margin-right: em(40);
+
+	@include breakpoint( $narrow-desktop ) {
+		margin-left:$tablet-right-gutter;
+	}
+
+	@include breakpoint( $phone ) {
+		margin-left:em(20);
+		margin-right:em(20);
+	}
+
+
+	.response-image {
+		overflow: hidden;
+		@extend .x1of3;
+		@extend .pho-x100p;
+		@include corner-cutout('right');
+		.sub-image {
+			padding-top: 100%;
+		}
+	}
+	.response-content {
+		@extend .x2of3;
+		@extend .pho-x100p;
+		padding:em(20);
+
+		+ .response-image {
+			@include corner-cutout('left');
+		}
+
+		.reponse-title {
+			@include Calibre-Light;
+			font-size: em(36);
+			line-height: 1em;
+			max-width: em(500, 36);
+			margin: em(20, 36) 0;
+		}
+
+		.content-wrap {
+			@include Calibre-Light;
+			max-width: em(525);
+		}
+	}
+
+	&.odd {
+		.response-image.before {
+			display: none;
+		}
+
+		@include breakpoint( $phone ) {
+			.response-image.before { display: block; }
+			.response-image.after { display: none; }
+		}
+	}
+	&.even {
+		.response-image.after {
+			display: none;
+		}
+	}
+
+
+	footer {
+		@include Calibre-Medium;
+		font-size: em(14);
+		line-height: em(24, 14);
+	}
+}
+
+
+.dig-deeper {
+	margin-left: 20%;
+
+	@include breakpoint( $narrow-desktop ) {
+		margin-left:$tablet-right-gutter;
+	}
+
+	.label {
+		@extend .striped;
+		@extend .x5of6;
+		height: em(160, 28);
+		padding-top: em(60, 28);
+		padding-left: em(20, 28);
+	}
+}

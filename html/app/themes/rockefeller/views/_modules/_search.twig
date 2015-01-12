@@ -1,0 +1,80 @@
+{% set module = search %}
+<section class="module-search">
+	<div class="module-wrapper">
+		<form class="signup-form search-wrapper-content internal-offset">
+			<label for="searchkey">Search</label>
+			<input type="text" name="searchkey" id="searchkey" placeholder="for topic, name, grantee, location or document">
+			<button type="submit"><span class="icon icon-search"></span></button>
+
+			<select class="chosen-box">
+				<option value="">all</option>
+				<option value="grantee">grantee</option>
+				<option value="grants">grants</option>
+				<option value="documents">Report / Publication</option>
+				<option value="blog">blog</option>
+			</select>
+		</form>
+	</div>
+</section>
+
+{% if module.filters == 'yes' %}
+
+	{% set topics = [ 'AGRA', 'Asian Cities Climate Change Resilience Network', 'Climate: Plicy &amp; Replication', 'Digital Jobs Africa', 'Impact Investing', 'Smart Power India', 'Tranforming Health Systems', 'Transportation', 'Health of Informal Workers', 'Oceans and Fisheries', 'Waste and Spoilage', 'Youth Employment', 'Bus Rapid Transit', 'Disease Surveillance Networks', 'Campaign for American Workers', 'Cliamte Smart Rural Development for Africa', 'New Orleans', 'Smart Employment in a Green US', 'Carbon and Poverty Reduction', 'Cities and Information', 'Innovation for a Metro Nation', 'Innovation for Development', 'Networks for Urban Innovation' ] %}
+
+<section class="module-search-fiters">
+	<div class="module-wrapper">
+		<ul class="search-wrapper-content internal-offset">
+			<li class="search-filter label">Filter By</li>
+			<li class="search-filter">
+				<a>Topic</a>
+				<div class="sub-filter-panel">
+					<div class="module-wrapper">
+						<div class="search-wrapper-content internal-offset">
+							{% for sublist in topics|batch( (topics|length / 3)|round(0, 'ceil') ) %}
+							<ul class="sub-list">
+								{% for topic in sublist %}
+								<li><a>{{ topic }}</a></li>
+								{% endfor %}
+							</ul>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="search-filter">
+				<a>Initative</a>
+				<div class="sub-filter-panel">
+					<div class="module-wrapper">
+						<div class="search-wrapper-content internal-offset">
+							{% for sublist in topics|batch( (topics|length / 3)|round(0, 'ceil') ) %}
+							<ul class="sub-list">
+								{% for topic in sublist %}
+								<li><a>{{ topic }}</a></li>
+								{% endfor %}
+							</ul>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="search-filter">
+				<a>Region</a>
+				<div class="sub-filter-panel">
+					<div class="module-wrapper">
+						<div class="search-wrapper-content internal-offset">
+							{% for sublist in topics|batch( (topics|length / 3)|round(0, 'ceil') ) %}
+							<ul class="sub-list">
+								{% for topic in sublist %}
+								<li><a>{{ topic }}</a></li>
+								{% endfor %}
+							</ul>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
+
+{% endif %}

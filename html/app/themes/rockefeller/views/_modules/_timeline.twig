@@ -1,0 +1,50 @@
+{% set module = timeline %}
+<section class="module-timeline module-wrapper">
+	<header class="timeline-header">
+		<h2 class="module-title">{{ module.title }}</h2>
+
+		<section class="filters">
+			<h3 class="filter-label">Filter by</h3>
+			<ul>
+				<li class="filter active" data-filter="all">All</li>
+			{% for filter, label in module.filters %}
+				<li class="filter" data-filter=".{{ filter }}">{{ label }}</li>
+			{% endfor %}
+			</ul>
+		</section>
+
+		<time class="date-subhead"></time>
+	</header>
+
+	<div class="timeline-nav-wrapper">
+		<ul class="timeline-nav">
+			<li class="marker"><a><span>00</span></a></li>
+		</ul>
+		<span class="active-marker"></span>
+	</div>
+
+	<div class="timeline-container">
+
+		{% for event in module.events %}
+		<article id="{{ event.id }}" class="timeline-event {{ event.type }} {{ loop.first ? 'active initial' : '' }}" itemscope itemtype="http://schema.org/Article" data-date="{{ event.date }}" data-yearmonth="{{ event.date|date('F Y') }}" data-day="{{ event.date|date('d') }}" data-type="{{ event.type }}">
+			<div class="image-block hover-image">
+				<div class="sub-image">
+					<img src="{{ event.image }}" />
+				</div>
+			</div>
+			<div class="content">
+				<h1 class="te-title" itemprop="name">{{ event.title }}</h1>
+				<p class="te-meta">
+					<span class="icon {{ (event.type == 'blog') ? 'icon-quote-lined' : 'icon-pen' }}"></span>
+					<span itemprop="author">
+						{{ (event.type == 'blog') ? '' : 'via twitter ' }} by 
+						<a href="{{ event.authorLink }}">{{ event.author }}</a>
+					</span>
+					<time>{{ event.date|date('F d') }}</time>
+					{% if event.link %}<a class="read-more" href="{{ event.link }}">read more &raquo;</a>{% endif %}
+				</p>
+			</div>
+		</article>
+		{% endfor %}
+	</div>
+</section>

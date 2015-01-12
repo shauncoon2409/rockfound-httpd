@@ -1,0 +1,17 @@
+{% set module = gridA3_4 %}
+<div class="module-grid grid-3-4 module-wrapper">
+	<div class="grid-container module-container offset-header borderless">
+	{% for block in module.blocks %}
+		<div class="list-block {{ (block.image|length > 0) ? 'has-image' : '' }}">
+		{% if block.image|length > 0 %}
+			<a href="{{ block.link|default('javascript:;') }}" class="image-block">
+				<div class="sub-image" style="background-image:url('{{ block.image }}');"></div>
+			</a>
+		{% endif %}
+
+			<h3 class="list-topic"><a href="{{ block.topic_link|default('javascript:;') }}">{{ block.topic }}</a></h3>
+			<p><a href="{{ block.link|default('javascript:;') }}">{{ block.title }}</a> {{ block.excerpt }}&hellip;</p>
+		</div>
+	{% endfor %}
+	</div>
+</div>

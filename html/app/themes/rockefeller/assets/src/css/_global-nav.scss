@@ -1,0 +1,262 @@
+$nav-bar-height: 65;
+$nav-font-size: 14;
+$nav-panel-padding-top:40;
+
+
+
+$nav-layout: layout(12 (40px 60px) inside);
+$nav-break: max-width $nav-breakpoint;
+$nav-break-cols: 4;
+
+
+%first-tier {
+	@include Calibre-Semibold;
+	display: inline-block;
+	color: $medium-gray;
+	text-transform: uppercase;
+	font-size: em($nav-font-size);
+	line-height: em($nav-bar-height, $nav-font-size);
+
+	&:hover, &.active {
+		color: white;
+	}
+}
+
+body {
+	margin-bottom: em($nav-bar-height + 30);
+}
+
+@include with-layout($nav-layout) {
+	.global-nav {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		margin-bottom: -1px;
+		background: $dark-gray;
+		z-index: 2000;
+
+		a {
+			color: white;
+			cursor: pointer;
+
+			&:hover {
+				color: $light-gray;
+			}
+		}
+
+		.nav-wrapper {
+			position: relative;
+			@include outer-container;
+			
+			height: em($nav-bar-height);
+			overflow: visible;
+		}
+
+
+		.mobile-nav-icon {
+			display: none;
+			color: white;
+			font-size: em(30);
+			line-height: em($nav-bar-height, 30);
+			margin-right: em(20, 30);
+
+			@include susy-breakpoint($nav-break, $nav-break-cols) {
+				display: block;
+				float: right;
+			}
+		}
+
+		.home-button {
+			@include span(4);
+			@extend %first-tier;
+
+			@media (max-width: 955px) {
+				font-size: em(12);
+				line-height: em($nav-bar-height, 12);
+			}
+
+			.logo {
+				float: left;
+				margin-right: em(16, $nav-font-size);
+				padding:0 em(10);
+				border-right:1px solid white;
+			}
+
+			@include susy-breakpoint($nav-break, $nav-break-cols) {
+				width: auto;
+			}
+
+		}
+		.core-nav {
+			display: table;
+			@include span(8);
+
+			@include susy-breakpoint($nav-break, $nav-break-cols) {
+				display: none;
+			}
+
+			& > li {
+				display: table-cell;
+				margin-right: em(36);
+
+				& > a {
+					@extend %first-tier;
+					display: block;
+					text-align: center;
+
+					@media (max-width: 955px) {
+						font-size: em(12);
+						line-height: em($nav-bar-height, 12);
+					}
+				}
+			}
+		}
+
+		.search-box {
+			display: block;
+			position: relative;
+			float: left;
+			margin-left: em(36);
+			max-width: em(125);
+			padding-top: em(17);
+			
+			input {
+				width: 100%;
+				padding-right:em(30);
+				border: 0;
+				border-bottom: 1px solid white;
+				background: none;
+				box-shadow: none;
+				outline: none;
+				color: white;
+			}
+			button {
+				position: absolute;
+				bottom: 3px;
+				right:0;
+				width: em(30);
+				padding: 0;
+				color: white;
+				background: none;
+				outline: none;
+			}
+		}
+
+		.expanded-nav-content {
+			display: none;
+		}
+
+		.expanded-nav {
+			display: none;
+			position: absolute;
+			left:0;
+			width: 100%;
+			bottom: em($nav-bar-height);
+			border-bottom: 1px solid transparent;
+			background: $medium-gray;
+
+			.close-button {
+				position: absolute;
+				top:em(5, 30);
+				right:em(10, 30);
+				font-size: em(30);
+				line-height: 1em;
+				color: $light-gray;
+				z-index: 50;
+				cursor: pointer;
+			}
+
+			.inner-content {
+				div {
+					height: em(350);
+				}
+			}
+
+			.feature-box {
+				background: #6f6f6f;
+
+				img {
+					margin-bottom: em(16);
+				}
+				.item-title {
+					margin:0;
+					color: white;
+					font-size: em(12);
+					text-transform: uppercase;
+					margin-bottom: em(5, 12);
+				}
+				.item-content {
+					margin:0;
+					color: $light-gray;
+					@include Acta-Medium;
+					font-size: em(16);
+					line-height: em(20, 16);
+				}
+			}
+
+			.link-list {
+				background: #4d4d4d;
+
+				a {
+					font-size:em(13);
+					line-height: em(24, 13);
+				}
+			}
+
+			.nav-content-pane {
+				display: table;
+
+				.nav-pane-item {
+					vertical-align: top;
+					@include span(3);
+					padding-top: em($nav-panel-padding-top);
+					padding-bottom: em($nav-panel-padding-top);
+				}
+			}
+
+			.sub-items {
+				@include span(3);
+				vertical-align: top;
+				background: $dark-gray;
+				padding-top: em($nav-panel-padding-top);
+
+				a {
+					@include Acta-Book;
+					color: $medium-gray;
+					font-size: em(16);
+
+					&.active, &:hover {
+						color: white;
+						@include Calibre-Semibold;
+					}
+				}
+
+				.prominate {
+					margin-top: em(20);
+				}
+
+				+ .nav-content-pane {
+					vertical-align: top;
+					@include span(9 no-gutters);
+
+					.nav-pane-item {
+						@include span(3 of 9 nest);
+					}
+				}
+			}
+
+			.nav-sub-pane {
+				position: relative;
+				display: none;
+			
+				&.default {
+					display: table-cell;
+				}
+			}
+
+			&.open {
+				display: block;
+			}
+		}
+	}
+}

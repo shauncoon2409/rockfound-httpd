@@ -1,0 +1,44 @@
+.global-header, .module-wrapper {
+	@include outer-container;
+}
+
+.offset-header {
+	margin-left: 20%;
+
+	@include breakpoint( $narrow-desktop ) {
+		margin-left: 0;
+	}
+}
+
+.has-rail {
+	@include span(8);
+}
+
+.internal-offset {
+	@include push(2);
+	@include post(1);
+
+	&.has-rail {
+		@include post(0);
+	}
+
+	@include breakpoint( $tablet ) {
+		@include push(1);
+	}
+
+	@include breakpoint( $phone ) {
+		margin-left: em(20);
+		margin-right: em(20);
+	}
+}
+
+.full-width {
+	float: none;
+	width: auto;
+}
+
+
+
+.rail {
+	@include span(4);
+}

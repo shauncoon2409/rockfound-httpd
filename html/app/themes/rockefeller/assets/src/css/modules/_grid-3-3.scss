@@ -1,0 +1,30 @@
+.grid-3-3 {
+	.link-block, .spacer, .more-block {
+		@extend .x1of6;
+		@extend .tab-x1of4;
+		@extend .pho-x1of2;
+		@extend .y1;
+
+		&.double {
+			@extend .x1of3;
+			@extend .tab-x1of2;
+			@extend .pho-x100p;
+		}
+	}
+
+	.spacer {
+		@include breakpoint( $phone ) {
+			display: none;
+		}
+	}
+
+	.link-block {
+		span {
+			@include center-center;
+			@include Calibre-Medium;
+			font-size: em(18);
+			line-height: em(24, 18);
+			padding: em(10, 18);
+		}
+	}
+}

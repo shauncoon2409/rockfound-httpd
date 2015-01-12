@@ -1,0 +1,54 @@
+.grid-3-0 {
+	.row-holder {
+		&.odd {
+			.image-after { display: none; }
+		}
+		&.even {
+			.image-before { display: none; }
+		}
+
+		@include breakpoint( $tablet ) {
+			.tab-even {
+				.image-before { display: none; }
+				.image-after { display: block; }	
+			}
+			.tab-odd {
+				.image-before { display: block; }
+				.image-after { display: none; }	
+			}
+		}
+
+
+		@include breakpoint( $phone ) {
+			.odd {
+				.image-before { display: none; }
+				.image-after { display: block; }	
+			}
+			.even {
+				.image-before { display: block; }
+				.image-after { display: none; }	
+			}
+		}
+	}
+
+	.image-after, .image-before {
+		overflow: hidden;
+	}
+
+	p {
+		margin:0;
+		padding: em(15);
+		@include Calibre-Medium;
+		line-height:em(20);
+
+		.less {
+			@include Calibre-Light;
+		}
+	}
+
+	.spacer {
+		&.light-gray {
+			background: $extra-light-gray;
+		}
+	}
+}

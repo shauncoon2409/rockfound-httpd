@@ -1,0 +1,184 @@
+@mixin make-grid($base-height, $pre: "") {
+
+	// Widths
+	.#{$pre}x100p {
+		@include span(100% no-gutters);
+	}
+	.#{$pre}x1of2 {
+		@include span(50% no-gutters);
+	}
+	.#{$pre}x1of3 {
+		@include span(33% no-gutters);
+	}
+	.#{$pre}x1of4 {
+		@include span(25% no-gutters);
+	}
+	.#{$pre}x1of5 {
+		@include span(20% no-gutters);
+	}
+	.#{$pre}x1of6 {
+		@include span(16.6% no-gutters);
+	}
+
+	.#{$pre}x2of3 {
+		@include span(67% no-gutters);
+	}
+
+	.#{$pre}x3of4 {
+		@include span(75% no-gutters);
+	}
+
+	.#{$pre}x5of6 {
+		@include span(83.4% no-gutters);
+	}
+
+
+	.#{$pre}fixed-x1 {
+		@include span( ($column-width * 2) no-gutters);
+	}
+	.#{$pre}fixed-x2 {
+		@include span( ($column-width * 4) no-gutters);
+	}
+	.#{$pre}fixed-x3 {
+		@include span( ($column-width * 6) no-gutters);
+	}
+	.#{$pre}fixed-x4 {
+		@include span( ($column-width * 8) no-gutters);
+	}
+	.#{$pre}fixed-x5 {
+		@include span( ($column-width * 10) no-gutters);
+	}
+	.#{$pre}fixed-x6 {
+		@include span( ($column-width * 12) no-gutters);
+	}
+
+
+	// Height
+	.#{$pre}y-auto {
+		height: auto;
+	}
+	.#{$pre}y1 {
+		height: em($base-height);
+	}
+	.#{$pre}y2 {
+		height: em($base-height * 2);
+	}
+	.#{$pre}y3 {
+		height: em($base-height * 3);
+	}
+
+}
+
+@mixin make-margins($class, $dir) {
+	.#{$class}-zero {
+		margin-#{$dir}: 0;
+	}
+	.#{$class}-1of2 {
+		margin-#{$dir}: 50%;
+	}
+	.#{$class}-1of3 {
+		margin-#{$dir}: 33.3%;
+	}
+	.#{$class}-1of4 {
+		margin-#{$dir}: 25%;
+	}
+
+	.#{$class}-2of3 {
+		margin-#{$dir}: 66.67%;
+	}
+
+	.#{$class}-3of4 {
+		margin-#{$dir}: 75%;
+	}
+}
+
+@mixin center-center {
+	display: block;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+
+@mixin align-title-bottom() {
+	position: relative;
+
+	.gb-title {
+		position: absolute;
+		bottom: 0;
+	}
+}
+
+@mixin color-block($background, $text: white) {
+	@include transition(all 0.25s linear);
+	background-color:$background;
+	color: white;
+
+	&:hover {
+		color: white;
+		background-color:darken($background, 10%);
+	}
+
+	a, a:hover {
+		color: white;
+	}
+}
+
+
+@mixin corner-cutout($dir : 'right', $color : white) {
+	position: relative;
+
+	&::before {
+		position: absolute;
+		content: '';
+		top:0;
+		z-index: 55;
+
+		@if $dir == 'right' {
+			right:0;
+			left:auto;
+			@include triangle(em(25), $color transparent, up-right);
+			border-right:0;
+		} @else {
+			right:auto;
+			left:0;
+			@include triangle(em(25), $color transparent, up-left);
+			border-left:0;
+		}
+	}
+}
+
+
+@mixin pointer($size: 20px, $color: white, $direction: left) {
+	position: relative;
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+
+		$width: nth($size, 1);
+		$offset: ($width / 2) * -1;
+
+		@include triangle($size, $color, $direction);
+
+	    @if $direction == up or $direction == down {
+			left:50%;
+			margin-left: $offset;
+	    } @else if $direction == right or $direction == left {
+			bottom:50%;
+			margin-top: $offset;
+		}
+
+	    @if $direction == up {
+	    	top: $offset;
+	    } @else if $direction == down {
+	    	bottom: $offset;
+	    } @else if $direction == right {
+	    	right: $offset;
+	    } @else if $direction == left {
+	    	left: $offset;
+	    }
+	}
+}

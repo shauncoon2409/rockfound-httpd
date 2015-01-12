@@ -1,0 +1,52 @@
+{% set module = gridA4 %}
+
+{% macro squareBlock(block, xClasses, yClasses, extraClasses) %}
+	{% set hasImage = block.subImage|length > 0 %}
+
+	<a href="{{ block.link }}" class="{{ xClasses ~ " " ~ yClasses ~ " " ~ extraClasses }} {{ (hasImage) ? "image-block" : "text-block" }} fadein-block">
+		{% if hasImage %}<div class="sub-image" style="background-image:url('{{ block.subImage }}');"></div>{% endif %}
+		<h4 class="gb-title"> {{ block.title }} <time>{{ block.date }}</time></h4>
+	</a>
+{% endmacro %}
+
+{% import _self as builder %}
+
+<section class="module-grid grid-4 module-wrapper">
+	{% if module.title %}
+	<header class="grid-heading module-heading">
+		<h2 class="heading-title">{{ module.title }}</h2>
+		<p class="heading-info">{{ module.info }}</p>
+	</header>
+	{% endif %}
+
+	<div class="grid-container module-container {{ module.containerClasses }}">
+
+		<div class="x2of3 tab-x100p reverse y3 tab-y-auto">
+			<a href="{{ module.block1.link }}" class="half-image x100p y2 pho-y-auto large-text">
+				<div class="fadein-block sub-block image pho-y2">
+					<div class="sub-image" style="background-image:url('{{ module.block1.subImage }}');"></div>
+				</div>
+				<div class="fadein-block sub-block text">
+					<h4 class="gb-title">{{ module.block1.title }}<time>{{ module.block1.date }}</time></h4>
+				</div>
+			</a>
+
+			{{ builder.squareBlock(module.block2, "x1of4 pho-x1of2", "y1", "ma-1of4 pho-ma-zero pho-mb-1of2 " ~ module.block2.classes|default('') ) }}
+
+			{{ builder.squareBlock(module.block3, "x1of4 pho-x1of2", "y1", module.block3.classes|default('') ) }}
+
+			{% if module.more.link %}
+			<a href="{{ module.more.link }}" class="more-block x1of4 pho-x1of2 y1 fadein-block">
+				<span class="extra-text">More</span>
+				<i class="icon icon-angle-down"></i>
+			</a>
+			{% endif %}
+		</div>
+
+		<div class="x1of3 tab-x100p y3 tab-y-auto">
+			{{ builder.squareBlock(module.block4, "x1of2 tab-x1of4 pho-x1of2", "y1", "mb-1of2 tab-mb-1of4 pho-mb-1of2 " ~ module.block4.classes|default('') ) }}
+
+			{{ builder.squareBlock(module.block5, "x100p tab-x1of2 pho-x100p", "y2", module.block5.classes|default('') ) }}
+		</div>
+	</div>
+</section>

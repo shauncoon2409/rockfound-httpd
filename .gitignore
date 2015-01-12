@@ -25,6 +25,7 @@ html/app/mu-plugins/*
 html/app/upgrade
 html/app/uploads/*
 !html/app/uploads/.gitkeep
+.sass-cache
 
 # Package Managers
 node_modules

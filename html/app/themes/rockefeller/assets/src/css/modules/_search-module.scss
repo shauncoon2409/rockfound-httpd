@@ -1,0 +1,208 @@
+.module-search {
+	position: relative;
+	background: $extra-light-gray;
+
+	form {
+		@include clearfix;
+		position: relative;
+		padding: em(14) 0;
+		z-index: 15;
+
+		label, input {
+			display: block;
+			font-size: em(30);
+			line-height: em(55, 30);
+			color: $gray;
+			background: none;
+			border: none;
+			box-shadow: none;
+			padding-top: 0;
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+
+		label {
+			position: absolute;
+			left:0;
+			top:em(14, 30);
+			@include Calibre-Semibold;
+
+
+			@include breakpoint( $phone ) {
+				position: static;
+				line-height: 1em;
+			}
+		}
+		input {
+			@include Calibre-Light;
+			padding-left: em(90, 30);
+			padding-right: em(250, 30);
+
+			@include breakpoint( $tablet ) {
+				padding-right: 0;
+			}
+			@include breakpoint( $phone ) {
+				padding-left: 0;
+			}
+
+
+			&:focus {
+				box-shadow: none;
+				border: 0;
+				border-bottom: $base-border;
+			}
+		}
+
+		button {
+			position: absolute;
+			right: 0;
+			top: em(14, 36);
+			display: block;
+			width: em(60, 36);
+			color: $gray;
+			font-size: em(36);
+			line-height: em(56, 36);
+			padding: 0;
+			padding-left: em(15, 36);
+			border-left: $base-border;
+			background: none;
+
+			@include breakpoint( $tablet ) {
+				position: static;
+				float: right;
+			}
+		}
+
+	}
+
+	.chosen-container {
+		position: absolute;
+		right: em(60);
+		top: em(32);
+
+		span, li {
+			text-transform: uppercase;
+			font-size: em(14);
+		}
+
+		@include breakpoint( $tablet ) {
+			position: relative;
+			float: right;
+			right: 0;
+			top: em(14);
+		}
+
+		.chosen-drop {
+			width: em(185);
+		}
+
+		
+		.chosen-single {
+			text-align: right;
+			padding-right: em(10);
+		}
+	}
+}
+
+
+
+.module-search-fiters {
+	position: relative;
+	background: $slate;
+
+	.search-filter {
+		display: inline-block;
+		color: $light-gray;
+		@include Calibre-Medium;
+		padding-right: em(30);
+		padding-top: em(10, 18);
+		padding-bottom: em(10, 18);
+
+		@include breakpoint( $phone ) {
+			display: block;
+			padding: 0;
+			margin-left: em(-20);
+			margin-right: em(-20);
+		}
+
+		a {
+			color: inherit;
+		}
+
+		& > a {
+			font-size: em(18);
+
+			@include breakpoint( $phone ) {
+				display: block;
+				padding: em(10, 18) em(20, 18);
+				border-top: 1px solid darken($slate, 10%);
+			}
+		}
+
+		&.open > a {
+			color: white;
+		}
+
+		&.label {
+			text-transform: uppercase;
+
+			@include breakpoint( $phone ) {
+				padding: em(10) em(20);
+			}
+		}
+	}
+
+	.sub-filter-panel {
+		position: absolute;
+		left:0;
+		top:100%;
+		width: 100%;
+		background: darken($slate, 10%);
+		z-index: 10;
+
+		@include breakpoint( $phone ) {
+			position: static;
+			width: auto;
+		}
+
+		.module-wrapper {
+			position: relative;
+			z-index: 5;
+			padding-top: em(20);
+			padding-bottom: em(40);
+		}
+
+		.sub-list {
+			@include span(4 of 12);
+
+			@include breakpoint( $phone ) {
+				@include full;
+			}
+
+			li {
+				padding-left: em(15);
+
+				&::before {
+					float: left;
+					display: inline-block;
+					content: '•';
+					color: $slate;
+					font-size: em(18);
+					line-height: em(18);
+					margin-left: em(-15, 18);
+				}
+
+				a {
+					cursor: pointer;
+					&:hover {
+						color: white;
+					}
+				}
+
+				&.active a {
+					color: $green;
+				}
+			}
+		}
+	}
+}
