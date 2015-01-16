@@ -1,6 +1,6 @@
 {% set module = gridA3_4 %}
 <div class="module-grid grid-3-4 module-wrapper">
-	<div class="grid-container module-container offset-header borderless">
+	<div class="grid-container module-container {{ module.containerClasses }}">
 	{% for block in module.blocks %}
 		<div class="list-block {{ (block.image|length > 0) ? 'has-image' : '' }}">
 		{% if block.image|length > 0 %}

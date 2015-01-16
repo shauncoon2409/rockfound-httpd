@@ -1,11 +1,14 @@
 {% set module = customGrid %}
 <section class="module-grid grid-4 module-wrapper">
+
+	{% if module.title %}
 	<header class="grid-heading module-heading">
 		<h2 class="heading-title">{{ module.title }}</h2>
 		<p class="heading-info">{{ module.info }}</p>
 	</header>
+	{% endif %}
 
-	<div class="grid-container module-container">
+	<div class="grid-container module-container {{ module.containerClasses }}">
 	{% for wrapper in module.blocks %}
 		<div class="{{ wrapper.x }} {{ wrapper.y }}">
 		{% for block in wrapper.subBlocks %}

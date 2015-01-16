@@ -1,7 +1,7 @@
 {% set module = gridA3_0 %}
 
 <div class="module-grid grid-3-0 module-wrapper">
-	<div class="grid-container module-container offset-header">
+	<div class="grid-container module-container {{ module.containerClasses }}">
 	{% for row in module.blocks|batch(3) %}
 		<div class="row-holder {{ (loop.index is odd) ? 'odd' : 'even' }}">
 		

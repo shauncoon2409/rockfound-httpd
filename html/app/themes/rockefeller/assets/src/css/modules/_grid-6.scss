@@ -11,7 +11,7 @@
 	}
 }
 
-.topic-block {
+.grid6-block {
 	position: relative;
 	height: em(500);
 	padding: em(20) em(30);
@@ -116,6 +116,12 @@
 }
 
 .grid-6-2 {
+	padding-top: 0;
+
+	.grid6-block {
+		height: auto;
+	}
+
 	.tb-name {
 		height: em(160, 80);
 		font-size: em(80);

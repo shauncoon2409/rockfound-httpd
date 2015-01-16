@@ -10,7 +10,7 @@
 	<div class="grid-container module-container {{ module.containerClasses }}">
 	{% for block in module.blocks %}
 		
-		{% set blockClasses = "x1of3 tab-x1of2 pho-x100p topic-block fadein-block " ~ cycle(['left', 'middle', 'right'], loop.index0) %}
+		{% set blockClasses = "x1of3 tab-x1of2 pho-x100p grid6-block fadein-block " ~ cycle(['left', 'middle', 'right'], loop.index0) %}
 
 		{% if module.gridtype == 'grid-6-3' %}
 		<a href="{{ block.link }}" class="{{ blockClasses }}">

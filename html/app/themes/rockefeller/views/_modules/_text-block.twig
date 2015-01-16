@@ -1,8 +1,8 @@
 <div class="module-wrapper">
 	<section class="display-module text-block {{ textBlock.classes }}">
-		<h3 class="text-block-header">{{ textBlock.title }}</h3>
+		{% if textBlock.title %}<h3 class="text-block-header">{{ textBlock.title }}</h3>{% endif %}
 		<div class="text-block-content"> 
-			{{ textBlock.content|raw }}
+			{{ textBlock.content|shortcodes }}
 		</div>
 	</section>
 </div>

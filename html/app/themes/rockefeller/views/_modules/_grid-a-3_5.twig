@@ -1,6 +1,6 @@
 {% set module = gridA3_5 %}
 <div class="module-grid grid-3-5 module-wrapper">
-	<div class="grid-container module-container offset-header borderless">
+	<div class="grid-container module-container {{ module.containerClasses }}">
 	{% for block in module.blocks %}
 		<div class="list-block has-image">
 			<a href="{{ block.link|default('javascript:;') }}" class="image-block">

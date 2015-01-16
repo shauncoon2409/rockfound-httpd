@@ -7,6 +7,10 @@
 		return;
 	}
 
+	require_once('functions/admin-menu-fixes.php');
+	require_once('functions/theme-setup.php');
+	require_once('functions/acf-fields-export.php');
+
 	class StarterSite extends TimberSite {
 
 		function __construct(){
@@ -20,15 +24,15 @@
 			parent::__construct();
 		}
 
-		function register_post_types(){
-			//this is where you can register custom post types
+		function register_post_types() {
+			require('functions/custom-post-types.php');
 		}
 
-		function register_taxonomies(){
-			//this is where you can register custom taxonomies
+		function register_taxonomies() {
+			require('functions/custom-taxonomies.php');
 		}
 
-		function add_to_context($context){
+		function add_to_context($context) {
 			$context['foo'] = 'bar';
 			$context['stuff'] = 'I am a value set in your functions.php file';
 			$context['notes'] = 'These values are available everytime you call Timber::get_context();';
@@ -37,7 +41,7 @@
 			return $context;
 		}
 
-		function add_to_twig($twig){
+		function add_to_twig($twig) {
 			/* this is where you can add your own fuctions to twig */
 			$twig->addExtension(new Twig_Extension_StringLoader());
 			$twig->addFilter('myfoo', new Twig_Filter_Function('myfoo'));
@@ -47,5 +51,4 @@
 	}
 
 	new StarterSite();
-
-	require_once('functions/theme-setup.php');
+	

@@ -1,0 +1,91 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% if header %}
+		{% include '_modules/_header.twig' with header %}
+	{% endif %}	
+
+	<div class="module-wrapper rail-wrapper">
+		<div class="has-rail">
+			{% if gridA3_5 %}
+				{% include '_modules/_grid-a-3_5.twig' with gridA3_5 %}
+			{% endif %}
+
+			{#--  module 24 --#}
+
+			{% if textBlock %}
+				{% include '_modules/_text-block.twig' with textBlock %}
+			{% endif %}
+
+			{#-- module 11 ( in textblock? ) --#}
+
+			{% if quote %}
+				{% include '_modules/_quote.twig' with quote %}
+			{% endif %}
+
+			{% if grid6 %}
+				{% include '_modules/_grid-6.twig' with grid6 %}
+			{% endif %}
+
+			{#-- module 22 ( in textblock? ) --#}
+
+			{% if quote2 %}
+				{% include '_modules/_quote.twig' with {'quote' : quote2 } %}
+			{% endif %}
+
+			{% if gridA3_1 %}
+				{% include '_modules/_grid-a-3_1.twig' with gridA3_1 %}
+			{% endif %}
+
+			{% if gridA3_3 %}
+				{#-- has dropdown filter (add to module) --#}
+				{% include '_modules/_grid-a-3_3.twig' with gridA3_3 %}
+			{% endif %}
+
+			{% if gridA4 %}
+				{% include '_modules/_grid-a-4_0.twig' with gridA4 %}
+			{% endif %}
+
+			{% if timeline %}
+				{% include '_modules/_timeline.twig' with timeline %}
+			{% endif %}
+		</div>
+		<div class="rail">
+
+			<h2 class="rail-header">Grant</h2>
+			{% if grants %}
+				<select class="grant-select-menu">
+				{% for grant in grants %}
+					<option value="#{{ grant.slug }}">{{ grant.title }}</option>
+				{% endfor %}
+				</select>
+
+				{% for grant in grants %}
+				<div class="grant-info-block" id="{{ grant.slug }}" {{ (not loop.first) ? 'style="display:none;"' }}>
+					<section class="grant-section">
+						<h3 class="rail-section-header">Granted</h3>
+						<p class="grant-amount">${{ grant.amount|number_format(0, '', ',') }}</p>
+					</section>
+
+					<section class="grant-section">
+						<h3 class="rail-section-header">Grant Term</h3>
+						<p class="grant-term">{{ grant.term_start }} - {{ grant.term_end }}</p>
+					</section>
+
+					<section class="grant-section">
+						<h3 class="rail-section-header">Grant Description</h3>
+						<p class="grant-desc">{{ grant.desc }}</p>
+					</section>
+				</div>
+				{% endfor %}
+			{% endif %}
+
+		</div>
+	</div>
+
+	{% if newsletter %}
+		{% include '_modules/_newsletter-signup.twig' with newsletter %}
+	{% endif %}
+
+{% endblock %}

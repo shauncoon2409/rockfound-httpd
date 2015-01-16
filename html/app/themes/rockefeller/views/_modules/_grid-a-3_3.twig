@@ -1,16 +1,16 @@
 {% set module = gridA3_3 %}
 <div class="module-grid grid-3-3 module-wrapper">
-	<div class="grid-container module-container offset-header">
+	<div class="grid-container module-container {{ module.containerClasses }}">
 	{% for block in module.blocks %}
 		{% if block.type == 'spacer' %}
 			<div class="spacer background {{ block.color }} {{ block.width }}"></div>
 		{% elseif block.type == 'more-block' %}
-			<a href="{{ block.link }}" class="more-block {{ block.color }} {{ block.width }}">
+			<a href="{{ block.link }}" class="more-block {{ block.width }}">
 				<span class="extra-text">More</span>
 				<i class="icon icon-angle-down"></i>
 			</a>
 		{% else %}
-			<a href="{{ block.link }}" class="{{ block.type|default('link-block') }} {{ block.color }}">
+			<a href="{{ block.link }}" class="{{ block.type|default('link-block') }} {{ block.color }} fadein-block">
 				<span>{{ block.title }}</span>
 			</a>
 		{% endif %}

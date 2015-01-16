@@ -4,6 +4,19 @@
     {
       "type": "composer",
       "url": "http://wpackagist.org"
+    },
+    {
+        "type": "package",
+        "package": {
+            "type": "wordpress-muplugin",
+            "name": "PanManAms/WP-JSON-API-ACF",
+            "version": "1.0",
+            "source": {
+                "url": "https://github.com/PanManAms/WP-JSON-API-ACF",
+                "type": "git",
+                "reference": "d1b4e02a1fb639351a54274f345d1b9c5711823a"
+            }
+        }
     }
   ],
   "require": {
@@ -12,13 +25,26 @@
     "composer/installers": "v1.0.12",
     "vlucas/phpdotenv": "1.0.9",
     "jarednova/timber": "dev-master",
+    "roots/soil": "~3",
     "wpackagist-plugin/wordpress-seo": "~1.7",
-    "wpackagist-plugin/advanced-custom-fields": "~4.3",
-    "roots/soil": "~3"
+    "wpackagist-plugin/fetch-tweets": "~2",
+    "wpackagist-plugin/json-rest-api": "~1.1",
+    "PanManAms/WP-JSON-API-ACF" : "~1",
+    "wpackagist-plugin/disqus-comment-system": "~2",
+    "wpackagist-plugin/relevanssi" : "~3",
+    "wpackagist-plugin/ml-slider" : "~3",
+    "cosenary/instagram": "dev-master",
+    "j7mbo/twitter-api-php": "dev-master",
+    "phpfastcache/phpfastcache": "dev-Stable-Version-1.x"
   },
   "extra": {
     "installer-paths": {
-      "html/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "html/app/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin", 
+        "jarednova/timber", 
+        "roots/soil", 
+        "wpackagist-plugin/json-rest-api"
+      ],
       "html/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "html/app/themes/{$name}/": ["type:wordpress-theme"]
     },

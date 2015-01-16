@@ -1,8 +1,11 @@
 .timeline-header {
-	position: relative;
 	border-bottom: $base-border;
 	border-top: $base-border;
 	padding: em(65) em(10) em(25) em(10);
+
+	.module-wrapper {
+		position: relative;
+	}
 
 	.module-title {
 		@extend %horiztonal-block-title;
@@ -43,7 +46,7 @@
 	.date-subhead {
 		position: absolute;
 		right:em(20, 30);
-		top:em(65, 30);
+		top:0;
 		@include Calibre-Regular;
 		font-size: em(30);
 		line-height: em(24, 30);
@@ -144,6 +147,7 @@
 
 
 .timeline-event {
+	@include transition(all 0.7s ease);
 	// overflow: hidden;
 	clear: both;
 	position: relative;
@@ -186,14 +190,14 @@
 
 	// Active state
 	&.active {
+		box-shadow: 0 0 0.75em 0 rgba(0, 0, 0, 0.1);
+		padding-top: em(60);
+		padding-bottom: em(60);
+
 		.content {
-			padding-top: em(85);
-			padding-bottom: em(85);
 			margin-left: em(0);
 			padding-left: em(355);
-			box-shadow: 0 0 0.75em 0 rgba(0, 0, 0, 0.1);
 		}
-
 	}
 }
 .te-title {

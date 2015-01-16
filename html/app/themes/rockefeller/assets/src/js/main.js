@@ -27,3 +27,4 @@
 
 
 //= require modules/home-carousel.js
+//= require modules/grant-selecter.js

@@ -74,11 +74,11 @@
 	$(".more-block").hover(
 		function () {
 			$(this).find(".extra-text").velocity("fadeIn", { duration: 350 });
-			$(this).find(".fa-angle-down").velocity({ top: 20 }, 350);
+			$(this).find(".icon-angle-down").velocity({ top: 20 }, 350);
 		},
 		function () {
 			$(this).find(".extra-text").velocity("reverse");
-			$(this).find(".fa-angle-down").velocity("reverse");
+			$(this).find(".icon-angle-down").velocity("reverse");
 		}
 	);
 

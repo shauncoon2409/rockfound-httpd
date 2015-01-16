@@ -1,6 +1,6 @@
 {% set module = gridC5 %}
 <div class="module-grid {{ (module.narrow) ? 'grid-7' : 'grid-5' }} module-wrapper">
-	<div class="grid-container module-container offset-header borderless">
+	<div class="grid-container module-container {{ module.containerClasses }}">
 	{% set half = (module.blocks|length / 2)|round(1, 'floor') %}
 
 		{{ (module.narrow) ? '<div class="x2of3">' : '' }}

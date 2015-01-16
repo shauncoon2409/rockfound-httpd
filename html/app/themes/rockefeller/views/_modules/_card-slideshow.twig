@@ -22,20 +22,19 @@
 					<div class="kartograph-map"></div>
 					<p class="card-subnav">{{ data.subnav|raw }}</p>
 				
-				{% elseif card.type == 'quote-card' %}
+				{% else %}
+					{% if card.type == 'quote-card' %}
 					<blockquote class="card-quote-text">{{ data.qtext }}</blockquote>
-					<h4 class="card-title">{{ data.title }}</h4>
-					<p class="card-content">
-						{{ data.content }}
-						{% if data.content_link %}<a class="card-link" href="javasscript:;">{{ data.content_link }}</a>{% endif %}
-					</p>
+					{% endif %}
+					
+					{% if data.img %}
+					<img src="{{ data.img }}">
+					{% endif %}
 
-				{% elseif card.type == 'text-card' or card.type == 'img-text-card' %}
-					{% if data.img %}<img src="{{ data.img }}">{% endif %}
 					<h4 class="card-title">{{ data.title }}</h4>
 					<p class="card-content">
 						{{ data.content }}
-						{% if data.content_link %}<a class="card-link" href="javasscript:;">{{ data.content_link }}</a>{% endif %}
+						{% if data.content_link %}<a class="card-link" href="{{ data.content_link }}">{{ data.content_link }}</a>{% endif %}
 					</p>
 				{% endif %}
 				</li>
