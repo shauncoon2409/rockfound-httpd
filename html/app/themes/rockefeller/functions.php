@@ -51,4 +51,5 @@
 	}
 
 	new StarterSite();
-	
+
+	require_once('functions/timber-helpers.php');

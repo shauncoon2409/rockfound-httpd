@@ -77,6 +77,48 @@
 						<h3 class="rail-section-header">Grant Description</h3>
 						<p class="grant-desc">{{ grant.desc }}</p>
 					</section>
+
+					<hr>
+
+					{% if grant.topics|length > 0 %}
+					<section class="grant-section">
+						<h3 class="rail-section-header">Topics</h3>
+						<ul class="grant-rail-list">
+						{% for topic in grant.topics %}
+							<li><a href="{{ topic.link }}"> {{ topic.post_title }} </a></li>
+						{% endfor %}
+						</ul>
+					</section>
+					{% endif %}
+
+					{% if grant.initiatives|length > 0 %}
+					<section class="grant-section">
+						<h3 class="rail-section-header">Initiatives</h3>
+						<ul class="grant-rail-list">
+						{% for initative in grant.initiatives %}
+							<li><a href="{{ initative.link }}"> {{ initative.post_title }} </a></li>
+						{% endfor %}
+						</ul>
+						</ul>
+					</section>
+					{% endif %}
+
+					{% if grant.regions|length > 0 %}
+					<section class="grant-section">
+						<h3 class="rail-section-header">Benefiting Regions</h3>
+						<ul class="grant-rail-list">
+						{% for region in grant.regions %}
+							<li><a href="#{{ region.slug }}">{{ region.name }}</a></li>
+						{% endfor %}
+						</ul>
+					</section>
+					{% endif %}
+
+					<hr>
+
+					<section class="grant-section">
+						<h3 class="rail-section-header">Grant Officer</h3>
+					</section>
 				</div>
 				{% endfor %}
 			{% endif %}

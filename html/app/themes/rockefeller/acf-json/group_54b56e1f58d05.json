@@ -175,7 +175,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": [
+        "permalink",
         "the_content"
     ],
-    "modified": 1421354895
+    "modified": 1421431253
 }

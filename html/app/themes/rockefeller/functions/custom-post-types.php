@@ -44,8 +44,10 @@
 		'can_export'          => true,
 		'has_archive'         => false,
 		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
+		'publicly_queryable'  => false,
 		'capability_type'     => 'post',
+		'rewrite'             => false,
+		'public' 			  => false,
 	);
 	register_post_type( 'grant', $args );
 
@@ -219,7 +221,7 @@
 	register_post_type( 'insight', $args );
 
 
-	// Strategy
+	// Strategy (sub-approach)
 	// ----------------------------------
 	$args = array(
 		'label'               => 'strategy',
@@ -239,6 +241,8 @@
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
+		'rewrite'             => false,
+		'public' 			  => false,
 	);
 	register_post_type( 'strategy', $args );
 
@@ -261,8 +265,10 @@
 		'can_export'          => true,
 		'has_archive'         => false,
 		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
+		'publicly_queryable'  => false,
 		'capability_type'     => 'post',
+		'rewrite'             => false,
+		'public' 			  => false,
 	);
 	register_post_type( 'question', $args );
 
@@ -285,13 +291,15 @@
 		'can_export'          => true,
 		'has_archive'         => false,
 		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
+		'publicly_queryable'  => false,
 		'capability_type'     => 'post',
+		'rewrite'             => false,
+		'public' 			  => false,
 	);
 	register_post_type( 'answer', $args );
 
 
-	// Answer
+	// Residency
 	// ----------------------------------
 	$args = array(
 		'label'               => 'residency',
@@ -339,7 +347,7 @@
 	register_post_type( 'conference', $args );
 
 
-	// Conferences
+	// Reports
 	// ----------------------------------
 	$args = array(
 		'label'               => 'report',
