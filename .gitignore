@@ -14,10 +14,11 @@ sql-dump-*.sql
 # Plugins
 html/app/plugins/*
 !html/app/plugins/.gitkeep
-!html/app/plugins/advanced-custom-fields-pro
+!html/app/plugins/gravityforms
 
 # MU Plugins
 html/app/mu-plugins/*
+!html/app/mu-plugins/advanced-custom-fields-pro
 !html/app/mu-plugins/disallow-indexing.php
 !html/app/mu-plugins/register-theme-directory.php
 !html/app/mu-plugins/bedrock-autoloader.php
