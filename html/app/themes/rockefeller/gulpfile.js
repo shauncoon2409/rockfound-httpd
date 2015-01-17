@@ -88,13 +88,18 @@ gulp.task('clean:images', function (cb) {
 });
 
 
-gulp.task('revision', function () {
+gulp.task('revision', ['revision:clean', 'revision:build']);
+
+gulp.task('revision:build', function () {
     return gulp.src([cssDest + '/*.min.css', jsDest + '/*.min.js'], {base: 'assets/dist'})
         .pipe(gulp.dest('assets/dist'))
         .pipe(rev())
         .pipe(gulp.dest('assets/dist'))
         .pipe(rev.manifest())
         .pipe(gulp.dest('assets/dist'));
+});
+gulp.task('revision:clean', function (cb) {
+    del([cssDest + '/*.min-*.css', jsDest + '/*.min-*.js']);
 });
 
 

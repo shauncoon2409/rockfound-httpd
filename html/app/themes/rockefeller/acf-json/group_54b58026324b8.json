@@ -63,7 +63,7 @@
                 {
                     "key": "field_54b58176b970e",
                     "label": "Network Type",
-                    "name": "social_type",
+                    "name": "type",
                     "prefix": "",
                     "type": "select",
                     "instructions": "",
@@ -96,7 +96,7 @@
                 {
                     "key": "field_54b58284b970f",
                     "label": "URL",
-                    "name": "social_url",
+                    "name": "url",
                     "prefix": "",
                     "type": "url",
                     "instructions": "",
@@ -198,5 +198,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421379172
+    "modified": 1421535222
 }
