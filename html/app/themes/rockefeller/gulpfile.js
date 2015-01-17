@@ -79,11 +79,13 @@ gulp.task('lint', function() {
 
 
 // Copy images
-gulp.task('images', ['clean:images'], function() {
+gulp.task('images', ['clean:images', 'images:build'], function() {
+
+gulp.task('images:build', ['clean:images'], function() {
     return gulp.src( imgWatch )
         .pipe(gulp.dest( imgDest ));
 });
-gulp.task('clean:images', function (cb) {
+gulp.task('images:clean', function (cb) {
     del([ imgDest ], cb);
 });
 

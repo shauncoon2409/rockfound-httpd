@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0ad9b8182366d03a10aca02ca1c532d6",
+    "hash": "523422f3e2778132fb36ff709572aaf7",
     "packages": [
         {
             "name": "PanManAms/WP-JSON-API-ACF",
@@ -158,12 +158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cosenary/Instagram-PHP-API.git",
-                "reference": "fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5"
+                "reference": "b6827f10df2228a34a3167b273928af2950e4f4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cosenary/Instagram-PHP-API/zipball/fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5",
-                "reference": "fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5",
+                "url": "https://api.github.com/repos/cosenary/Instagram-PHP-API/zipball/b6827f10df2228a34a3167b273928af2950e4f4d",
+                "reference": "b6827f10df2228a34a3167b273928af2950e4f4d",
                 "shasum": ""
             },
             "require": {
@@ -193,7 +193,7 @@
                 "api",
                 "instagram"
             ],
-            "time": "2014-11-29 13:10:42"
+            "time": "2015-01-17 18:48:35"
         },
         {
             "name": "dannyvankooten/php-router",
@@ -519,12 +519,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "c0eaf25074a2a8a5b94c54414a600d94b78fb7dc"
+                "reference": "d6f117b029336018b638ac7f6768d2d0e3369be7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/c0eaf25074a2a8a5b94c54414a600d94b78fb7dc",
-                "reference": "c0eaf25074a2a8a5b94c54414a600d94b78fb7dc",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/d6f117b029336018b638ac7f6768d2d0e3369be7",
+                "reference": "d6f117b029336018b638ac7f6768d2d0e3369be7",
                 "shasum": ""
             },
             "require": {
@@ -557,7 +557,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-09 19:59:30"
+            "time": "2015-01-16 14:56:00"
         },
         {
             "name": "twig/twig",
@@ -748,6 +748,26 @@
             "homepage": "https://wordpress.org/plugins/ml-slider/"
         },
         {
+            "name": "wpackagist-plugin/query-monitor",
+            "version": "2.6.8",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/query-monitor/",
+                "reference": "tags/2.6.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://downloads.wordpress.org/plugin/query-monitor.2.6.8.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/query-monitor/"
+        },
+        {
             "name": "wpackagist-plugin/relevanssi",
             "version": "3.3.8",
             "source": {
@@ -766,6 +786,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/relevanssi/"
+        },
+        {
+            "name": "wpackagist-plugin/rewrite-rules-inspector",
+            "version": "1.2.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/rewrite-rules-inspector/",
+                "reference": "tags/1.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://downloads.wordpress.org/plugin/rewrite-rules-inspector.1.2.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/rewrite-rules-inspector/"
         },
         {
             "name": "wpackagist-plugin/wordpress-seo",

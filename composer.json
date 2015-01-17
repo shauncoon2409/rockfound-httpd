@@ -35,7 +35,10 @@
     "wpackagist-plugin/ml-slider" : "~3",
     "cosenary/instagram": "dev-master",
     "j7mbo/twitter-api-php": "dev-master",
-    "phpfastcache/phpfastcache": "dev-Stable-Version-1.x"
+    "phpfastcache/phpfastcache": "dev-Stable-Version-1.x",
+    "wpackagist-plugin/rewrite-rules-inspector" : "~1",
+    "wpackagist-plugin/query-monitor" : "~2.6"
+
   },
   "extra": {
     "installer-paths": {
