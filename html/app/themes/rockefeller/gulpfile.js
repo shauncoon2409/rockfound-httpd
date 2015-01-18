@@ -79,9 +79,9 @@ gulp.task('lint', function() {
 
 
 // Copy images
-gulp.task('images', ['clean:images', 'images:build'], function() {
+gulp.task('images', ['images:clean', 'images:build']);
 
-gulp.task('images:build', ['clean:images'], function() {
+gulp.task('images:build', ['images:clean'], function() {
     return gulp.src( imgWatch )
         .pipe(gulp.dest( imgDest ));
 });
