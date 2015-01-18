@@ -22,8 +22,8 @@
 					cssEase: 'linear',
 					arrows: true,
 					appendArrows: $parent.find(".social-carousel-pager"),
-					prevArrow: '<span class="fa fa-angle-left prev"></span>',
-					nextArrow: '<span class="fa fa-angle-right next"></span>',
+					prevArrow: '<span class="icon icon-angle-left prev"></span>',
+					nextArrow: '<span class="icon icon-angle-right next"></span>',
 					responsive: [
 						{
 							breakpoint: 900,

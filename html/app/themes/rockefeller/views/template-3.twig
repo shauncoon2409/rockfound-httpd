@@ -12,13 +12,13 @@
 				{% include '_modules/_grid-a-3_5.twig' with gridA3_5 %}
 			{% endif %}
 
-			{#--  module 24 --#}
+			{% if granteeInfo %}
+				{% include '_modules/_grantee-info.twig' with granteeInfo %}
+			{% endif %}
 
 			{% if textBlock %}
 				{% include '_modules/_text-block.twig' with textBlock %}
 			{% endif %}
-
-			{#-- module 11 ( in textblock? ) --#}
 
 			{% if quote %}
 				{% include '_modules/_quote.twig' with quote %}
@@ -52,77 +52,9 @@
 			{% endif %}
 		</div>
 		<div class="rail">
-
-			<h2 class="rail-header">Grant</h2>
 			{% if grants %}
-				<select class="grant-select-menu">
-				{% for grant in grants %}
-					<option value="#{{ grant.slug }}">{{ grant.title }}</option>
-				{% endfor %}
-				</select>
-
-				{% for grant in grants %}
-				<div class="grant-info-block" id="{{ grant.slug }}" {{ (not loop.first) ? 'style="display:none;"' }}>
-					<section class="grant-section">
-						<h3 class="rail-section-header">Granted</h3>
-						<p class="grant-amount">${{ grant.amount|number_format(0, '', ',') }}</p>
-					</section>
-
-					<section class="grant-section">
-						<h3 class="rail-section-header">Grant Term</h3>
-						<p class="grant-term">{{ grant.term_start }} - {{ grant.term_end }}</p>
-					</section>
-
-					<section class="grant-section">
-						<h3 class="rail-section-header">Grant Description</h3>
-						<p class="grant-desc">{{ grant.desc }}</p>
-					</section>
-
-					<hr>
-
-					{% if grant.topics|length > 0 %}
-					<section class="grant-section">
-						<h3 class="rail-section-header">Topics</h3>
-						<ul class="grant-rail-list">
-						{% for topic in grant.topics %}
-							<li><a href="{{ topic.link }}"> {{ topic.post_title }} </a></li>
-						{% endfor %}
-						</ul>
-					</section>
-					{% endif %}
-
-					{% if grant.initiatives|length > 0 %}
-					<section class="grant-section">
-						<h3 class="rail-section-header">Initiatives</h3>
-						<ul class="grant-rail-list">
-						{% for initative in grant.initiatives %}
-							<li><a href="{{ initative.link }}"> {{ initative.post_title }} </a></li>
-						{% endfor %}
-						</ul>
-						</ul>
-					</section>
-					{% endif %}
-
-					{% if grant.regions|length > 0 %}
-					<section class="grant-section">
-						<h3 class="rail-section-header">Benefiting Regions</h3>
-						<ul class="grant-rail-list">
-						{% for region in grant.regions %}
-							<li><a href="#{{ region.slug }}">{{ region.name }}</a></li>
-						{% endfor %}
-						</ul>
-					</section>
-					{% endif %}
-
-					<hr>
-
-					<section class="grant-section">
-						<h3 class="rail-section-header">Grant Officer</h3>
-					</section>
-				</div>
-				{% endfor %}
+				{% include '_partials/rail-grants.twig' with grants %}
 			{% endif %}
-
 		</div>
 	</div>
 

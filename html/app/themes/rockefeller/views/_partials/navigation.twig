@@ -1,11 +1,53 @@
+{% macro tab_pane(id, content, dynamicLinks) %}
+    {%- set subpane = content[0] -%}
+
+    <div class="nav-tertiary-content {{ (subpane.acf_fc_layout == 'featured') ? 'feature-box' }}" id="{{ id }}">
+        {% if subpane.acf_fc_layout == 'dynamic' %}
+            {%- set links = dynamicLinks[subpane.type] -%}
+
+            {% for linklist in links|batch(9) %}
+                <ul class="link-list">
+                {% for link in linklist -%}
+                    <li><a href="{{ link.link }}">{{ link.post_title }}</a></li>
+                {% endfor -%}
+                </ul>
+            {% endfor %}
+
+        {% elseif subpane.acf_fc_layout == 'manual' %}
+            {% for linklist in subpane.links|batch(9) %}
+                <ul class="link-list">
+                {% for link in linklist %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+
+        {% elseif subpane.acf_fc_layout == 'featured' %}
+            <h2 class="nav-featured-title">Featured</h2>
+            <div class="nav-featured-carousel">
+                {% for slide in subpane.items -%}
+                    <div class="feature-box">
+                        {% if post.thumbnail.src %}<img alt="" src="{{ post.thumbnail.src }}">{% endif %}
+                        <h3 class="item-title"><a href="{{ slide.link }}">{{ slide.post_title }}</a></h1>
+                        {% if slide.post_excerpt %}<p class="item-content">{{ slide.post_excerpt }}</p>{% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% import _self as navBuilder %}
+
 <nav class="global-nav" id="rock-navbox">
     <div class="nav-wrapper">
         <a class="home-button" href="/">
-            <img src="/images/rock_logo.gif" alt="R" class="logo"> 
-            ROCKEFELLER FOUNDATION
+            <span class="icon icon-logo"></span>
+            <span class="hide-text">The Rockefeller Foundation</span>
         </a>
 
         <i class="icon icon-bars mobile-nav-icon"></i>
+
 
         <ul class="core-nav">
             <li>
@@ -13,319 +55,31 @@
                     <div class="inner-content"></div>
                 </div>
             </li>
-            <li>
-                <a class="our-work-item" href="#page">Our Work</a>
-                <div class="expanded-nav-content">
-                    <div class="sub-items">
-                        <ul>
-                            <li><a class="active" href="javascript:;" data-content-pane="#topics-content">Topics</a></li>
-                            <li><a href="javascript:;" data-content-pane="#initiatives-content">Initiatives</a></li>
-                            <li><a href="javascript:;" data-content-pane="#regions-content">Regions</a></li>
-                            <li><a href="javascript:;" data-content-pane="#grants-content">Grants</a></li>
-                            <li><a href="javascript:;" data-content-pane="#bellagio-content">Bellagio</a></li>
-                            <li><a href="javascript:;" data-content-pane="#research-content">Research Center</a></li>
-                            <li class="prominate"><a data-content-pane="#all-works-content" href="javascript:;">All Work</a></li>
-                        </ul>
-                    </div>
-                    <div class="nav-content-pane">
-                        <div class="nav-sub-pane default" id="topics-content">
-                            <div class="nav-pane-item link-list">
-                                <ul>
-                                    <li><a href="#">Agriculture &amp; Food Security</a></li>
-                                    <li><a href="detail.html">Climate Change</a></li>
-                                    <li><a href="#">Employment &amp; Workers</a></li>
-                                    <li><a href="#">Impact Investing &amp; Finance</a></li>
-                                    <li><a href="#">Energy</a></li>
-                                    <li><a href="#">Health</a></li>
-                                    <li><a href="#">Transportation</a></li>
-                                    <li><a href="#">Cities</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-pane-item link-list">
-                                <ul>
-                                    <li><a href="#">Innovation</a></li>
-                                    <li><a href="#">Gender</a></li>
-                                    <li><a href="#">Water and Fisheries</a></li>
-                                    <li><a href="#">Arts and Culture</a></li>
-                                    <li><a href="#">Resilience</a></li>
-                                    <li><a href="#">Inclusive Economies</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Work Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                        </div>
-                        <div class="nav-sub-pane" id="initiatives-content">
-                            <div class="nav-pane-item link-list">
-                                <ul>
-                                    <li><a href="#">AGRA</a></li>
-                                    <li><a href="#">Building Climate Change Resilience</a></li>
-                                    <li><a href="#">Asian Cities Climate Change Resilience Network</a></li>
-                                    <li><a href="#">Climate: Policy &amp; Replication</a></li>
-                                    <li><a href="/our-work-africa.html">Digital Jobs Africa</a></li>
-                                    <li><a href="#">Impact Investing</a></li>
-                                    <li><a href="#">Smart Power India</a></li>
-                                    <li><a href="#">Transforming Health Systems</a></li>
-                                    <li><a href="#">Transportation</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-pane-item link-list">
-                                <ul>
-                                    <li><a href="#">Health of Informal Workers</a></li>
-                                    <li><a href="/our-work-oceans.html">Oceans and Fisheries</a></li>
-                                    <li><a href="#">Waste and Spoilage</a></li>
-                                    <li><a href="#">Youth Employment</a></li>
-                                    <li><a href="#">Bus Rapid Transit</a></li>
-                                    <li><a href="#">Disease Surveillance Networks</a></li>
-                                    <li><a href="#">Campaign for American Workers</a></li>
-                                    <li><a href="#">Climate Smart Rural Development for Africa</a></li>
-                                    <li><a href="#">New Orleans</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-pane-item link-list">
-                                <ul>
-                                    <li><a href="#">Smart Employment in a Green US Economy</a></li>
-                                    <li><a href="#">Smart National Power Grid</a></li>
-                                    <li><a href="#">Asian Drivers</a></li>
-                                    <li><a href="#">Carbon and Poverty Reduction</a></li>
-                                    <li><a href="#">Cities and Information</a></li>
-                                    <li><a href="#">Innovation for a Metro Nation</a></li>
-                                    <li><a href="#">Innovation for Development</a></li>
-                                    <li><a href="#">Networks for Urban Innovation</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="nav-sub-pane" id="regions-content">
-                            <div class="nav-pane-item link-list">
-                                <ul>
-                                    <li><a href="#">North Africa</a></li>
-                                    <li><a href="#">Sub-Sahara Africa</a></li>
-                                    <li><a href="#">East Africa</a></li>
-                                    <li><a href="#">Middle Africa</a></li>
-                                    <li><a href="#">Southern Africa</a></li>
-                                    <li><a href="#">Western Africa</a></li>
-                                    <li><a href="#">Central Asia</a></li>
-                                    <li><a href="#">South-Eastern Asia</a></li>
-                                    <li><a href="#">Southern Asia</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-pane-item link-list">
-                                <ul>
-                                    <li><a href="#">Western Asia</a></li>
-                                    <li><a href="#">Caribbean</a></li>
-                                    <li><a href="#">Central America</a></li>
-                                    <li><a href="#">South America</a></li>
-                                    <li><a href="#">Oceania</a></li>
-                                    <li><a href="#">Eastern Europe</a></li>
-                                    <li><a href="#">Western Europe</a></li>
-                                    <li><a href="#">North America</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Region Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                        </div>
-                        <div class="nav-sub-pane" id="grants-content">
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Content from Grants</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Content from Grants</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Content from Grants</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                        </div>
-                        <div class="nav-sub-pane" id="bellagio-content">
-                            <div class="nav-pane-item link-list">
-                                <ul>
-                                    <li><a href="#">Residencies</a></li>
-                                    <li><a href="#">Conferences</a></li>
-                                    <li><a href="#">Publications &amp; Resources</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Bellagio Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Bellagio Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                        </div>
-                        <div class="nav-sub-pane" id="research-content">
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Research</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Research</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Research</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                        </div>
-                        <div class="nav-sub-pane" id="all-works-content">
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Work Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Work Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Work Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="#page">Strategies</a>
-                <div class="expanded-nav-content">
-                    <div class="sub-items">
-                        <ul>
-                            <li><a class="active" href="#" data-content-pane="#learning-content">Learnings &amp; Milestones</a></li>
-                            <li><a href="#" data-content-pane="#learning-content">Assessment</a></li>
-                            <li><a href="#" data-content-pane="#learning-content">Approach</a></li>
-                            <li class="prominate"><a href="#" data-content-pane="#learning-content">All Strategies</a></li>
-                        </ul>
-                    </div>
 
-                    <div class="nav-content-pane">                                
-                        <div class="nav-sub-pane default" id="learning-content">
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Strategy Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Strategy Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured Strategy Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
+            {% for navItem in globalNav %}
             <li>
-                <a href="#page">Insights</a>
+                <a class="our-work-item" href="{{ navItem.link }}">{{ navItem.title }}</a>
+
                 <div class="expanded-nav-content">
-                    <div class="nav-content-pane">
-                        <div class="nav-pane-item feature-box">
-                            <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                            <h1 class="item-title">Featured from Insights</h1>
-                            <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                        </div>
-                        <div class="nav-pane-item feature-box">
-                            <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                            <h1 class="item-title">Featured from Insights</h1>
-                            <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                        </div>
-                        <div class="nav-pane-item feature-box">
-                            <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                            <h1 class="item-title">Featured from Insights</h1>
-                            <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                        </div>
-                        <div class="nav-pane-item feature-box">
-                            <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                            <h1 class="item-title">Featured from Insights</h1>
-                            <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="#page">Blog</a>
-                <div class="expanded-nav-content">
-                    <div class="nav-content-pane">
-                        <div class="nav-pane-item feature-box">
-                            <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                            <h1 class="item-title">Featured from Blog</h1>
-                            <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                        </div>
-                        <div class="nav-pane-item feature-box">
-                            <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                            <h1 class="item-title">Featured from Blog</h1>
-                            <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                        </div>
-                        <div class="nav-pane-item feature-box">
-                            <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                            <h1 class="item-title">Featured from Blog</h1>
-                            <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                        </div>
-                        <div class="nav-pane-item feature-box">
-                            <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                            <h1 class="item-title">Featured Work from Blog</h1>
-                            <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="#page">About</a>
-                <div class="expanded-nav-content">
-                    <div class="sub-items">
+                    <div class="subnav">
                         <ul>
-                            <li><a class="active" href="#" data-content-pane="#about-content">History</a></li>
-                            <li><a href="#" data-content-pane="#about-content">Team</a></li>
-                            <li><a href="#" data-content-pane="#about-content">Offices</a></li>
-                            <li><a href="#" data-content-pane="#about-content">Careers</a></li>
-                            <li><a href="#" data-content-pane="#about-content">News &amp; Media</a></li>
-                            <li><a href="#" data-content-pane="#about-content">Reports</a></li>
-                            <li><a href="#" data-content-pane="#about-content">Contact Us</a></li>
-                            <li class="prominate"><a href="#" data-content-pane="#about-content">All About</a></li>
+                            {% for nav in navItem.content -%}
+                            <li><a href="{{ nav.url }}" data-content-pane="#our-work-{{ loop.index }}">{{ nav.title }}</a></li>
+                            {% endfor -%}
+                            <li class="prominate"><a class="active" data-content-pane="all-gn{{ loop.index }}" href="{{ nav.url }}">All {{ navItem.title }}</a></li>
                         </ul>
                     </div>
-
-                    <div class="nav-content-pane">
-                        <div class="nav-sub-pane default" id="about-content">
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured About Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured About Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
-                            <div class="nav-pane-item feature-box">
-                                <img alt="" src="http://placehold.it/255x125&amp;text=placeholder">
-                                <h1 class="item-title">Featured About Content</h1>
-                                <p class="item-content">Lorem ipsum dolor sit amet, consectetur adipisicing. elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                            </div>
+                    <div class="subnav-content">
+                        {% for pane in navItem.content -%}
+                            {{ navBuilder.tab_pane("our-work-" ~ loop.index, pane.content, dynamicLinks) }}
+                        {% endfor -%}
+                        <div class="nav-tertiary-content default" id="all-gn{{ loop.index }}">
                         </div>
                     </div>
                 </div>
             </li>
+            {% endfor %}
+
             <li class="search">
                 <div class="search-box">
                     <input name="search-key" type="" value="">

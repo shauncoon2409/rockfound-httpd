@@ -37,7 +37,7 @@ var gulp = require('gulp'),
 
 
 // Compile Styles
-gulp.task('sass', ['revision'], function() {
+gulp.task('sass', function() {
     return gulp.src( cssWatch )
         .pipe(plumber())
         .pipe(include())
@@ -51,21 +51,19 @@ gulp.task('sass', ['revision'], function() {
         .pipe(gulp.dest( cssDest ))
 
         // minify
-        .pipe(notify({ message: 'minifying styles' }))
         .pipe(rename({suffix: '.min'}))
         .pipe(minifyCSS())
         .pipe(gulp.dest( cssDest ));
 });
 
 // Compile Javascript
-gulp.task('scripts', ['lint', 'revision'], function() {
+gulp.task('scripts', ['lint'], function() {
     return gulp.src( jsCompile )
         .pipe(plumber())
         .pipe(include())
         .pipe(gulp.dest( jsDest ))
 
         // minify
-        .pipe(notify({ message: 'minifying scripts' }))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
         .pipe(gulp.dest(  jsDest ));
@@ -115,6 +113,10 @@ gulp.task('watch', function() {
     });
     watch(imgWatch, function() {
         gulp.start('images');
+    });
+
+    watch([cssDest + '/*.min.css', jsDest + '/*.min.js'], function() {
+        gulp.start('revision');
     });
 });
 

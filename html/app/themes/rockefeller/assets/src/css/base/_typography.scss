@@ -109,3 +109,11 @@ b, strong {
 strong, optgroup {
   @include Calibre-Bold;
 }
+
+.hide-text {
+  overflow: hidden;
+  height: 0;
+  font-size: 0;
+  display: block;
+  position: absolute;
+}

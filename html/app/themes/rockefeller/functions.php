@@ -10,6 +10,7 @@
 	require_once('functions/admin-menu-fixes.php');
 	require_once('functions/theme-setup.php');
 	require_once('functions/acf-fields-export.php');
+	require_once('functions/acf-options-page.php');
 
 	class StarterSite extends TimberSite {
 

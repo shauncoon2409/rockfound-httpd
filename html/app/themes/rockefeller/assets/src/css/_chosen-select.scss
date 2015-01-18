@@ -35,6 +35,11 @@
 		}
 	}
 
+	.chosen-single {
+		height: auto;
+		padding-bottom: em(10);
+	}
+
 	.chosen-drop {
 		background: $extra-light-gray;
 	}

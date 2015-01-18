@@ -30,7 +30,6 @@
 		function closeNavBox() {
 			$('#rock-navbox').find( ".expanded-nav.open" ).velocity("slideUp", { duration: 0 }).removeClass("open");
 			$navLink.removeClass("active");
-			setActive();
 		}
 		$navbox.find(".core-nav").on("mouseleave", function () {
 			closeNavBox();
@@ -41,27 +40,36 @@
 
 
 		// Change inner panel content.
-		$navbox.on("mouseenter", ".sub-items a", function () {
-			var paneId	= $(this).data("content-pane");
+		$navbox.on("mouseenter", ".subnav a", function () {
+			var paneId	= $(this).data("content-pane"),
+				$pane = $(paneId),
+				carousel = $pane.find('.nav-featured-carousel');
 
 			$(this).addClass("active").parent().siblings().find(".active").removeClass("active");
 
-			if (! $(paneId).hasClass("active") )
+			if (! $pane.hasClass("active") )
 			{
-				$(paneId).siblings(".nav-sub-pane").removeClass("active").hide();
-				$(paneId).addClass("active").velocity("fadeIn", { duration: 0, display: "table-cell", queue: false });
+				$pane.siblings(".nav-tertiary-content").removeClass("active").hide();
+				$pane.addClass("active").velocity("fadeIn", { 
+					duration: 0, 
+					display: "block", 
+					queue: false,
+					complete: function () {
+						carousel.slick({
+							dots: false,
+							infinite: false,
+							speed: 500,
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							cssEase: 'linear',
+							arrows: true,
+							appendArrows: carousel.closest(".nav-tertiary-content"),
+							prevArrow: '<span class="icon icon-angle-left prev"></span>',
+							nextArrow: '<span class="icon icon-angle-right next"></span>',
+						});
+					}
+				});
+
 			}
 		});
-
-
-		setActive();
-
-		// Temporarily set Active Item.
-		function setActive()
-		{
-			if ( (document.URL).indexOf("our-work") > -1 )
-			{
-				$navbox.find(".our-work-item").addClass("active");
-			}
-		}
 })( jQuery );

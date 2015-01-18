@@ -1,0 +1,139 @@
+.rail-wrapper {
+	@extend %outer-container;
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+
+	@include breakpoint( $tablet ) {
+		display: block;
+		float: none;
+		width: auto;
+	}
+
+	.has-rail {
+		@include span(11 wider);
+		display: table-cell;
+		float: none;
+		vertical-align: top;
+		padding-right: em(40);
+
+		@include breakpoint( $tablet ) {
+			display: block;
+			float: none;
+			width: auto;
+			padding:0;
+		}
+	}
+
+	.rail {
+		@include span(4 wider);
+		display: table-cell;
+		float: none;
+		vertical-align: top;
+		padding: em(20);
+		background: $lighter-gray;
+
+		@include breakpoint( $tablet ) {
+			display: block;
+			float: none;
+			width: auto;
+		}
+
+		.grant-amount {
+			font-size: em(48);
+			color: $sandstone;
+		}
+
+		select.grant-select-menu {
+			display: none;
+		}
+		.grant-section {
+			margin-bottom: em(20);
+
+			h2, h3 {
+				margin:0;
+			}
+			p {
+				margin: 0;
+				@include Calibre-Light;
+			}
+		}
+
+		.grant-select-menu {
+			margin-bottom: em(20);
+
+			&::before, &::after {
+				font-size: 1.5em;
+				top: 0.25em;
+			}
+
+			.chosen-single {
+				@include Calibre-Regular;
+				font-size: em(24);
+				color: $base-font-color;
+				padding-left: 0;
+				padding-bottom: em(10, 24);
+			}
+		}
+
+		.grant-rail-list {
+			@include Calibre-Regular;
+			font-size: em(14);
+			
+			li {
+				display: inline-block;
+
+				&::after {
+					content: ", ";
+				}
+
+				&:last-child::after  {
+					content: none;
+				}
+			}
+			
+			a {
+				color: $sandstone;
+				text-decoration: underline;
+			}
+		}
+
+		.grant-officer {
+			overflow: hidden;
+			padding-left: em(70);
+		}
+
+		.officer-image {
+			float: left;
+			display: block;
+			width: em(50);
+			height: em(50);
+			border-radius: em(50);
+			margin-left: em(-70);
+		}
+		.officer-name {
+			display: block;
+			@include Calibre-Regular;
+			font-size: em(18);
+			line-height: 1em;
+		}
+		.officer-title {
+			display: block;
+			@include Calibre-Regular;
+			color: $sandstone;
+			line-height: 1em;	
+		}
+	}
+}
+
+
+.rail-header {
+	@include Calibre-Semibold;
+	font-size: em(24);
+	line-height: 1.2em;
+	color: $sandstone;
+}
+.rail-section-header {
+	@include Calibre-Medium;
+	font-size: em(14);
+}

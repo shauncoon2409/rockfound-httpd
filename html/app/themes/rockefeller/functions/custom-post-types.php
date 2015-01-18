@@ -106,7 +106,7 @@
 		'label'               => 'person',
 		'description'         => 'Created by Internal Systems',
 		'labels'              => make_post_type_labels('Person', 'People'),
-		'supports'            => array( 'title', 'editor'),
+		'supports'            => array( 'title', 'editor', 'thumbnail'),
 		'taxonomies'          => array( 'regions' ),
 		'hierarchical'        => false,
 		'public'              => true,

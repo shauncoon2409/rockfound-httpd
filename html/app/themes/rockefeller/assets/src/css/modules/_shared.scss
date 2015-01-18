@@ -30,13 +30,13 @@
 	@include span(80% no-gutters);
 
 	@include breakpoint( $narrow-desktop ) {
-		width: 100%;
+		@include span(full nest);
 		float: none;
 		border-left: 0;
 	}
 
 	&.full-width {
-		@include full;
+		@include span(full nest);
 	}
 }
 

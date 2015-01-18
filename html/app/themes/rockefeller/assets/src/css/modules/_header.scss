@@ -238,15 +238,17 @@
 	top:0;
 	left:0;
 	padding: em(5) em(35);
+	padding-left: em(75);
 	background: $slate;
 	width: auto;
 	min-width: em(250);
 	color: white;
 
-	img {
+
+	.icon {
 		float: left;
-		height: em(30);
-		margin-right: em(10);
+		font-size: em(30);
+		margin-left: em(-45, 30);
 	}
 
 	.nav-block {

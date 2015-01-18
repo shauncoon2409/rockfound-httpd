@@ -4,7 +4,7 @@ $context = Timber::get_context();
 $post = new TimberPost();
 $context['post'] = $post; // Main post for the page.
 
-$containerClasses = 'borderless';
+$containerClasses = 'borderless full-width';
 
 
 // Set header info.
@@ -17,6 +17,15 @@ $context['header'] = array(
 	"type" => "internal yellow"
 );
 
+
+// Set Content (grantee info)
+// --------------------------
+$context['granteeInfo'] = array(
+	'containerClasses' => $containerClasses,
+	"location" => $post->get_field('grantee_location'),
+	"website"  => $post->get_field('grantee_website'),
+	"social_links"   => $post->get_field('grantee_social')
+);
 
 
 // Set Content (textblock)
@@ -46,7 +55,7 @@ foreach ($post->get_field('grants_awarded') as $grant_post) {
 		"initiatives"	=> convert_to_timber_posts($grant->get_field('grant_initiatives')),
 		"regions"		=> wp_get_post_terms( $grant_post->ID, 'regions' ),
 
-		"officer"		=> convert_to_timber_posts($grant->get_field('grant_officer')),
+		"officers"		=> convert_to_timber_posts($grant->get_field('grant_officer')),
 	);
 }
 $context['grants'] = $grants;
