@@ -22,6 +22,7 @@ html/app/mu-plugins/*
 !html/app/mu-plugins/disallow-indexing.php
 !html/app/mu-plugins/register-theme-directory.php
 !html/app/mu-plugins/bedrock-autoloader.php
+!html/app/mu-plugins/rocke-fetch-social-feeds.php
 
 # Application
 html/app/upgrade
