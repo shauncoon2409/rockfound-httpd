@@ -1,44 +1,3 @@
-{% macro tab_pane(id, content, dynamicLinks) %}
-    {%- set subpane = content[0] -%}
-
-    <div class="nav-tertiary-content {{ (subpane.acf_fc_layout == 'featured') ? 'feature-box' }}" id="{{ id }}">
-        {% if subpane.acf_fc_layout == 'dynamic' %}
-            {%- set links = dynamicLinks[subpane.type] -%}
-
-            {% for linklist in links|batch(9) %}
-                <ul class="link-list">
-                {% for link in linklist -%}
-                    <li><a href="{{ link.link }}">{{ link.post_title }}</a></li>
-                {% endfor -%}
-                </ul>
-            {% endfor %}
-
-        {% elseif subpane.acf_fc_layout == 'manual' %}
-            {% for linklist in subpane.links|batch(9) %}
-                <ul class="link-list">
-                {% for link in linklist %}
-                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {% endfor %}
-                </ul>
-            {% endfor %}
-
-        {% elseif subpane.acf_fc_layout == 'featured' %}
-            <h2 class="nav-featured-title">Featured</h2>
-            <div class="nav-featured-carousel">
-                {% for slide in subpane.items -%}
-                    <div class="feature-box">
-                        {% if post.thumbnail.src %}<img alt="" src="{{ post.thumbnail.src }}">{% endif %}
-                        <h3 class="item-title"><a href="{{ slide.link }}">{{ slide.post_title }}</a></h1>
-                        {% if slide.post_excerpt %}<p class="item-content">{{ slide.post_excerpt }}</p>{% endif %}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    </div>
-{% endmacro %}
-
-{% import _self as navBuilder %}
-
 <nav class="global-nav" id="rock-navbox">
     <div class="nav-wrapper">
         <a class="home-button" href="/">
@@ -56,7 +15,7 @@
                 </div>
             </li>
 
-            {% for navItem in globalNav %}
+            {% for nav_index, navItem in globalNav %}
             <li>
                 <a class="our-work-item" href="{{ navItem.link }}">{{ navItem.title }}</a>
 
@@ -64,16 +23,49 @@
                     <div class="subnav">
                         <ul>
                             {% for nav in navItem.content -%}
-                            <li><a href="{{ nav.url }}" data-content-pane="#our-work-{{ loop.index }}">{{ nav.title }}</a></li>
+                            <li><a href="{{ nav.url }}" data-content-pane="#gn{{ nav_index }}-{{ loop.index }}">{{ nav.title }}</a></li>
                             {% endfor -%}
-                            <li class="prominate"><a class="active" data-content-pane="all-gn{{ loop.index }}" href="{{ nav.url }}">All {{ navItem.title }}</a></li>
+                            <li class="prominate"><a class="active" data-content-pane="all-gn{{ loop.index }}" href="{{ nav.url }}">{{ navItem.all_text }}</a></li>
                         </ul>
                     </div>
                     <div class="subnav-content">
-                        {% for pane in navItem.content -%}
-                            {{ navBuilder.tab_pane("our-work-" ~ loop.index, pane.content, dynamicLinks) }}
-                        {% endfor -%}
+                        {% for subpane in navItem.content -%}
+                            <div class="nav-tertiary-content {{ (subpane.content_type == 'carousel') ? 'feature-box' }}" id="gn{{ nav_index }}-{{ loop.index }}">
+                                {% if subpane.content_type == 'linklist' %}
+                                    {% for list in subpane.links|batch(9) %}
+                                        <ul class="link-list">
+                                        {% for link in list %}
+                                            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                                        {% endfor %}
+                                        </ul>
+                                    {% endfor %}
+
+                                {% elseif subpane.content_type == 'carousel' %}
+                                    <h2 class="nav-featured-title">Featured</h2>
+                                    <div class="nav-featured-carousel">
+                                        {% for slide in subpane.carousel %}
+                                            <div class="feature-box">
+                                                {% if slide.thumbnail.src %}<img alt="" src="{{ slide.thumbnail.src }}">{% endif %}
+                                                <h3 class="item-title"><a href="{{ slide.link }}">{{ slide.post_title }}</a></h1>
+                                                {% if slide.post_excerpt %}<p class="item-content">{{ slide.post_excerpt }}</p>{% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
                         <div class="nav-tertiary-content default" id="all-gn{{ loop.index }}">
+                            <h2 class="nav-featured-title">Featured</h2>
+                            <div class="nav-featured-carousel">
+                                {% for slide in navItem.overview %}
+                                    <div class="feature-box">
+                                        {% if slide.thumbnail.src %}<img alt="" src="{{ slide.thumbnail.src }}">{% endif %}
+                                        <h3 class="item-title"><a href="{{ slide.link }}">{{ slide.post_title }}</a></h1>
+                                        {% if slide.post_excerpt %}<p class="item-content">{{ slide.post_excerpt }}</p>{% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>

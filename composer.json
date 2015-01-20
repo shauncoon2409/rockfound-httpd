@@ -39,7 +39,8 @@
   },
   "require-dev": {
     "wpackagist-plugin/query-monitor" : "~2.6",
-    "wpackagist-plugin/rewrite-rules-inspector" : "~1"
+    "wpackagist-plugin/rewrite-rules-inspector" : "~1",
+    "wpackagist-plugin/fakerpress" : "dev-trunk"
   },
   "extra": {
     "installer-paths": {

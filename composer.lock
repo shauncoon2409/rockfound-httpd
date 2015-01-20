@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "48d85634b883034961da704c0de3e7ab",
+    "hash": "6845818bbbf9e1a163a64c3b308eace4",
     "packages": [
         {
             "name": "PanManAms/WP-JSON-API-ACF",
@@ -565,12 +565,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "e999532003d54534c0a66aa572289ad07195a14f"
+                "reference": "427621db5c767ff97e5e50ed9c194ea255c988f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e999532003d54534c0a66aa572289ad07195a14f",
-                "reference": "e999532003d54534c0a66aa572289ad07195a14f",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/427621db5c767ff97e5e50ed9c194ea255c988f5",
+                "reference": "427621db5c767ff97e5e50ed9c194ea255c988f5",
                 "shasum": ""
             },
             "require": {
@@ -614,7 +614,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-01-14 10:18:41"
+            "time": "2015-01-18 13:12:21"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -790,6 +790,27 @@
     ],
     "packages-dev": [
         {
+            "name": "wpackagist-plugin/fakerpress",
+            "version": "dev-trunk",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/fakerpress/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://downloads.wordpress.org/plugin/fakerpress.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/fakerpress/",
+            "time": "2014-09-03 12:57:10"
+        },
+        {
             "name": "wpackagist-plugin/query-monitor",
             "version": "2.6.8",
             "source": {
@@ -836,7 +857,8 @@
         "jarednova/timber": 20,
         "cosenary/instagram": 20,
         "j7mbo/twitter-api-php": 20,
-        "phpfastcache/phpfastcache": 20
+        "phpfastcache/phpfastcache": 20,
+        "wpackagist-plugin/fakerpress": 20
     },
     "prefer-stable": false,
     "platform": {
