@@ -1,5 +1,23 @@
 ## Documentation
 
+### Intallation
+1. Be sure that all dependencies are installed. Clone down the repository.
+2. Run `composer install` This should download all plugins in `/html/app/mu-plugins` and `/html/app/plugins`, and create wordpress in the `/html/wp` directory.
+3. Run `vagrant up` This will create a vagrant enviornment for local development.
+4. After vagrant has completed installing and the server has started create and import `rocke.sql`. See [Connecting to local database](#connecting-to-local-database). (It's suggested to use Sequel Pro.)
+5. Copy the .env.example file and rename it .env and add your local credentials and salts. 
+6. You should now be able to browse to [rockefeller.local](http://rockefeller.local) and see the site. If this doesn't work, be sure the entry was added to your hosts file.
+8. For theme development, go to `/html/app/themes/` and run `bundle install`, `npm install`, and then `npm start`
+9. This should install all dependencies and start the gulp watch file.
+
+
+#### Dependencies
+* [Vagrant](https://docs.vagrantup.com/v2/installation/index.html) (virtualbox)
+* [Composer](https://getcomposer.org/doc/00-intro.md)
+* [Bundler](http://bundler.io/)
+* [node.js](http://nodejs.org/)
+
+
 ### Folder Structure
 
 ```
@@ -29,6 +47,16 @@ The organization is similar to putting WordPress in its own subdirectory but wit
 * `wp-config.php` remains in the `html/` because it's required by WP, but it only acts as a loader. The actual configuration files have been moved to `config/` for better separation.
 * `vendor/` is where the Composer managed dependencies are installed to.
 * `wp/` is where the WordPress core lives. It's also managed by Composer but can't be put under `vendor` due to WP limitations.
+
+
+### Connecting to local database
+Database Name:		(leave blank)
+Database User:		root
+Database Password:	root
+Database Host:		localhost
+SSH Host:			192.168.33.11 (should match $ip in Vagrantfile)
+SSH User:			vagrant
+SSH Password:		vagrant
 
 
 ### Configuration Files
