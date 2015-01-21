@@ -41,7 +41,7 @@
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => false,
 		'show_tagcloud'              => false,
-		'rewrite'           		 => array( 'slug' => 'region-name' ),
+		'rewrite'           		 => array( 'slug' => 'regions' ),
 	);
 	register_taxonomy( 'regions', array( 'post', 'grant', 'initative', 'topic', 'news_post' ), $args );
 
@@ -54,6 +54,6 @@
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
-		'rewrite'           		 => array( 'slug' => 'strategic-approach' ),
+		'rewrite'           		 => array( 'slug' => 'strategies' ),
 	);
 	register_taxonomy( 'approaches', array( 'strategy' ), $args );

@@ -4290,11 +4290,8 @@ body {
     margin-top: 6.25em; }
   .regions-map .map-image {
     position: relative;
-    width: 58.33333%;
-    float: left;
-    margin-left: 0.83333%;
-    margin-right: 0.83333%;
-    margin-left: 20.83333%;
+    width: 100%;
+    max-width: 62.5em;
     height: auto;
     z-index: 55; }
   .regions-map .chosen-single {

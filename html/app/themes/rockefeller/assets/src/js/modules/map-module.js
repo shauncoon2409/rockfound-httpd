@@ -4,30 +4,36 @@
 	// Create the defaults once
 	var pluginName = "mapModule",
 		defaults = {
-			mapSVG : '/images/worldDemo2.svg',
-			mapSelector : '.regions-map',
 			infoSelector : '.region-map-data',
 			baseColor : '#b2b2aa',
 			hoverColor : '#4d4f53',
 			activeColor : '#eeeee3',
 			regions : {
-				northAfrica : "North Africa",
-				subSaharaAfrica : "Sub-Sahara Africa",
-				eastAfrica : "East Africa",
+				northernAfrica : "Northern Africa",
+				westernAfrica : "Western Africa",
+				easternAfrica : "Eastern Africa",
 				middleAfrica : "Middle Africa",
 				southernAfrica : "Southern Africa",
-				westernAfrica : "Western Africa",
+
 				centralAsia : "Central Asia",
 				southEasternAsia : "South-Eastern Asia",
+				easternAsia : "Eastern Asia",
 				southernAsia : "Southern Asia",
 				westernAsia : "Western Asia",
+
 				carribean : "Carribean",
+
 				centralAmerica : "Central America",
+				northAmerica : "North America",
 				southAmerica : "South America",
-				oceana : "Oceana",
+
+
+				southernEurope : "Southern Europe",
+				northernEurope : "Northern Europe",
 				easternEurope : "Eastern Europe",
 				westernEurope : "Western Europe",
-				northAmerica : "North America"
+
+				oceana : "Oceana",
 			}
 		};
 
@@ -65,12 +71,10 @@
 				_self.mapArea = new Snap("#regionsMap").attr({
 					"width": "100%",
 					"height": "100%",
-					"viewBox": "0 0 1200 600"
+					"viewBox": "0 0 1200 694"
 				});
 
-				Snap.load("/images/regionsmap.svg", function (map) {
-
-					_self.map = map;
+				Snap.load($(this.element).data('map-path'), function (map) {
 
 					var regions = map.selectAll("g"),
 						areas = map.selectAll("g *");
@@ -87,15 +91,15 @@
 						};
 
 
-					_self.mapArea.append( map );
-
 					areas.forEach(function (area, i) {
 						area
 							.addClass("area")
 							.attr(_self.baseStyle);
 					});
 
+
 					regions.forEach(function (region, i) {
+
 						region.addClass("region");
 
 						region.click(function (e) {							
@@ -111,7 +115,10 @@
 								region.selectAll('.active .area').attr(_self.activeStyle);
 							}
 						);
-					});				    
+					});
+
+					_self.map = map;
+					_self.mapArea.append( map );
 
 				});
 			},
@@ -138,10 +145,13 @@
 
 			setActiveRegion: function (regionName) {
 				var _self = this,
-					areas = _self.map.selectAll("area"),
-					regions = _self.map.selectAll("region"),
+					areas = _self.mapArea.selectAll(".area"),
+					regions = _self.mapArea.selectAll(".region"),
 					regionId = "#" + regionName,
-					active = _self.map.select(regionId);
+					active = _self.mapArea.select( regionId );
+
+					_self.selector.val( regionName );
+					_self.selector.trigger("chosen:updated");
 
 					areas.attr(_self.baseStyle);
 					
@@ -149,8 +159,12 @@
 						region.removeClass("active");
 					});
 
-					active.addClass('active');
-					active.selectAll('*').attr(_self.activeStyle);
+					if (active !== null)
+					{
+						active.addClass('active');
+						active.selectAll('*').attr(_self.activeStyle);
+					}
+
 			}
 	});
 

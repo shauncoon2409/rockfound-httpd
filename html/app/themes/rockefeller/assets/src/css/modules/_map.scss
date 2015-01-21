@@ -17,8 +17,8 @@
 
 	.map-image {
 		position:relative;
-		@include span(9);
-		@include push(3);
+		width: 100%;
+		max-width: em(1000);
 		height:auto;
 		z-index:55;
 	}

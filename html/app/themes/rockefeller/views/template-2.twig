@@ -1,16 +1,10 @@
 {% extends "base.twig" %}
 
 {% block content %}
-<div class="module-regions-map">
+<div class="module-regions-map" data-map-path="{{ mapPath }}">
 	<div class="regions-map {{ mapType }}">
 		<div class="module-wrapper">
-			<div class="header-badge">
-				<img src="/images/rock_globe.png" alt="">
-				<span class="nav-block">
-					<span class="breadcrumb">Our Work / Regions /</span>
-					<span class="current-page">[current region]</span>
-				</span>
-			</div>
+			{% include '_partials/header-badge.twig' with [ breadcrumb, currentPage ] %}
 
 			<div class="region-selector" id="region-selector"></div>
 
