@@ -3,6 +3,46 @@
     "title": "Topic",
     "fields": [
         {
+            "key": "field_54beeccba7ea3",
+            "label": "Header Background Color",
+            "name": "header_color",
+            "prefix": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "white": "white",
+                "sandstone": "sandstone",
+                "brown": "brown",
+                "orange": "orange",
+                "yellow": "yellow",
+                "taupe": "taupe",
+                "slate": "slate",
+                "sea-blue": "sea-blue",
+                "steel-blue": "steel-blue",
+                "jungle": "jungle",
+                "blue": "blue",
+                "teal": "teal",
+                "green": "green"
+            },
+            "default_value": {
+                "": ""
+            },
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
             "key": "field_54b6af0896935",
             "label": "Synopsis",
             "name": "topic_synopsis",
@@ -233,5 +273,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421287617
+    "modified": 1421798667
 }

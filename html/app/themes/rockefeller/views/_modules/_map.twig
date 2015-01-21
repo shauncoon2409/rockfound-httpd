@@ -1,28 +1,14 @@
-{% set module = regionsMap %}
-<section class="module-regions-map">
-	<div class="regions-map {{ module.mapType }}">
-		<div class="module-wrapper">
-			<div class="header-badge">
-				<img src="/images/rock_globe.png" alt="">
-				<span class="nav-block">
-					<span class="breadcrumb">Our Work / Regions /</span>
-					<span class="current-page">[current region]</span>
-				</span>
-			</div>
+{% set module = regionMap %}
+<section class="region-module module-wrapper">
 
-			<div class="region-selector" id="region-selector"></div>
+	{% if module.title %}
+	<header class="module-heading region-heading">
+		<h2 class="heading-title">{{ module.title }}</h2>
+		<p class="heading-info">{{ module.info }}</p>
+	</header>
+	{% endif %}
 
-			<svg id="regionsMap" class="map-image"></svg>
-		</div>
-	</div>
-
-	<div class="region-map-data module-wrapper">
-		{% for region in module.regionData %}
-			<div class="region-info" data-name="{{ region.name }}" data-info-url="{{ region.dataInfo }}"></div>
-		{% endfor %}
-
-		<div class="empty-set">
-			<p>No data found for selected region.</p>
-		</div>
+	<div class="module-container region-container {{ module.containerClasses }}">
+		<svg id="regionsMap" class="map-image"></svg>
 	</div>
 </section>
