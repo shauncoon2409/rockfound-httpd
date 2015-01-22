@@ -5,6 +5,11 @@ web_app(node) do
   template('vhost.conf.erb')
 end
 
+template "/var/www/html/index.php" do
+  source "index.php.erb"
+  action :create_if_missing # see actions section below
+end
+
 #file '/var/www/html/index.php' do
 #  content '<html>
 # <head>
