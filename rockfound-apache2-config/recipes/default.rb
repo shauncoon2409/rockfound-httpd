@@ -1,9 +1,9 @@
-directory(node)
-
-web_app(node) do
-  docroot(node)
-  template('vhost.conf.erb')
-end
+#directory(node)
+#
+#web_app(node) do
+#  docroot(node)
+#  template('vhost.conf.erb')
+#end
 
 template "/var/www/html/index.php" do
   source "index.php.erb"
