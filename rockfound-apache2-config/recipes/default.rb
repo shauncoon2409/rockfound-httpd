@@ -9,7 +9,7 @@ directory "/var/www/rockefeller/html" do
   recursive true
   owner "nobody"
   mode "755"
-  action: create
+  action :create
 end
 
 
