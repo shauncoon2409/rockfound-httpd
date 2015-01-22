@@ -15,7 +15,7 @@ end
 
 web_app "rockefeller" do
     template 'vhost.conf.erb'
-    server_name node['rockefeller']['staging.rock-public.ahundredyears.com']
+    server_name node['staging.rock-public.ahundredyears.com']
     docroot "/var/www/rockefeller/html"
     allow_override 'All'
     cookbook 'apache2'
