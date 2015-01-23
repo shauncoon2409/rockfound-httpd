@@ -24,5 +24,5 @@ end
 
 template "/var/www/rockefeller/html/index.php" do
   source "index.php.erb"
-  action :create_if_missing # see actions section below
+  action :create # see actions section below
 end
