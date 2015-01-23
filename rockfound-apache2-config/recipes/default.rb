@@ -18,7 +18,7 @@ web_app "rockefeller" do
     server_name node['staging.rock-public.ahundredyears.com']
     docroot "/var/www/rockefeller/html"
     allow_override 'All'
-    cookbook 'apache2'
+#    cookbook 'apache2'
 end
 
 
