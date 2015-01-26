@@ -9,7 +9,13 @@ $context['post'] = $post;
 
 $containerClasses = 'borderless';
 
-$context['header'] = array();
+$context['header'] = array(
+  "breadcrumb" => "Home / How to Apply ",
+  "currentPage" => $post->post_title,
+  "headerTitle" => $post->post_title,
+  "type" => "white",
+  "headerContent" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi in iure sunt culpa aspernatur iusto autem assumenda id! Quae, sapiente!"
+);
 
 $context['gridA3_5'] = array(
   'containerClasses' => $containerClasses,
