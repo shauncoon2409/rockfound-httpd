@@ -47,6 +47,7 @@ $context['quote'] = array(
 
 
 $context['grid6'] = array(
+  'title' => "In Numbers",
   'containerClasses' => $containerClasses,
   'gridtype' => 'grid-6-2',
   'blocks' => array(
