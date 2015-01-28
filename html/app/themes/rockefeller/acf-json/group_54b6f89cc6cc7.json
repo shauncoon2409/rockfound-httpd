@@ -43,6 +43,13 @@
                 "operator": "==",
                 "value": "conference"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-how-to-apply.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -51,5 +58,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421277410
+    "modified": 1422406341
 }

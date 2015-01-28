@@ -4,7 +4,7 @@
 
 	{% if header %}
 		{% include '_modules/_header.twig' with header %}
-	{% endif %}	
+	{% endif %}
 
 	<div class="module-wrapper rail-wrapper">
 		<div class="has-rail">
@@ -54,6 +54,9 @@
 		<div class="rail">
 			{% if grants %}
 				{% include '_partials/rail-grants.twig' with grants %}
+			{% endif %}
+			{% if howToApply %}
+				{% include '_partials/rail-how-to-apply.twig' with howToApply %}
 			{% endif %}
 		</div>
 	</div>
