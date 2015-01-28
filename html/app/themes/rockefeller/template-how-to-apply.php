@@ -9,8 +9,14 @@ $context['post'] = $post;
 
 $containerClasses = 'borderless';
 
+if( $post->parent ) {
+  $parent = $post->parent->post_title;
+} else {
+  $parent = 'Home';
+}
+
 $context['header'] = array(
-  "breadcrumb" => "Home / How to Apply ",
+  "breadcrumb" => $parent . " / " . $post->post_title,
   "currentPage" => $post->post_title,
   "headerTitle" => $post->post_title,
   "type" => "white"
@@ -23,7 +29,7 @@ $context['textBlock'] = array(
 );
 
 $context['howToApply'] = array(
-  'title' => 'How to Apply',
+  'title' => $post->post_title,
   'content' => $post->get_field('rail_content')
 );
 
