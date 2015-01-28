@@ -1,0 +1,38 @@
+.grantee-info-container {
+	padding-top: em(20);
+	padding-bottom: em(20);
+}
+
+.grantee-info-block {
+	@include span(4 of 12);
+
+	p {
+		font-size: em(14);
+		color: $dark-gray;
+	}
+
+	@include breakpoint( $phone ) {
+		@include span(full nest);
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+.grantee-info-title {
+	@include Calibre-Medium;
+	font-size: em(14);
+	color: $sandstone;
+}
+
+.grantee-social-links {
+	li {
+		display: block;
+		float: left;
+		margin-right:0.25em;
+	}
+
+	a {
+		display: inline-block;
+		color: $dark-gray;
+	}
+}

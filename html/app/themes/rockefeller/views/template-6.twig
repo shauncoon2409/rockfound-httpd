@@ -1,0 +1,30 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% if header %}
+		{% include '_modules/_header.twig' with header %}
+	{% endif %}	
+
+	{% if coupledModule %}
+		{% include '_modules/_coupled-module.twig' with coupledModule %}
+	{% endif %}
+
+	{% if sectionHeader %}
+		{% include '_modules/_section-header.twig' with sectionHeader %}
+	{% endif %}
+
+	{% if quote %}
+		{% include '_modules/_quote.twig' with quote %}
+	{% endif %}
+
+	{% if gridA3_0 %}
+		{# -- Needs filters added -- #}
+		{% include '_modules/_grid-a-3_0.twig' with gridA3_0 %}
+	{% endif %}
+
+	{% if newsletter %}
+		{% include '_modules/_newsletter-signup.twig' with newsletter %}
+	{% endif %}
+
+{% endblock %}

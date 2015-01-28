@@ -1,0 +1,68 @@
+{% set module = coupledModule %}
+<div class="module-grid coupled-module module-wrapper">
+	
+	<div class="coupled-module-header">
+		<h2 class="module-title">Question <span class="topic"> {{ module.topic }}</span></h2>
+		<div class="coupled-module-pager">
+			<span class="current">0</span>/<span class="total">0</span>
+		</div>
+	</div>
+
+	<div class="grid-container coupled-module-content">
+
+		{% for prompt in module.prompts %}
+		<article class="cm-full-set">
+			<div class="cm-prompt">
+				<div class="cm-nav">
+					<a href="javascript:;" class="cm-pager cm-prev">
+						<span class="pager-text"><i class="icon icon-angle-left"></i>
+					</a>
+					<a href="javascript:;" class="cm-pager cm-next">
+						<span class="next-pager">
+							<span class="pager-text"><span class="extra">next</span> <i class="icon icon-angle-right"></i></span>
+						</span>
+
+						<span class="preview-text">
+							<span class="next-response">Next Question</span>
+							<span class="next-response-text">{{ module.prompts[ loop.index ].title }}</span>
+						</span>
+					</a>
+				</div>
+
+				<h1 class="prompt-title">{{ prompt.title }}</h1>
+				<p class="prompt-meta">{{ prompt.desc }}</p>
+			</div>
+
+			{% for res in prompt.responses %}
+			<article class="cm-response {{ (loop.index0 is even) ? 'even' : 'odd' }}">
+				<a href="{{ res.biolink }}" class="response-image hover-image before">
+					<div class="sub-image" style="background-image:url('{{ res.image }}');"></div>
+				</a>
+				<div class="response-content">
+					<h2 class="reponse-title">{{ res.name }}&mdash;{{ res.jobtitle }}</h1>
+					<div class="content-wrap">{{ res.content }}</div>
+					<footer>
+						<a href="{{ res.initiativelink }}">Initative</a> &bullet;
+						<a href="{{ res.biolink }}">Full Bio</a> &bullet;
+						<a class="read-more" href="javascript:;">Read More &raquo;</a>
+					</footer>
+				</div>
+				<a href="{{ res.biolink }}" class="response-image hover-image after">
+					<div class="sub-image" style="background-image:url('{{ res.image }}');"></div>
+				</a>
+			</article>
+			{% endfor %}
+
+			<section class="dig-deeper">
+				<h3 class="label">Dig Deeper</h3>
+				<a href="javascript:;" class="more-block x1of6 y1 reverse">
+					<span class="extra-text">More</span>
+					<i class="icon icon-angle-down"></i>
+				</a>
+
+				{% include '_grid-a-3_1.html' %}
+			</section>
+		</article>
+		{% endfor %}
+	</div>
+</div>

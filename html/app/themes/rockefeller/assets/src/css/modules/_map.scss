@@ -1,0 +1,53 @@
+.regions-map {
+	background: $off-gray;
+
+	.module-wrapper {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.header-badge {
+		z-index: 2000;
+	}
+
+	.region-selector {
+		@include push(1);
+		margin-top: em(100);
+	}
+
+	.map-image {
+		position:relative;
+		width: 100%;
+		max-width: em(1000);
+		height:auto;
+		z-index:55;
+	}
+
+	// Chosen Styles
+	.chosen-single {
+		height: auto;
+
+		span {
+			@include Acta-Medium;
+			font-size: em(80);
+			line-height: em(80, 82);
+			color: $off-white;
+		}
+	}
+	.chosen-drop {
+		background: $slate;
+
+		li {
+			font-size: 1em;
+			color: $off-white;
+			margin-bottom: em(8);
+		}
+	}
+
+	.chosen-search {
+		background: $medium-gray;
+		input {
+			background: none;
+		}
+	}
+}

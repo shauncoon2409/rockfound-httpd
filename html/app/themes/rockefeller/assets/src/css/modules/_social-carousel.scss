@@ -1,0 +1,113 @@
+.module-social-carousel {
+
+}
+
+.social-carousel-header {
+	@include clearfix;
+	padding: em(20) em(15);
+	border-top:$base-border;
+	border-bottom: $base-border;
+	margin-bottom: 0;
+
+	.module-title {
+		@extend %horiztonal-block-title;
+		padding-right: em(25, 24);
+	}
+
+	.social-list li {
+		@extend %horiztonal-block-title;
+		@extend %inline-list;
+		padding-right: em(7, 24);
+
+		&::after {
+			content: ',';
+		}
+		&:last-child::after {
+			content: none;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: underline;
+			
+			&:hover { 
+				color: $light-text; 
+				text-decoration: none;
+			}
+		}
+	}
+
+	.social-carousel-pager {
+		float: right;
+
+		.prev {
+			margin-right: em(10,30);
+		}
+
+		span {
+			@include transition(all 0.5s ease-in-out);
+			display: inline-block;
+			font-size:em(30);
+			line-height: em(30, 30);
+			padding: 0 em(10, 30);
+			cursor: pointer;
+		}
+
+		.slick-disabled {
+			opacity: 0;
+			cursor: default;
+		}
+	}
+}
+
+.social-carousel-wrapper {
+	background: $shadowbox-bg;
+	padding-top: em(45);
+	padding-bottom: em(15);
+	border-bottom: $base-border;
+}
+
+.carousel-tweet {
+	@include clearfix;
+	width: em(330);
+	padding-left:em(40);
+	padding-right:em(30);
+
+	.tweet-header {
+		@include clearfix;
+		font-size: em(18);
+		line-height: 1em;
+		margin-bottom: em(10, 18);
+		margin-left: em(-10, 18);
+	}
+	.tweet-avatar {
+		display: block;
+		float: left;
+		margin-right: em(16);
+		border-radius: 200%;
+	}
+	.tweet-name {
+		display: block;
+		@include Calibre-Semibold;
+		padding-top: em(14, 18);
+	}
+	.tweet-screen-name {
+		display: block;
+		color: $light-text;
+		padding-bottom: em(14, 18);
+	}
+	.tweet-text {
+		line-height: em(20);
+	}
+	.tweet-actions {
+		display: block;
+		font-size: em(14);
+		padding-top: em(10, 14);
+		@include Calibre-Semibold;
+
+		a {
+			color: $base-font-color;
+			&:hover { color: $light-text; }
+		}
+	}
+}

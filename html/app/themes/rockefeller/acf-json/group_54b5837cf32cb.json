@@ -1,0 +1,308 @@
+{
+    "key": "group_54b5837cf32cb",
+    "title": "Initiative",
+    "fields": [
+        {
+            "key": "field_54b594fbb0ed6",
+            "label": "Featured Tweet",
+            "name": "featured_tweet",
+            "prefix": "",
+            "type": "url",
+            "instructions": "Link to the tweet you'd like to feature.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_54b59487b0ed4",
+            "label": "Statistics Module Title",
+            "name": "statistics_module_title",
+            "prefix": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 40,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_54b594cbb0ed5",
+            "label": "Statistics Module Description",
+            "name": "statistics_module_description",
+            "prefix": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_54b5b24b9dcaa",
+            "label": "Featured Insight",
+            "name": "featured_insight",
+            "prefix": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "insight"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "elements": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_54b592e4b0ed1",
+            "label": "Statistics",
+            "name": "initative_numbers",
+            "prefix": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 3,
+            "max": 3,
+            "layout": "row",
+            "button_label": "Add Stat",
+            "sub_fields": [
+                {
+                    "key": "field_54b593adb0ed2",
+                    "label": "Statistic",
+                    "name": "stat",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "Limited to 4 characters. Abbreviate large numbers.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": 4,
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54b593e2b0ed3",
+                    "label": "Subtext",
+                    "name": "subtext",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": 60,
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_54b59587b0ed8",
+            "label": "Total Investment",
+            "name": "initiative_total_investment",
+            "prefix": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_54b595a3b0ed9",
+            "label": "Related Initiatives",
+            "name": "related_initiatives",
+            "prefix": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "initiative"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "elements": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_54b5b3569dcab",
+            "label": "Related Topics",
+            "name": "related_topics",
+            "prefix": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "topic"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_54b6aac87dfdd",
+            "label": "Module settings",
+            "name": "",
+            "prefix": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_54b6aaf17dfde",
+            "label": "Module Title",
+            "name": "mod_initative_title",
+            "prefix": "",
+            "type": "text",
+            "instructions": "This text will display as the title next to the initiative module when it appears as a module.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_54b6ab437dfdf",
+            "label": "Module Desciption",
+            "name": "mod_initative_desc",
+            "prefix": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "initiative"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1421258983
+}

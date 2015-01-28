@@ -1,0 +1,85 @@
+.newsletter-outer-wrapper {
+	margin-top: em(200);
+	border-top:$base-border;
+	border-bottom: $base-border;
+	width: 100%;
+}
+
+.module-newsletter-signup {
+	display: table;
+	width: 100%;
+	
+	.signup-title, input {
+		font-size: em(24);
+		padding:em(12, 24);
+		line-height: em(36, 24);
+		@include Calibre-Semibold;
+		color: $gray;
+	}
+
+	.signup-title {
+		display: table-cell;
+		width: 60%;
+
+		@include breakpoint($narrow-desktop) {
+			width: 50%;
+		}
+		@include breakpoint($tablet) {
+			display: block;
+			width: auto;
+		}
+	}
+	.signup-form {
+		overflow: hidden;
+		position: relative;
+		display: table-cell;
+		width: 40%;
+
+		@include breakpoint($narrow-desktop) {
+			width: 50%;
+		}
+		@include breakpoint($tablet) {
+			border-top:$base-border;
+			display: block;
+			width: auto;
+		}
+
+		input {
+			position: absolute;
+			top:0;
+			bottom:0;
+			height: auto;
+			background: none;
+			margin: 0;
+
+			@include breakpoint($tablet) {
+				position: static;
+				display: block;
+				float: left;
+			}
+		}
+
+		input[type="text"] {
+			left:0;
+			width: 60%;
+			border: 0;
+			box-shadow: none;
+
+			@include breakpoint($phone) {
+				border-bottom:$base-border;
+				width: 100%;
+			}
+		}
+		input[type="submit"] {
+			right:0;
+			width: 40%;
+			background: $extra-light-gray;
+			border-left:$base-border;
+			border-right:$base-border;
+
+			@include breakpoint($phone) {
+				width: 100%;
+			}
+		}
+	}
+}

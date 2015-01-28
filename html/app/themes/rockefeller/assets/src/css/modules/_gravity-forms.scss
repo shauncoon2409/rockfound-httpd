@@ -1,0 +1,139 @@
+.gform_wrapper {
+	@include breakpoint( $phone ) {
+		padding-left: em(10);
+		padding-right: em(10);
+		max-width: none;
+	}
+
+	.gform_heading {
+		@extend .module-heading;
+
+		.gform_title {
+			@extend .heading-title;
+		}
+
+		.gform_info {
+			@extend .heading-info;
+		}
+	}
+
+	.gform_footer {
+		@extend .module-container;
+		@extend .offset-header;
+		margin-top: 0;
+		padding-left: span(2 of 8);
+
+		@include breakpoint( $phone ) {
+			padding-left: 0;
+		}
+
+		input[type="submit"] {
+			margin-left: em(24);
+			background: $blue;
+
+			@include breakpoint( $phone ) {
+				margin-left: auto;
+				margin-right: auto;
+				width: 80%;
+			}
+		}
+	}
+
+	.gform_body {
+		@extend .module-container;
+		@include clearfix;
+		padding-left: em(45);
+
+		@include breakpoint( $phone ) {
+			padding-left: 0;
+		}
+
+		textarea,
+		#{$all-text-inputs},
+		select[multiple=multiple] {
+			font-size: 1em;
+			margin-bottom: 0;
+		}
+
+		.gfield_label {
+			font-weight: normal;
+		}
+
+		.gfield_required {
+			color: $form-required-color;
+		}
+
+		.gfield {
+			@include clearfix;
+			margin-bottom: em(14);
+		}
+
+
+		.chosen-container, .chosen-drop, .chosen-single {
+			border: 0;
+			border-radius: 0;
+			background: none;
+			font-size: 1em;
+		}
+
+		.chosen-container {
+
+			.chosen-single, .chosen-drop {
+				background: $extra-light-gray;
+			}
+
+			.chosen-results {
+				.highlighted {
+					color: $light-text;
+					background: none;
+				}
+				.result-selected {
+					color: $dark-gray;
+				}
+			}
+		}
+
+		.chosen-container-active.chosen-with-drop .chosen-single {
+			border: 0;
+		}
+	}
+
+	.right_label {
+		.gfield_label, .ginput_container, .gfield_list, div.ginput_complex  {
+			float: left;
+		}
+	}
+
+	.left_label {
+		.gfield_label, .ginput_container, .gfield_list, div.ginput_complex  {
+			float: right;
+		}
+	}
+
+	.right_label, .left_label {
+		.gfield_label {
+			width: span(2 of 8);
+
+			@include breakpoint( $phone ) {
+				float: none;
+				width: auto;
+				text-align: left;
+			}
+		}
+
+		.ginput_container, .gfield_list, div.ginput_complex {
+			width: span(6 of 8);
+			padding-left: em(24);
+
+			@include breakpoint( $phone ) {
+				float: none;
+				width: auto;
+				padding-left: 0;
+			}
+
+			textarea {
+				width: 100%;
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+{% set module = slideshow %}
+<section class="module-card-slider">
+	<div class="card-slideshow-header">
+		<div class="module-wrapper">
+			<h2 class="module-title">{{ module.title }}</h2>
+			
+			<div class="card-slider-pager" style="display:none;">
+				<a href="javascript:;" class="card-next card-pager"><i class="icon icon-angle-left"></i></a>
+				<span class="card-current">0</span>/<span class="card-total">0</span>
+				<a href="javascript:;" class="card-prev card-pager"><i class="icon icon-angle-right"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="card-shadowbox">
+		<div class="module-wrapper">
+			<ul class="card-slideshow card-slider-box">
+			{% for card in module.cards %}
+				<li class="card {{ card.type }}">{% set data = card.data %}
+				{% if card.type == 'map' %}
+					<h4 class="card-title">{{ data.title }}</h4>
+					<div class="kartograph-map"></div>
+					<p class="card-subnav">{{ data.subnav|raw }}</p>
+				
+				{% else %}
+					{% if card.type == 'quote-card' %}
+					<blockquote class="card-quote-text">{{ data.qtext }}</blockquote>
+					{% endif %}
+					
+					{% if data.img %}
+					<img src="{{ data.img }}">
+					{% endif %}
+
+					<h4 class="card-title">{{ data.title }}</h4>
+					<p class="card-content">
+						{{ data.content }}
+						{% if data.content_link %}<a class="card-link" href="{{ data.content_link }}">{{ data.content_link }}</a>{% endif %}
+					</p>
+				{% endif %}
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>

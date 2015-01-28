@@ -1,0 +1,21 @@
+{% set module = quote %}
+<section class="quote-module module-wrapper">
+
+	{% if module.title %}
+	<header class="module-heading quote-heading">
+		<h2 class="heading-title">{{ module.title }}</h2>
+		<p class="heading-info">{{ module.info }}</p>
+	</header>
+	{% endif %}
+
+	<div class="module-container quote-container {{ module.containerClasses }}">
+		<p class="quote-meta">
+			<span class="quote-topic">{{ module.topic }}</span>
+			<time class="quote-date">{{ module.date }}</time>
+		</p>
+		<blockquote>
+			<p>{{ module.text }}</p>
+			<cite>By {{ module.cite }}</cite>
+		</blockquote>
+	</div>
+</section>

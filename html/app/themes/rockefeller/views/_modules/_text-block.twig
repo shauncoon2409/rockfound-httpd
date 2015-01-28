@@ -1,0 +1,8 @@
+<div class="module-wrapper">
+	<section class="display-module text-block {{ textBlock.classes }}">
+		{% if textBlock.title %}<h3 class="text-block-header">{{ textBlock.title }}</h3>{% endif %}
+		<div class="text-block-content"> 
+			{{ textBlock.content|shortcodes }}
+		</div>
+	</section>
+</div>

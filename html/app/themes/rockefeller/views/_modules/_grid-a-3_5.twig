@@ -1,0 +1,18 @@
+{% set module = gridA3_5 %}
+<div class="module-grid grid-3-5 module-wrapper">
+	<div class="grid-container module-container {{ module.containerClasses }}">
+	{% for block in module.blocks %}
+		<div class="list-block has-image">
+			<a href="{{ block.link|default('javascript:;') }}" class="image-block">
+				<div class="sub-image" style="background-image:url('{{ block.image }}');"></div>
+			</a>
+			<h3 class="person-info">
+				<a href="{{ block.link|default('javascript:;') }}">
+					<span class="name">{{ block.name }}</span>
+					<span class="position">{{ block.position }}</span>
+				</a>
+			</h3>
+		</div>
+	{% endfor %}
+	</div>
+</div>

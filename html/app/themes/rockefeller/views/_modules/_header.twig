@@ -1,0 +1,27 @@
+{% set module = header %}
+
+<div class="display-module module-header {{ module.type }} {{ (module.sideImage|length > 0) ? 'has-side-image' : '' }}" style="background-image:url('{{ module.backgroundImg }}');">
+
+	<div class="module-wrapper">
+		{% include '_partials/header-badge.twig' with {'breadcrumb' : module.breadcrumb, 'currentPage' : module.currentPage} %}
+
+		<h1 class="header-title">{{ module.headerTitle|raw }}</h1>
+		
+		{% if module.headerContent|length > 0 %}
+		<div class="header-content-wrapper">
+			<p class="header-content">{{ module.headerContent }}</p>
+			{% if module.headerSubLinks|length > 0 %}
+			<p class="header-sub-links"> 
+				Similar Topics / 
+				{% for link in module.headerSubLinks %}<a href="{{ link.url }}">{{ link.text }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+			</p>
+			{% endif %}
+		</div>
+		{% endif %}
+
+
+		{% if module.sideImage|length > 0 %}
+		<div class="side-image" style="background-image:url('{{module.sideImage}}');"></div>
+		{% endif %}
+	</div>
+</div>

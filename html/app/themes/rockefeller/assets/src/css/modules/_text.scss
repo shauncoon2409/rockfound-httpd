@@ -1,0 +1,74 @@
+.text-block-header {
+	@include Calibre-Semibold;
+	font-size: em(30);
+	line-height: 1em;
+	margin-bottom: 1em;
+}
+.text-block-content {
+	@include Calibre-Light;
+}
+
+.visual-editor {
+	padding-left: em(40);
+
+	img {
+		display: block;
+		margin-left: em(-40);
+		margin-top: em(40);
+		margin-bottom: em(40);
+	}
+
+	&.has-border {
+		border-left: $base-border;
+	}
+
+	blockquote {
+		padding-left: em(20);
+		margin-top: em(40);
+		margin-bottom: em(40);
+
+		p {
+			max-width: em(600, 30);
+			@include Acta-BookItalic;
+			font-size: em(30);
+			line-height: em(36, 30);
+
+			cite {
+				font-size: em(14, 30);
+				line-height: em(26, 14);
+			}
+		}
+
+		cite {
+			@include Calibre-Medium;
+			font-size: em(14);
+			line-height: em(26, 14);
+			color: $light-text;
+		}
+	}
+
+	a {
+		@include Calibre-Medium;
+	}
+
+	li {
+		margin-bottom: em(5);
+	}
+}
+
+.link-list-module {
+	margin-top: em(40);
+	@include columns(2);
+	@include column-gap(em(40));
+
+	@include breakpoint( $phone )
+	{
+		@include columns(auto);
+	}
+}
+
+.no-csscolumns .link-list li {
+ float: left;
+ width: 50%;
+ padding-left:em(40); 
+}

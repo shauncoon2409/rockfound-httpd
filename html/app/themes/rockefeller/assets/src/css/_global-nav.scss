@@ -1,0 +1,251 @@
+$nav-bar-height: 65;
+$nav-font-size: 14;
+$nav-panel-padding-top:40;
+
+
+
+$nav-layout: layout(12 (40px 60px) inside);
+$nav-break: max-width $nav-breakpoint;
+$nav-break-cols: 4;
+
+
+%first-tier {
+	@include Calibre-Semibold;
+	display: inline-block;
+	color: $medium-gray;
+	text-transform: uppercase;
+	font-size: em($nav-font-size);
+	line-height: em($nav-bar-height, $nav-font-size);
+
+	&:hover, &.active {
+		color: white;
+	}
+}
+
+body {
+	margin-bottom: em($nav-bar-height + 30);
+}
+
+@include with-layout($nav-layout) {
+	.global-nav {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		margin-bottom: -1px;
+		background: $dark-gray;
+		z-index: 2000;
+
+		a {
+			color: white;
+			cursor: pointer;
+
+			&:hover {
+				color: $light-gray;
+			}
+		}
+
+		.nav-wrapper {
+			position: relative;
+			@include outer-container;
+			
+			height: em($nav-bar-height);
+			overflow: visible;
+		}
+
+
+		.mobile-nav-icon {
+			display: none;
+			color: white;
+			font-size: em(30);
+			line-height: em($nav-bar-height, 30);
+			margin-right: em(20, 30);
+
+			@include susy-breakpoint($nav-break, $nav-break-cols) {
+				display: block;
+				float: right;
+			}
+		}
+
+		.home-button {
+			@include span(4);
+			@extend %first-tier;
+
+			@media (max-width: 955px) {
+				font-size: em(12);
+				line-height: em($nav-bar-height, 12);
+			}
+			@include susy-breakpoint($nav-break, $nav-break-cols) {
+				width: auto;
+			}
+
+			.icon-logo {
+				overflow: hidden;
+				position: relative;
+				top: em(15, 155);
+				font-size: em(155);
+				line-height: em(50, 180);
+			}
+		}
+		.core-nav {
+			display: table;
+			@include span(8);
+
+			@include susy-breakpoint($nav-break, $nav-break-cols) {
+				display: none;
+			}
+
+			& > li {
+				display: table-cell;
+				margin-right: em(36);
+
+				& > a {
+					@extend %first-tier;
+					display: block;
+					text-align: center;
+
+					@media (max-width: 955px) {
+						font-size: em(12);
+						line-height: em($nav-bar-height, 12);
+					}
+				}
+			}
+		}
+
+		.search-box {
+			display: block;
+			position: relative;
+			float: left;
+			margin-left: em(36);
+			max-width: em(125);
+			padding-top: em(17);
+			
+			input {
+				width: 100%;
+				padding-right:em(30);
+				border: 0;
+				border-bottom: 1px solid white;
+				background: none;
+				box-shadow: none;
+				outline: none;
+				color: white;
+			}
+			button {
+				position: absolute;
+				bottom: 3px;
+				right:0;
+				width: em(30);
+				padding: 0;
+				color: white;
+				background: none;
+				outline: none;
+			}
+		}
+
+		.expanded-nav-content {
+			display: none;
+		}
+
+		.expanded-nav {
+			display: none;
+			position: absolute;
+			left:0;
+			width: 100%;
+			bottom: em($nav-bar-height);
+			border-bottom: 1px solid transparent;
+			background: $gray;
+
+			&.open {
+				display: block;
+			}
+
+			.icon {
+				color: white;
+			}
+
+			.nav-featured-carousel {
+				@include span(7 of 9);
+				@include post(1 of 9);
+				@include pre(1 of 9);
+				float: none;
+				padding-left: 0;
+				padding-right: 0;
+			}
+			.nav-featured-title {
+				color: white;
+				font-size: em(20);
+				padding-bottom: em(20);
+			}
+
+			.feature-box {
+				img {
+					margin-bottom: em(16);
+				}
+				.item-title {
+					margin:0;
+					color: white;
+					font-size: em(12);
+					text-transform: uppercase;
+					margin-bottom: em(5, 12);
+				}
+				.item-content {
+					margin:0;
+					color: $light-gray;
+					@include Acta-Medium;
+					font-size: em(16);
+					line-height: em(20, 16);
+				}
+			}
+
+			.link-list {
+				@include span(3 of 9);
+
+				a {
+					font-size:em(13);
+					line-height: em(24, 13);
+				}
+			}
+
+			.subnav {
+				@include span(3);
+				height: em(350);
+				background: $dark-gray;
+				padding-top: em($nav-panel-padding-top);
+
+				ul {
+					margin-top: em(20);
+				}
+
+				a {
+					@include Acta-Book;
+					color: $medium-gray;
+					font-size: em(16);
+
+					&.active, &:hover {
+						color: white;
+						@include Calibre-Semibold;
+					}
+				}
+			}
+
+			.subnav-content {
+				@include span(9 no-gutters);
+			}
+
+			.nav-tertiary-content {
+				position: relative;
+				display: none;
+				padding-top: em($nav-panel-padding-top);
+				padding-bottom: em($nav-panel-padding-top);
+
+				&.feature-box {
+					@include span(full);
+					padding-top: em(10);
+				}
+
+				&.default {
+					display: block;
+				}
+			}
+		}
+	}
+}

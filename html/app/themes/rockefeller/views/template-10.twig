@@ -1,0 +1,62 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% if header %}
+		{% include '_modules/_header.twig' with header %}
+	{% endif %}	
+
+	{% if textBlock %}
+		{% include '_modules/_text-block.twig' with textBlock %}
+	{% endif %}
+
+	{% if slideshow %}
+		{% include '_modules/_card-slideshow.twig' with slideshow %}
+	{% endif %}
+
+	{% if gridA4 %}
+		{% include '_modules/_grid-a-4_0.twig' with gridA4 %}
+	{% endif %}
+
+	{% if quote %}
+		{% include '_modules/_quote.twig' with quote %}
+	{% endif %}
+
+	{% if gridA3_1 %}
+		{% include '_modules/_grid-a-3_1.twig' with gridA3_1 %}
+	{% endif %}
+
+	{% if gridA3_0 %}
+		{#-- has dropdown filter (add to module) --#}
+		{% include '_modules/_grid-a-3_0.twig' with gridA3_0 %}
+	{% endif %}
+
+	{% if map %}
+		{% include "_modules/_map.twig" with map %}
+	{% endif %}
+
+	{% if gridA3_3 %}
+		{% include '_modules/_grid-a-3_3.twig' with gridA3_3 %}
+	{% endif %}
+
+	{% if timeline %}
+		{% include '_modules/_timeline.twig' with timeline %}
+	{% endif %}
+
+	{% if formBlock %}
+		{% include '_modules/_form-block.twig' with formBlock %}
+	{% endif %}
+
+	{% if search %}
+		{% include '_modules/_search.twig' with search %}
+	{% endif %}
+
+	{% if socialCarousel %}
+		{% include '_modules/_social-carousel.twig' with socialCarousel %}
+	{% endif %}
+
+	{% if newsletter %}
+		{% include '_modules/_newsletter-signup.twig' with newsletter %}
+	{% endif %}
+
+{% endblock %}

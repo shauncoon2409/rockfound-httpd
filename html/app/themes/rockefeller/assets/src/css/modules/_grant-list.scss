@@ -1,0 +1,133 @@
+.grant-list {
+	@include breakpoint($narrow-desktop) {
+		padding-left: em(20);
+		padding-right: em(20);
+	}
+
+	.grant-link {
+		@include Calibre-Medium;
+		font-size: em(14);
+		line-height: em(24, 14);
+		text-transform: uppercase;
+		color: $light-text;
+
+		b {
+			color: $base-font-color;
+		}
+	}
+
+	.list-block p {
+		font-size: em(21);
+		line-height: em(30, 21);
+		padding-right: em(40, 21);
+	}
+
+
+	.grant-summary {
+		@include span(75% no-gutters);
+
+		@include breakpoint($tablet) {
+			display: block;
+			width: auto;
+		}
+	}
+
+	.grant-meta {
+		@include span(25% no-gutters);
+		@include Calibre-Medium;
+		font-size: em(12);
+		line-height: em(18, 12);
+		color: $light-text;
+		padding-top: em(24, 12);
+
+		@include breakpoint($tablet) {
+			display: block;
+			width: auto;
+		}
+
+		b {
+			color: $base-font-color;
+		}
+	}
+}
+
+.mix {
+	display: none;
+}
+
+.sort-list-filters {
+	@include Calibre-Medium;
+	font-size: em(16);
+	line-height: em(24, 16);
+	text-transform: uppercase;
+	padding-top: em(20);
+	padding-bottom: em(20);
+
+	.label {
+		&::after {
+			@include Calibre-Light;
+			content: " / ";
+			padding-right: 0.5em;
+		}
+	}
+
+	.asc-icon, .desc-icon {
+		position: relative;
+		display: inline-block;
+		height: 0.65em;
+		width: 1em;
+		margin-left: 0.4em;
+
+		&::before 
+		{
+			position: absolute;
+			top:1px;
+			left:2px;
+			display: block;
+			content: '';
+			z-index: 2;
+		}
+		&::after 
+		{
+			position: absolute;
+			top:0;
+			left:0;
+			display: block;
+			content: '';
+		}
+	}
+
+	.asc-icon {
+		&::before {
+			@include triangle(8px 8px, white, down);
+		}
+		&::after {
+			@include triangle(12px 10px, $base-font-color, down);
+		}
+	}
+	.desc-icon {
+		&::before {
+			@include triangle(8px 8px, white, up);
+		}
+		&::after {
+			@include triangle(12px 10px, $base-font-color, up);
+		}
+	}
+
+	.sort-option {
+		cursor: pointer;
+
+		/*
+		&:hover {
+			color: $light-text;
+
+			.asc-icon::after {
+				@include triangle(12px 10px, $light-text, down);
+			}
+			.desc-icon::after {
+				@include triangle(12px 10px, $light-text, up);
+			}
+		}
+		*/
+	}
+}

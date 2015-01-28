@@ -1,0 +1,42 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<div class="module-regions-map" data-map-path="{{ mapPath }}">
+	<div class="regions-map {{ mapType }}">
+		<div class="module-wrapper">
+			{% include '_partials/header-badge.twig' with [ breadcrumb, currentPage ] %}
+
+			<div class="region-selector" id="region-selector"></div>
+
+			<svg id="regionsMap" class="map-image"></svg>
+		</div>
+	</div>
+
+	<div class="region-map-data module-wrapper">
+	{% for region in regionData %}
+		<div class="region-data-set" id="{{ region.id }}">
+			{% if region.gridA4 %}  
+				{% include '_modules/_grid-a-4_0.twig' with region.gridA4 %} 
+			{% endif %}
+			
+			{% if region.grid6 %}
+				{% include '_modules/_grid-6.twig' with region.grid6 %}
+			{% endif %}
+
+			{% if region.timeline %}
+				{% include '_modules/_timeline.twig' with region.timeline %}
+			{% endif %}
+		</div>
+	{% endfor %}
+
+		<div class="region-data-set" id="region-no-data">
+			<p>No data found for selected region.</p>
+		</div>
+	</div>
+</div>
+
+{% if newsletter %}
+	{% include '_modules/_newsletter-signup.twig' with newsletter %}
+{% endif %}
+
+{% endblock %}

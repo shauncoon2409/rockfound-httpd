@@ -1,0 +1,25 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% if header %}
+		{% include '_modules/_header.twig' with header %}
+	{% endif %}	
+
+	{% if textBlock %}
+		{% include '_modules/_text-block.twig' with textBlock %}
+	{% endif %}
+
+	{% if search %}
+		{% include '_modules/_search.twig' with search %}
+	{% endif %}
+
+	{#-- 17.0 Top Search(?) --#}
+
+	{#-- Search results (mixed 16.0 / 3.4)  --#}
+
+	{% if newsletter %}
+		{% include '_modules/_newsletter-signup.twig' with newsletter %}
+	{% endif %}
+
+{% endblock %}

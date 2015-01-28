@@ -1,0 +1,36 @@
+{% set module = gridA3_0 %}
+
+<div class="module-grid grid-3-0 module-wrapper">
+	<div class="grid-container module-container {{ module.containerClasses }}">
+	{% for row in module.blocks|batch(3) %}
+		<div class="row-holder {{ (loop.index is odd) ? 'odd' : 'even' }}">
+		
+		{% for block in row %}
+			{% set trueIndex = (loop.parent.loop.index0 * 3) + loop.index0 %}
+			{% set tablet = cycle(['tab-even', 'tab-even', 'tab-odd', 'tab-odd'], trueIndex) %}
+
+			{% if block.type == 'spacer' %}
+				<div class="x1of3 tab-x1of2 pho-x100p y1 spacer {{ tablet }} {{ block.extra }}"></div>
+
+			{% else %}
+				<a href="{{ block.link|default('#') }}" class="grid-block x1of3 tab-x1of2 pho-x100p {{ tablet }} {{ (trueIndex is odd) ? 'odd' : 'even' }}">
+					<div class="fadein-block x1of2 y1 image-before">
+						<div class="sub-image" style="background-image:url('{{ block.image }}');"></div>
+					</div>
+
+					<p class="fadein-block x1of2 y1 {{ (odd) ? '' : 'text-right' }}">
+						<b class="focus">{{ block.line1 }}</b>
+						<span class="less">{{ block.line2 }}</span>
+					</p>
+
+					<div class="fadein-block x1of2 y1 image-after">
+						<div class="sub-image" style="background-image:url('{{ block.image }}');"></div>
+					</div>
+				</a>
+			{% endif %}
+		{% endfor %}
+
+		</div>
+	{% endfor %}
+	</div>
+</div>

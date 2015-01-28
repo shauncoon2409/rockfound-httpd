@@ -1,0 +1,61 @@
+.grid-3-2 {
+	.image-block {
+		display: block;
+		@extend .y1;
+		@extend .x1of2;
+		@include align-title-bottom;
+		text-align: right;
+
+		.gb-title {
+			right: 0;
+			color: white;
+			font-size: em(14);
+			line-height: em(18, 14);
+			@include Calibre-Light;
+		}
+	}
+
+	.small1 {
+		@extend .ma-1of2; 
+		@extend .tab-ma-1of4; 
+		@extend .pho-ma-1of2; 
+	}
+	.small2 {
+		@extend .mb-1of2;
+		@extend .tab-mb-zero;
+		@extend .tab-ma-1of4;
+		@extend .pho-mb-1of2;
+		@extend .pho-ma-zero;
+	}
+
+	.half-image {
+		.image {
+			position: relative;
+
+			@include corner-cutout('right');
+		}
+
+		.text {
+			padding-left:em(20);
+			padding-right:em(20);
+		}
+
+		.gb-title {
+			@include Calibre-Light;
+			font-size: em(36);
+			line-height: 1em;
+			
+			small {
+				display: block;
+				font-size: em(14, 36);
+				line-height: em(18, 14);
+				padding-top: 0.5em;
+				padding-bottom: 1em;
+				@include Calibre-Medium;
+			}
+		}
+		.content {
+			@include Calibre-Light;
+		}
+	}
+}

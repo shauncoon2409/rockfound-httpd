@@ -1,0 +1,30 @@
+{% set module = gridA3_2 %}
+<div class="module-grid grid-3-2 module-wrapper">
+	<div class="grid-container module-container {{ module.containerClasses }}">
+
+		<div class="x1of3 tab-x100p phox100p">
+			<div class="y1 x100p tab-x1of2 pho-x100p">
+				<a href="{{ module.small1.link }}" class="fadein-block small-text image-block with-text small1">
+					<div class="sub-image" style="background-image:url('{{ module.small1.image }}');"></div>
+					<span class="gb-title">{{ module.small1.title }}</span>
+				</a>
+			</div>
+			<div class="extra-light-gray background y1 x100p tab-x1of2 pho-x100p">
+				<a href="{{ module.small2.link }}" class="fadein-block small-text image-block with-text small2">
+					<div class="sub-image" style="background-image:url('{{ module.small2.image }}');"></div>
+					<span class="gb-title">{{ module.small2.title }}</span>
+				</a>
+			</div>
+		</div>
+
+		<a href="{{ module.large.link }}" class="x2of3 tab-x100p phox100p half-image">
+			<div class="fadein-block sub-block image y2">
+				<div class="sub-image" style="background-image:url('{{ module.large.image }}');"></div>
+			</div>
+			<div class="fadein-block sub-block text y2">
+				<h4 class="gb-title">{{ module.large.title }} <small>{{ module.large.subtitle }}</small></h4>
+				<p class="content">{{ module.large.content }}</p>
+			</div>
+		</a>
+	</div>
+</div>

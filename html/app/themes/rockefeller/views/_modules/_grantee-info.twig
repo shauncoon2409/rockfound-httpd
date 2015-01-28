@@ -1,0 +1,30 @@
+{% set module = granteeInfo %}
+<section class="grantee-info-module module-wrapper">
+	<div class="module-container grantee-info-container {{ module.containerClasses }}">
+		
+		{% if module.location %}
+		<section class="grantee-info-block grantee-loc">
+			<h3 class="grantee-info-title">Location</h3> 
+			<p>{{ module.location }}</p>
+		</section>
+		{% endif %}
+
+		{% if module.website %}
+		<section class="grantee-info-block grantee-web">
+			<h3 class="grantee-info-title">Website</h3> 
+			<p>{{ module.website }}</p>
+		</section>
+		{% endif %}
+
+		{% if module.social_links|length > 0 %}
+		<section class="grantee-info-block grantee-social">
+			<h3 class="grantee-info-title">Social links</h3>
+			<ul class="grantee-social-links">
+			{% for link in module.social_links %}
+				<li><a title="{{ link.type }}" href="{{ link.url }}"> <span class="icon icon-{{ link.type }}"></span> </a></li>
+			{% endfor %}
+			</ul>
+		</section>
+		{% endif %}
+	</div>
+</section>

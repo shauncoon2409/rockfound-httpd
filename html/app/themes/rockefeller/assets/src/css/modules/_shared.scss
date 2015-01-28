@@ -1,0 +1,74 @@
+// Page Layout
+.module-heading {
+	@include span(20% inside);
+	padding-top: em(20);
+	padding-right: em(30);
+	text-align: right;
+
+	@include breakpoint( $narrow-desktop ) {
+		width: 100%;
+		float: none;
+		text-align: left;
+	}
+
+	&.simple {
+		padding-top: 0;
+	}
+	
+	.heading-title {
+		font-size: em(16);
+		@include Calibre-Semibold;
+		text-transform: uppercase;
+	}
+	.heading-info {
+		font-size: em(16);
+		@include Calibre-Regular;
+	}
+}
+.module-container {
+	border-left: $base-border;
+	@include span(80% no-gutters);
+
+	@include breakpoint( $narrow-desktop ) {
+		@include span(full nest);
+		float: none;
+		border-left: 0;
+	}
+
+	&.full-width {
+		@include span(full nest);
+	}
+}
+
+.borderless {
+	border:0;
+}
+
+// Common classes
+.striped {
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExODA4M0VCODNDNjJCRDdDMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCRUU5Mzc3NDczNUYxMUU0QjE3Q0ExODk1MzY4NDBENSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCRUU5Mzc3MzczNUYxMUU0QjE3Q0ExODk1MzY4NDBENSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3MTM3MDljYi0wZTNjLTQ3MDktOGNjZi01MGFjYmM0MDgwNzQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTgwODNFQjgzQzYyQkQ3QzEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7DV/v6AAAABlBMVEX////b29un0x4nAAAAEUlEQVR42mJgQADGQcYGCDAABEQADczsVKYAAAAASUVORK5CYII=) repeat;
+}
+
+
+// Extends
+%horiztonal-block-title {
+	float: left;
+	font-size: em(24);
+	line-height: 1em;
+	@include Calibre-Semibold;
+}
+
+
+// Image block
+.image-block {
+	display: block;
+	overflow: hidden;
+}
+.sub-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}

@@ -1,0 +1,39 @@
+{% set module = customGrid %}
+<section class="module-grid grid-4 module-wrapper">
+
+	{% if module.title %}
+	<header class="grid-heading module-heading">
+		<h2 class="heading-title">{{ module.title }}</h2>
+		<p class="heading-info">{{ module.info }}</p>
+	</header>
+	{% endif %}
+
+	<div class="grid-container module-container {{ module.containerClasses }}">
+	{% for wrapper in module.blocks %}
+		<div class="{{ wrapper.x }} {{ wrapper.y }}">
+		{% for block in wrapper.subBlocks %}
+			{% set classes = block.type|default('') ~ " " ~ block.class.extras|default('') ~ " " ~ block.class.y|default('') ~ " " ~ block.class.x|default('') ~ " " ~ block.class.offset|default('') %}
+			
+			<a href="{{ block.link }}" class="{{ classes }}">
+			{% if block.type == 'text-block' or block.type == 'image-block' %}
+				{% if block.subImage|length > 0 %}<div class="sub-image" style="background-image:url('{{ block.subImage }}');"></div>{% endif %}
+				<h4 class="gb-title"> {{ block.title }} <time>{{ block.date }}</time></h4>
+			
+			{% elseif block.type == 'half-image' %}
+				<div class="fadein-block sub-block image {{ block.class.suby }}">
+					<div class="sub-image" style="background-image:url('{{ block.subImage }}');"></div>
+				</div>
+				<div class="fadein-block sub-block text">
+					<h4 class="gb-title">{{ block.title }}<time>{{ block.date }}</time></h4>
+				</div>
+
+			{% elseif block.type == 'more-block' %}
+				<span class="extra-text">More</span>
+				<i class="icon icon-angle-down"></i>
+			{% endif %}
+			</a>
+		{% endfor %}
+		</div>
+	{% endfor %}
+	</div>
+</section>

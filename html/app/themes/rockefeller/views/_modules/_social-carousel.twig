@@ -1,0 +1,40 @@
+{% set module = socialCarousel %}
+<section class="module-social-carousel">
+
+	<header class="social-carousel-header">
+		<div class="module-wrapper">
+			<h2 class="module-title">People To follow</h2>
+			<ul class="social-list">
+			{% for tag in module.hashtags %}
+				<li><a href="https://twitter.com/search?q={{ tag|url_encode }}">{{ tag }}</a></li>
+			{% endfor %}
+			</ul>
+
+			<div class="social-carousel-pager"></div>
+		</div>
+	</header>
+
+	<div class="social-carousel-wrapper">
+		<div class="module-wrapper">
+			<div class="social-carousel-container">
+				{% for tweet in module.tweets %}
+				<div class="carousel-tweet">
+					<div class="tweet-header">
+						<img class="tweet-avatar" src="{{ tweet.avatar }}" alt="{{ tweet.name }}">
+						<span class="tweet-name">{{ tweet.name }}</span>
+						<a href="https://twitter.com/{{ tweet.screenName }}" class="tweet-screen-name">@{{ tweet.screenName }}</a>
+					</div>
+
+					<div class="tweet-text">{{ tweet.text }}</div>
+
+					<div class="tweet-actions">
+						<a href="https://twitter.com/intent/tweet?in_reply_to={{ tweet.id }}">Reply</a> &bullet;
+						<a href="https://twitter.com/intent/retweet?tweet_id={{ tweet.id }}">Retweet</a> &bullet;
+						<a href="https://twitter.com/intent/favorite?tweet_id={{ tweet.id }}">Favorite</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>

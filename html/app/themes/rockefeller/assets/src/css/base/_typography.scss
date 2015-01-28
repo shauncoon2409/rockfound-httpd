@@ -1,0 +1,119 @@
+body {
+  @include font-feature-settings("kern", "liga" false, "frac" false, "pnum");
+  -webkit-font-smoothing: antialiased;
+  background-color: $base-background-color;
+  color: $base-font-color;
+  @include Calibre-Regular;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  overflow-x:hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include Calibre-Regular;
+  line-height: $header-line-height;
+  margin: 0;
+}
+
+h1 {
+  font-size: $h1-font-size;
+}
+
+h2 {
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  @include Calibre-Medium;
+  font-size: $h5-font-size;
+  color: $dark-gray;
+}
+
+h6 {
+  font-size: $h6-font-size;
+}
+
+p {
+  margin: 0 0 ($base-spacing / 2);
+}
+
+a {
+  @include transition(color 0.1s linear);
+  color: $base-link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $hover-link-color;
+  }
+
+  &:active, &:focus {
+    color: $hover-link-color;
+    outline: none;
+  }
+}
+
+hr {
+  border-bottom: $base-border;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: $base-spacing 0;
+}
+
+img,
+picture {
+  margin: 0;
+  max-width: 100%;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0;
+
+  p {
+    margin:0;
+    color: $gray;
+  }
+}
+
+i, dfn {
+  @include Calibre-MediumItalic;
+}
+
+cite {
+  display: block;
+  font-size: em(14);
+  line-height: em(24, 14);
+  margin-top: em(5, 14);
+  color: $gray;
+  font-style: normal;
+}
+
+b, strong {
+  font-weight: normal;
+}
+
+strong, optgroup {
+  @include Calibre-Bold;
+}
+
+.hide-text {
+  overflow: hidden;
+  height: 0;
+  font-size: 0;
+  display: block;
+  position: absolute;
+}

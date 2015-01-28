@@ -1,0 +1,25 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% if header %}
+		{% include '_modules/_header.twig' with header %}
+	{% endif %}
+
+	{# -- Blog Filters (topics, intiatives, regions) -- #}
+
+	{% if gridA4 %}
+		{% include '_modules/_grid-a-4_0.twig' with gridA4 %}
+	{% endif %}
+
+	{# -- Blog Detail -- #}
+
+	{% if gridA3_1 %}
+		{% include '_modules/_grid-a-3_1.twig' with gridA3_1 %}
+	{% endif %}
+
+	{% if newsletter %}
+		{% include '_modules/_newsletter-signup.twig' with newsletter %}
+	{% endif %}
+
+{% endblock %}

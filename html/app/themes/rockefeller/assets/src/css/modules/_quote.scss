@@ -1,0 +1,60 @@
+// Page Layout
+.quote-module {
+	.quote-heading {
+		padding-top: em(45);
+	}
+
+	.quote-container {
+		background: $extra-light-gray;
+	}
+	.quote-meta {
+		@include clearfix;
+		padding: em(15, 14) em(10, 14);
+		padding-right: em(30, 14);
+		font-size: em(14);
+		line-height: em(20, 14);
+		color: $light-text;
+		margin:0;
+
+		.quote-topic {
+			display: block;
+			float: left;
+		}
+		.quote-date {
+			display: block;
+			float: right;
+		}
+	}
+
+	blockquote {
+		position: relative;
+		overflow: hidden;
+		padding:em(40) 15.725%;
+
+		@include breakpoint( $phone ) {
+			padding: em(20);
+		}
+
+		p {
+			position: relative;
+			font-size: em(36);
+			line-height: em(40, 36);
+			margin:0;
+			z-index: 10;
+		}
+		cite {
+			position: relative;
+			z-index: 10;
+		}
+
+		&::before {
+			position: absolute;
+			content:"“";
+			font-size: em(300);
+			line-height: 0.5em;
+			color: $ligher-text;
+			top:em(25, 300);
+			left:em(20, 300) * -1;
+		}
+	}
+}

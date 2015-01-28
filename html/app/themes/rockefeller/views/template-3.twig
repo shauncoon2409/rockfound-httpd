@@ -1,0 +1,68 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% if header %}
+		{% include '_modules/_header.twig' with header %}
+	{% endif %}
+
+	<div class="module-wrapper rail-wrapper">
+		<div class="has-rail">
+			{% if gridA3_5 %}
+				{% include '_modules/_grid-a-3_5.twig' with gridA3_5 %}
+			{% endif %}
+
+			{% if granteeInfo %}
+				{% include '_modules/_grantee-info.twig' with granteeInfo %}
+			{% endif %}
+
+			{% if textBlock %}
+				{% include '_modules/_text-block.twig' with textBlock %}
+			{% endif %}
+
+			{% if quote %}
+				{% include '_modules/_quote.twig' with quote %}
+			{% endif %}
+
+			{% if grid6 %}
+				{% include '_modules/_grid-6.twig' with grid6 %}
+			{% endif %}
+
+			{#-- module 22 ( in textblock? ) --#}
+
+			{% if quote2 %}
+				{% include '_modules/_quote.twig' with {'quote' : quote2 } %}
+			{% endif %}
+
+			{% if gridA3_1 %}
+				{% include '_modules/_grid-a-3_1.twig' with gridA3_1 %}
+			{% endif %}
+
+			{% if gridA3_3 %}
+				{#-- has dropdown filter (add to module) --#}
+				{% include '_modules/_grid-a-3_3.twig' with gridA3_3 %}
+			{% endif %}
+
+			{% if gridA4 %}
+				{% include '_modules/_grid-a-4_0.twig' with gridA4 %}
+			{% endif %}
+
+			{% if timeline %}
+				{% include '_modules/_timeline.twig' with timeline %}
+			{% endif %}
+		</div>
+		<div class="rail">
+			{% if grants %}
+				{% include '_partials/rail-grants.twig' with grants %}
+			{% endif %}
+			{% if howToApply %}
+				{% include '_partials/rail-how-to-apply.twig' with howToApply %}
+			{% endif %}
+		</div>
+	</div>
+
+	{% if newsletter %}
+		{% include '_modules/_newsletter-signup.twig' with newsletter %}
+	{% endif %}
+
+{% endblock %}

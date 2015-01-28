@@ -1,0 +1,49 @@
+{
+    "key": "group_54b87b6ef3263",
+    "title": "Tags",
+    "fields": [
+        {
+            "key": "field_54b87c8eac1ff",
+            "label": "Items related to this post",
+            "name": "related_tags",
+            "prefix": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "grantee",
+                "topic",
+                "initiative",
+                "insight",
+                "strategy"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 1,
+            "return_format": "id",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1421376494
+}

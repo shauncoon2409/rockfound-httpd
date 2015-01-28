@@ -1,0 +1,80 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="module-wrapper">
+		<h1 class="header-mission-statement">
+			<span class="tagline-text">{{ mission_statement }}</span>
+		</h1>
+	</div>
+
+	<div class="topic-controller-carousel">
+		{% for topic in topics %}
+			{% set module = topic.header %}
+			{% set prevIndex = ((loop.index0 - 1) >= 0) ? (loop.index0 - 1) : false %}
+			{% set nextIndex = (loop.index < loop.length) ? loop.index : false %}
+
+			<div class="display-module module-header homepage {{ module.bgcolor|default('teal') }}" style="background-image:url('{{ module.backgroundImg }}');">
+				<div class="module-wrapper">
+					<h1 class="header-title {{ (module.headerContent) ? 'with-content' : ''}}">{{ module.headerTitle|raw }}</h1>
+					{% if module.headerContent %}
+					<div class="header-content">
+						{{ module.headerContent|raw }}
+					</div>
+					{% endif %}
+				</div>
+
+				{% if not prevIndex is sameas(false) %}
+				<a href="javascript:;" class="home-carousel-pager carousel-prev {{ topics[ prevIndex ].header.bgcolor|default('teal') }}">
+					<span class="topic-arrow arrow-prev"><span class="icon icon-angle-left arrow-icon"></span></span>
+					<span class="topic-content">
+						<span class="topic-preview"  style="background-image:url('{{ topics[ prevIndex ].header.backgroundImg }}');"></span>
+						<span class="topic-title">{{ topics[ prevIndex ].header.headerTitle }}</span>
+					</span>
+				</a>
+				{% endif %}
+
+				{% if not nextIndex is sameas(false) %}
+				<a href="javascript:;" class="home-carousel-pager carousel-next {{ topics[ nextIndex ].header.bgcolor|default('teal') }}">
+					<span class="topic-arrow arrow-next"><span class="icon icon-angle-right arrow-icon"></span></span>
+					<span class="topic-content">
+						<span class="topic-preview"  style="background-image:url('{{ topics[ nextIndex ].header.backgroundImg }}');"></span>
+						<span class="topic-title">{{ topics[ nextIndex ].header.headerTitle }}</span>
+					</span>
+				</a>
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+
+	<div class="topic-content-carousel">
+		{% for topic in topics %}
+		<div class="topic-content-wrapper" id="{{ topic.id }}" >
+
+			{% if topic.gridA4 %}
+				{% include "_modules/_grid-a-4_0.twig" with { 'gridA4' : topic.gridA4 } %}
+			{% endif %}
+
+			{% if topic.gridC5 %}
+				{% include "_modules/_grid-c-5.twig" with { 'gridC5' : topic.gridC5 } %}
+			{% endif %}
+
+			{% if topic.quote %}
+				{% include "_modules/_quote.twig" with { 'quote' : topic.quote } %}
+			{% endif %}
+
+			{% if topic.gridA3_1 %}
+				{% include "_modules/_grid-a-3_1.twig" with { 'gridA3_1' : topic.gridA3_1 } %}
+			{% endif %}
+
+			{% if topic.map %}
+				{% include "_modules/_map.twig" with { 'map' : topic.map } %}
+			{% endif %}
+
+			{% if topic.newsletter %}
+				{% include "_modules/_newsletter-signup.twig" with { 'newsletter' : topic.newsletter } %}
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

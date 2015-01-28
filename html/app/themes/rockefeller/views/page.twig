@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{% set textBlock = {
+		'title' : post.title,
+		'content' : post.content,
+		'classes' : 'visual-editor'
+	} %}
+
+	{% include '_modules/_text-block.twig' with textBlock %}
+{% endblock %}
