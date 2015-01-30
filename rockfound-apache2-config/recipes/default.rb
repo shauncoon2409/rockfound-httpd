@@ -16,7 +16,7 @@
 web_app "rockefeller" do
     template 'vhost.conf.erb'
     server_name "staging.rock-public.ahundredyears.com"
-    docroot "/var/www/rockefeller/html"
+    docroot "/var/www/rockefeller/htm"
     allow_override 'All'
 #    cookbook 'apache2'
 end
@@ -28,9 +28,12 @@ end
 ###end
 
 
-git "/var/www/rockefeller/html" do
+git "/var/www/rockefeller" do
   repository "https://github.com/shauncoon2409/rockfound-httpd.git"
   revision "alpha201501291022"
   action :sync
 end
 
+link "/var/www/rockefeller/rockfound-wp-code/html" do
+  to "/var/www/rockefeller/html"
+end
