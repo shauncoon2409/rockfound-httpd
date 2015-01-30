@@ -26,3 +26,11 @@ template "/var/www/rockefeller/html/index.php" do
   source "index.php.erb"
   action :create # see actions section below
 end
+
+
+git "/var/www/rockefeller" do
+  repository "https://github.com/shauncoon2409/rockfound-httpd/rockfound-wp-code.git"
+  revision "alpha201501291022"
+  action :sync
+end
+
