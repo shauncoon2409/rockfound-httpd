@@ -22,10 +22,10 @@ web_app "rockefeller" do
 end
 
 
-template "/var/www/rockefeller/html/index.php" do
-  source "index.php.erb"
-  action :create # see actions section below
-end
+###template "/var/www/rockefeller/html/index.php" do
+###  source "index.php.erb"
+###  action :create # see actions section below
+###end
 
 
 git "/var/www/rockefeller/htm" do
