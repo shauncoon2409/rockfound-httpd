@@ -5,12 +5,12 @@
 #  template('vhost.conf.erb')
 #end
 
-directory "/var/www/rockefeller/html" do
-  recursive true
-  owner "nobody"
-  mode "755"
-  action :create
-end
+###directory "/var/www/rockefeller/html" do
+###  recursive true
+###  owner "nobody"
+###  mode "755"
+###  action :create
+###end
 
 
 web_app "rockefeller" do
@@ -28,7 +28,7 @@ end
 ###end
 
 
-git "/var/www/rockefeller/htm" do
+git "/var/www/rockefeller/html" do
   repository "https://github.com/shauncoon2409/rockfound-httpd.git"
   revision "alpha201501291022"
   action :sync
