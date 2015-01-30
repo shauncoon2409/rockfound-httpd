@@ -5,13 +5,16 @@
 #  template('vhost.conf.erb')
 #end
 
-###directory "/var/www/rockefeller/html" do
-###  recursive true
-###  owner "nobody"
-###  mode "755"
-###  action :create
-###end
+directory "/var/www/rockefeller/rockfound-wp-code/html" do
+  recursive true
+  owner "nobody"
+  mode "755"
+  action :create
+end
 
+link "/var/www/rockefeller/rockfound-wp-code/html" do
+  to "/var/www/rockefeller/html"
+end
 
 web_app "rockefeller" do
     template 'vhost.conf.erb'
@@ -34,6 +37,4 @@ git "/var/www/rockefeller" do
   action :sync
 end
 
-link "/var/www/rockefeller/rockfound-wp-code/html" do
-  to "/var/www/rockefeller/html"
-end
+
