@@ -28,8 +28,8 @@ template "/var/www/rockefeller/html/index.php" do
 end
 
 
-git "/var/www/rockefeller" do
-  repository "https://github.com/shauncoon2409/rockfound-httpd/rockfound-wp-code.git"
+git "/var/www/rockefeller/html" do
+  repository "https://github.com/shauncoon2409/rockfound-httpd.git"
   revision "alpha201501291022"
   action :sync
 end
