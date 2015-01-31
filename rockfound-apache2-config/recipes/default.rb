@@ -12,9 +12,6 @@
 ###  action :create
 ###end
 
-link "/var/www/rockefeller/html" do
-  to "/var/www/rockefeller/rockfound-wp-code/html/"
-end
 
 web_app "rockefeller" do
     template 'vhost.conf.erb'
@@ -37,4 +34,8 @@ git "/var/www/rockefeller" do
   action :sync
 end
 
+
+link "/var/www/rockefeller/html" do
+  to "/var/www/rockefeller/rockfound-wp-code/html/"
+end
 
