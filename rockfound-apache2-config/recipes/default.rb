@@ -5,12 +5,12 @@
 #  template('vhost.conf.erb')
 #end
 
-directory "/var/www/rockefeller/rockfound-wp-code/html" do
-  recursive true
-  owner "nobody"
-  mode "755"
-  action :create
-end
+###directory "/var/www/rockefeller/rockfound-wp-code/html" do
+###  recursive true
+###  owner "nobody"
+###  mode "755"
+###  action :create
+###end
 
 link "/var/www/rockefeller/html" do
   to "/var/www/rockefeller/rockfound-wp-code/html/"
@@ -19,7 +19,7 @@ end
 web_app "rockefeller" do
     template 'vhost.conf.erb'
     server_name "staging.rock-public.ahundredyears.com"
-    docroot "/var/www/rockefeller/htm"
+    docroot "/var/www/rockefeller/html"
     allow_override 'All'
 #    cookbook 'apache2'
 end
