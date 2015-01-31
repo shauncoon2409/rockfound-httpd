@@ -12,8 +12,8 @@ directory "/var/www/rockefeller/rockfound-wp-code/html" do
   action :create
 end
 
-link "/var/www/rockefeller/rockfound-wp-code/html/" do
-  to "/var/www/rockefeller/html"
+link "/var/www/rockefeller/html" do
+  to "/var/www/rockefeller/rockfound-wp-code/html/"
 end
 
 web_app "rockefeller" do
