@@ -12,7 +12,7 @@ directory "/var/www/rockefeller/rockfound-wp-code/html" do
   action :create
 end
 
-link "/var/www/rockefeller/rockfound-wp-code/html" do
+link "/var/www/rockefeller/rockfound-wp-code/html/" do
   to "/var/www/rockefeller/html"
 end
 
