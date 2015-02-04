@@ -18,8 +18,6 @@ web_app "rockefeller" do
     server_name "staging.rock-public.ahundredyears.com"
     docroot "/var/www/rockefeller/html"
     allow_override 'All'
-    directory_options "Suck it"
-#    cookbook 'apache2'
 end
 
 
