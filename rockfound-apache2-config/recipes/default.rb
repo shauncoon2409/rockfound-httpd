@@ -12,13 +12,6 @@
 ###  action :create
 ###end
 
-file "/var/www/rockefeller/.env" do
-  template '.env.erb'
-  owner "nobody"
-  mode "755"
-  action: create
-end  
-
 
 web_app "rockefeller" do
     template 'vhost.conf.erb'
@@ -42,7 +35,26 @@ git "/var/www/rockefeller" do
 end
 
 
+execute "apache2-restart" do
+  command "/etc/init.d/apache2 stop"
+  command "/etc/init.d/apache2 start"
+  action :nothing
+end
+
+
 link "/var/www/rockefeller/html" do
   to "/var/www/rockefeller/rockfound-wp-code/html/"
 end
+
+
+
+template "/var/www/rockefeller/.env" do
+  source '.env.erb'
+  owner "nobody"
+  mode "755"
+  notifies :run, "execute[apache2-restart]", :immediately
+  action: create
+end  
+
+
 
