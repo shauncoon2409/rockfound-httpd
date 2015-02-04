@@ -47,7 +47,7 @@ end
 link "/var/www/rockefeller/config" do
   to "/var/www/rockefeller/rockfound-wp-code/config/"
 end
-link "/var/www/rockefeller/wp" do
+link "/var/www/rockefeller/html/wp" do
   to "/var/www/rockefeller/rockfound-wp-code/wp/"
 end
 
