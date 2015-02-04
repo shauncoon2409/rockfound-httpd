@@ -53,7 +53,6 @@ template "/var/www/rockefeller/.env" do
   owner "nobody"
   mode "755"
   notifies :run, "execute[apache2-restart]", :immediately
-  action: create
 end  
 
 
