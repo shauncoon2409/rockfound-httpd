@@ -29,7 +29,7 @@ end
 
 git "/var/www/rockefeller" do
   repository "https://github.com/shauncoon2409/rockfound-httpd.git"
-  revision "alpha201501291022"
+  revision "alpha201502032235"
   action :sync
 end
 
