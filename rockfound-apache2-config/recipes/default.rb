@@ -12,6 +12,13 @@
 ###  action :create
 ###end
 
+file "/var/www/rockefeller/.env" do
+  template '.env.erb'
+  owner "nobody"
+  mode "755"
+  action: create
+end  
+
 
 web_app "rockefeller" do
     template 'vhost.conf.erb'
