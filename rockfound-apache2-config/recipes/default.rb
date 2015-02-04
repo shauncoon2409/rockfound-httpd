@@ -44,7 +44,12 @@ end
 link "/var/www/rockefeller/html" do
   to "/var/www/rockefeller/rockfound-wp-code/html/"
 end
-
+link "/var/www/rockefeller/config" do
+  to "/var/www/rockefeller/rockfound-wp-code/config/"
+end
+link "/var/www/rockefeller/wp" do
+  to "/var/www/rockefeller/rockfound-wp-code/wp/"
+end
 
 template "/var/www/rockefeller/.env" do
   source '.env.erb'
