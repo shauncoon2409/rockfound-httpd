@@ -50,6 +50,10 @@ end
 link "/var/www/rockefeller/html/wp" do
   to "/var/www/rockefeller/rockfound-wp-code/wp/"
 end
+link "/var/www/rockefeller/html/wp-admin" do
+  to "/var/www/rockefeller/rockfound-wp-code/wp/wp-admin"
+end
+
 
 template "/var/www/rockefeller/.env" do
   source '.env.erb'
