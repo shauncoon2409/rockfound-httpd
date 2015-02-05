@@ -20,6 +20,10 @@ web_app "rockefeller" do
     allow_override 'All'
 end
 
+package "php5-mysql" do
+    action :install
+end
+
 
 ###template "/var/www/rockefeller/html/index.php" do
 ###  source "index.php.erb"
