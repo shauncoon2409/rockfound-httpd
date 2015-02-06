@@ -48,12 +48,15 @@ end
 link "/var/www/rockefeller/html" do
   to "/var/www/rockefeller/rockfound-wp-code/html/"
 end
+
 link "/var/www/rockefeller/config" do
   to "/var/www/rockefeller/rockfound-wp-code/config/"
 end
+
 link "/var/www/rockefeller/html/wp" do
   to "/var/www/rockefeller/rockfound-wp-code/wp/"
 end
+
 link "/var/www/rockefeller/html/wp-admin" do
   to "/var/www/rockefeller/rockfound-wp-code/wp/wp-admin"
 end
