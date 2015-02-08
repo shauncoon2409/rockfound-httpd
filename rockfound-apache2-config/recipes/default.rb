@@ -62,6 +62,37 @@ link "/var/www/rockefeller/html/wp-admin" do
 end
 
 
+template "/var/www/rockefeller/config/environments/local.php" do
+  source 'local.php.erb'
+  db_host 'mysq.mysql.org'
+  db_user 'bduser'
+  db_password 'dbpasswd'
+  db_name 'rockefeller_locale'
+  wp_home 'http://staging.rock-public.ahundredyears.com'
+  wp_siteurl 'http://staging.rock-public.ahundredyears.com'
+  owner "nobody"
+  mode "755"
+end  
+
+template "/var/www/rockefeller/config/application.php" do
+#  db_host 'mysq.mysql.org'
+  db_user 'bduser'
+  db_password 'dbpasswd'
+  db_name 'rockefeller_locale'
+  wp_home 'http://staging.rock-public.ahundredyears.com'
+  wp_siteurl 'http://staging.rock-public.ahundredyears.com'
+  source 'application.php.erb'
+  owner "nobody"
+  mode "755"
+end  
+
+template "/var/www/rockefeller/config/environments/local.php" do
+  source 'local.php.erb'
+  owner "nobody"
+  mode "755"
+end  
+
+
 template "/var/www/rockefeller/.env" do
   source '.env.erb'
   owner "nobody"
