@@ -66,13 +66,14 @@ template "/var/www/rockefeller/config/environments/local.php" do
   source 'local.php.erb'
   owner "nobody"
   mode "755"
+  ### variables( :a => 'Hello', :b => 'World', :C => 'Ololo' )
     variables({
-       :db_host_value => node[:db_host_value],
-       :db_user_value => ['tester'],
-       :db_password_value => node[:db_password_value],
-       :db_name_value => node[:db_name_value],
-       :wp_home_value => node[:wp_home_value],
-       :wp_siteurl_value => node[:wp_siteurl_value]
+       :db_host_value => 'mysql.mysql.org',
+       :db_user_value => 'tester',
+       :db_password_value => 'testtest',
+       :db_name_value => 'rockefeller.locale',
+       :wp_home_value => "http://staging.rock-public.ahundredyears.com",
+       :wp_siteurl_value => "http://staging.rock-public.ahundredyears.com"
     })
 end  
 
