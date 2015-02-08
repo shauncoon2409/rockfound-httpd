@@ -68,10 +68,10 @@ template "/var/www/rockefeller/config/environments/local.php" do
   mode "755"
     variables({
        :db_host => node[:db_host_value],
-       :db_user => node[:db_user_value]
-       :db_password => node[:db_password_value]
-       :db_name => node[:db_name_value]
-       :wp_home => node[:wp_home_value]
+       :db_user => node[:db_user_value],
+       :db_password => node[:db_password_value],
+       :db_name => node[:db_name_value],
+       :wp_home => node[:wp_home_value],
        :wp_siteurl => node[:wp_siteurl_value]
     })
 end  
@@ -82,10 +82,10 @@ template "/var/www/rockefeller/config/application.php" do
   mode "755"
     variables({
     ###   :db_host => node[:db_host_value],
-       :db_user => node[:db_user_value]
-       :db_password => node[:db_password_value]
-       :db_name => node[:db_name_value]
-       :wp_home => node[:wp_home_value]
+       :db_user => node[:db_user_value],
+       :db_password => node[:db_password_value],
+       :db_name => node[:db_name_value],
+       :wp_home => node[:wp_home_value],
        :wp_siteurl => node[:wp_siteurl_value]
     })
 end  
