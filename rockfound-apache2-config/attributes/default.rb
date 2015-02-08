@@ -1,0 +1,8 @@
+###default["authorization"]["sudo"]["groups"] = [ "sysadmin","wheel","admin" ]
+###default["authorization"]["sudo"]["users"]  = [ "jerry","greg"]
+default["db_host_value"] = ["mysql.mysql.org"]
+default["db_user_value"] = ["dbuser"]
+default["db_password_value"] = ["dbpasswd"]
+default["db_name_value"] = ["rockefeller.locale"]
+default["wp_home_value"] = ["http://staging.rock-public.ahundredyears.com"]
+default["wp_siteurl_value"] = ["http://staging.rock-public.ahundredyears.com"]
