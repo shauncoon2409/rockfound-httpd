@@ -12,13 +12,13 @@ $webroot_dir = $root_dir . '/html';
 
 /** 
  *Basing the previous strings on the following hash from vhost.conf.erb:  */
- * DocumentRoot <%= @params[:WP_HOME] %>  */
+ * DocumentRoot <%= WP_HOME %>  */
 
-DB_NAME <%= @params[:db_name] %>
-DB_USER <%= @params[:db_user] %>
-DB_PASSWORD <%= @params[:db_password] %>
-WP_HOME <%= @params[:wp_home] %>
-WP_SITEURL <%= @params[:wp_siteurl] %>
+DB_NAME <%= db_name %>
+DB_USER <%= db_user %>
+DB_PASSWORD <%= db_password %>
+WP_HOME <%= wp_home %>
+WP_SITEURL <%= wp_siteurl %>
 
 /** Dotenv::required(array('DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL')); */
 
@@ -101,16 +101,16 @@ if (!defined('ABSPATH')) {
 /**
 ****************************************************************
 
-<VirtualHost *:<%= @params[:server_port] || node['apache']['listen_ports'].first %>>
-  ServerName <%= @params[:server_name] %>
-  <% if @params[:server_aliases] -%>
-  ServerAlias <%= @params[:server_aliases].join " " %>
+<VirtualHost *:<%= server_port] || node['apache']['listen_ports'].first %>>
+  ServerName <%= server_name %>
+  <% if server_aliases] -%>
+  ServerAlias <%= server_aliases].join " " %>
   <% end -%>
-  DocumentRoot <%= @params[:docroot] %>
+  DocumentRoot <%= docroot %>
 
-  <Directory <%= @params[:docroot] %>>
-    Options <%= [@params[:directory_options] || "FollowSymLinks" ].flatten.join " " %>
-    AllowOverride <%= [@params[:allow_override] || "None" ].flatten.join " " %>
+  <Directory <%= docroot %>>
+    Options <%= [directory_options] || "FollowSymLinks" ].flatten.join " " %>
+    AllowOverride <%= [allow_override] || "None" ].flatten.join " " %>
   <% if node['apache']['version'] == '2.4' -%>
     Require all granted
   <% else -%>
@@ -142,21 +142,21 @@ if (!defined('ABSPATH')) {
   LogLevel info rewrite:trace1
   <%- else -%>
   LogLevel info
-  RewriteLog <%= node['apache']['log_dir'] %>/<%= @application_name %>-rewrite.log
+  RewriteLog <%= node['apache']['log_dir' %>/<%= @application_name %>-rewrite.log
   RewriteLogLevel 0
   <%- end -%>
 
-  ErrorLog <%= node['apache']['log_dir'] %>/<%= @params[:name] %>-error.log
-  CustomLog <%= node['apache']['log_dir'] %>/<%= @params[:name] %>-access.log combined
+  ErrorLog <%= node['apache']['log_dir' %>/<%= name %>-error.log
+  CustomLog <%= node['apache']['log_dir' %>/<%= name %>-access.log combined
 
-  <% if @params[:directory_index] -%>
-  DirectoryIndex <%= [@params[:directory_index]].flatten.join " " %>
+  <% if directory_index] -%>
+  DirectoryIndex <%= [directory_index]].flatten.join " " %>
   <% end -%>
 
-  # Canonical host, <%= @params[:server_name] %>
-  RewriteCond %{HTTP_HOST}   !^<%= @params[:server_name] %> [NC]
+  # Canonical host, <%= server_name %>
+  RewriteCond %{HTTP_HOST}   !^<%= server_name %> [NC]
   RewriteCond %{HTTP_HOST}   !^$
-  RewriteRule ^/(.*)$        http://<%= @params[:server_name] %>/$1 [L,R=301]
+  RewriteRule ^/(.*)$        http://<%= server_name %>/$1 [L,R=301]
 
   RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
   RewriteCond %{SCRIPT_FILENAME} !maintenance.html
