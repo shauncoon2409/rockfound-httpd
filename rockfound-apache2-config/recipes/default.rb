@@ -98,12 +98,12 @@ bash "download and install composer" do
 end
 
 
-# prepare composer to run
-execute "composer-phar" do
-  cwd '/var/www/rockefeller'
-  command "php composer.phar install"
-  action :run
-end
+#### prepare composer to run
+###execute "composer-phar" do
+###  cwd '/var/www/rockefeller'
+###  command "php composer.phar install"
+###  action :run
+###end
 
 
 # put the .env.erb file in place based on whatever variables we
