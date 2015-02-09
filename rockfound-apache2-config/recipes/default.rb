@@ -52,7 +52,7 @@ end
 
 
 link "/var/www/rockefeller" do
-  to "/var/www/rockfound-wp-code"
+  to "/var/www/rockfound-wp-code/"
 end
 
 
@@ -108,7 +108,7 @@ end
 
 # put the .env.erb file in place based on whatever variables we
 # need, and then run composer:
-template "/var/www/rockefeller/.env" do
+template "/var/www/rockfound-wp-code/.env" do
   source '.env.erb'
   owner "nobody"
   mode "755"
