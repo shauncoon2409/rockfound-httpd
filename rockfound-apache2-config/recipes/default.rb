@@ -62,20 +62,20 @@ link "/var/www/rockefeller/html/wp-admin" do
 end
 
 
-template "/var/www/rockefeller/config/environments/local.php" do
-  source 'local.php.erb'
+template "/var/www/rockefeller/html/wp-config.php" do
+  source 'wp-config.php.erb'
   owner "nobody"
   mode "755"
-  ### variables( :a => 'Hello', :b => 'World', :C => 'Ololo' )
     variables({
-       :db_host_value => 'mysql.mysql.org',
-       :db_user_value => 'tester',
-       :db_password_value => 'testtest',
-       :db_name_value => 'rockefeller.locale',
-       :wp_home_value => "http://staging.rock-public.ahundredyears.com",
-       :wp_siteurl_value => "http://staging.rock-public.ahundredyears.com"
+       :db_host_value => 'staging-opsworks-rf.ctikyztoekms.us-east-1.rds.amazonaws.com',
+       :db_user_value => 'rockefeller',
+       :db_password_value => 'Noise.Thank.Desert.4',
+       :db_name_value => 'rocke_local',
+       :wp_home_value => "http://www.rock-public.ahundredyears.com",
+       :wp_siteurl_value => "http://www.rock-public.ahundredyears.com/wp"
     })
 end  
+
 
 ##template "/var/www/rockefeller/config/application.php" do
 ##  source 'application.php.erb'
