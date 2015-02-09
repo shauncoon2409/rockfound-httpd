@@ -82,10 +82,10 @@ template "/var/www/rockefeller/html/wp-config.php" do
   owner "nobody"
   mode "755"
     variables({
-       :db_host_value => 'staging-opsworks-rf.ctikyztoekms.us-east-1.rds.amazonaws.com',
+       :db_host_value => 'staging-opsworks-rocke-local.ctikyztoekms.us-east-1.rds.amazonaws.com',
        :db_user_value => 'rockefeller',
        :db_password_value => 'NoiseThankDesert',
-       :db_name_value => 'rocke-local',
+       :db_name_value => 'rocke_local',
        :wp_home_value => "http://staging.rock-public.ahundredyears.com",
        :wp_siteurl_value => "http://staging.rock-public.ahundredyears.com/wp"
     })
