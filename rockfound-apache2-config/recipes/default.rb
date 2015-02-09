@@ -44,11 +44,10 @@ end
 ###end
 
 
-git "/var/www/rockefeller" do
+git "/var/www" do
   repository "https://github.com/shauncoon2409/rockfound-httpd.git"
   revision "alpha201502032235"
-## had been working with ':sync", stopped
-  action :checkout
+  action :sync
 end
 
 
