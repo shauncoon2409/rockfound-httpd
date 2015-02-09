@@ -5,6 +5,17 @@
 #  template('vhost.conf.erb')
 #end
 
+
+# set the correct time zone:
+bash "set EST timezone" do
+  user "root"
+  code <<-EOH
+      	echo "America/New_York" > /etc/timezone
+	/usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
+  EOH
+  action :run
+end
+
 ###directory "/var/www/rockefeller/rockfound-wp-code/html" do
 ###  recursive true
 ###  owner "nobody"
