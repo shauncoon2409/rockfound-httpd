@@ -61,6 +61,10 @@ link "/var/www/rockefeller/html/wp-admin" do
   to "/var/www/rockefeller/rockfound-wp-code/wp/wp-admin"
 end
 
+link "/var/www/rockefeller/html/wp-includes" do
+  to "/var/www/rockefeller/rockfound-wp-code/wp/wp-includes"
+end
+
 
 template "/var/www/rockefeller/html/wp-config.php" do
   source 'wp-config.php.erb'
