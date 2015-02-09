@@ -47,7 +47,8 @@ end
 git "/var/www" do
   repository "https://github.com/shauncoon2409/rockfound-httpd.git"
   revision "alpha201502032235"
-  action :sync
+## had been working with ':sync", stopped
+  action :checkout
 end
 
 
