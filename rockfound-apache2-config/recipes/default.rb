@@ -51,9 +51,9 @@ git "/var/www" do
 end
 
 
-link "/var/www/rockefeller" do
-  to "/var/www/rockfound-wp-code/"
-end
+###link "/var/www/rockefeller" do
+###  to "/var/www/rockfound-wp-code/"
+###end
 
 
 
@@ -88,14 +88,14 @@ end
 ##end  
 
 
-#add composer
-bash "download and install composer" do
-  user "root"
-  code <<-EOH
-     /usr/bin/php -r "readfile('https://getcomposer.org/installer');" | php
-  EOH
-  action :run
-end
+####add composer
+###bash "download and install composer" do
+###  user "root"
+###  code <<-EOH
+###     /usr/bin/php -r "readfile('https://getcomposer.org/installer');" | php
+###  EOH
+###  action :run
+###end
 
 
 #### prepare composer to run
@@ -106,21 +106,21 @@ end
 ###end
 
 
-# put the .env.erb file in place based on whatever variables we
-# need, and then run composer:
-template "/var/www/rockfound-wp-code/.env" do
-  source '.env.erb'
-  owner "nobody"
-  mode "755"
-#  notifies :run, "execute[composer-phar]", :immediately
-end  
+#### put the .env.erb file in place based on whatever variables we
+#### need, and then run composer:
+###template "/var/www/rockfound-wp-code/.env" do
+###  source '.env.erb'
+###  owner "nobody"
+###  mode "755"
+####  notifies :run, "execute[composer-phar]", :immediately
+###end  
 
 
-execute "apache2-restart" do
-  command "/etc/init.d/apache2 stop"
-  command "/etc/init.d/apache2 start"
-  action :run
-end
+###execute "apache2-restart" do
+###  command "/etc/init.d/apache2 stop"
+###  command "/etc/init.d/apache2 start"
+###  action :run
+###end
 
 
 
