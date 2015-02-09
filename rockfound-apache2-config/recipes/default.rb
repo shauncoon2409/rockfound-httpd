@@ -86,8 +86,8 @@ template "/var/www/rockefeller/html/wp-config.php" do
        :db_user_value => 'rockefeller',
        :db_password_value => 'Noise.Thank.Desert.4',
        :db_name_value => 'rocke_local',
-       :wp_home_value => "http://www.rock-public.ahundredyears.com",
-       :wp_siteurl_value => "http://www.rock-public.ahundredyears.com/wp"
+       :wp_home_value => "http://staging.rock-public.ahundredyears.com",
+       :wp_siteurl_value => "http://staging.rock-public.ahundredyears.com/wp"
     })
 end  
 
