@@ -112,7 +112,7 @@ template "/var/www/rockefeller/.env" do
   source '.env.erb'
   owner "nobody"
   mode "755"
-  notifies :run, "execute[composer-phar]", :immediately
+#  notifies :run, "execute[composer-phar]", :immediately
 end  
 
 
