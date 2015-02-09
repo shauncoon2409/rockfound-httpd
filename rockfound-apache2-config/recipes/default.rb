@@ -44,7 +44,7 @@ end
 ###end
 
 
-git "/var/www" do
+git "/var/www/rockefeller" do
   repository "https://github.com/shauncoon2409/rockfound-httpd.git"
   revision "alpha201502032235"
 ## had been working with ':sync", stopped
