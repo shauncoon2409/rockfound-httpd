@@ -84,8 +84,8 @@ template "/var/www/rockefeller/html/wp-config.php" do
     variables({
        :db_host_value => 'staging-opsworks-rf.ctikyztoekms.us-east-1.rds.amazonaws.com',
        :db_user_value => 'rockefeller',
-       :db_password_value => 'Noise.Thank.Desert.4',
-       :db_name_value => 'rocke_local',
+       :db_password_value => 'NoiseThankDesert',
+       :db_name_value => 'rocke-local',
        :wp_home_value => "http://staging.rock-public.ahundredyears.com",
        :wp_siteurl_value => "http://staging.rock-public.ahundredyears.com/wp"
     })
