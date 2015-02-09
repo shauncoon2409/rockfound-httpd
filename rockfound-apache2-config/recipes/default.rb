@@ -9,7 +9,7 @@
 # set the correct time zone:
 bash "set EST timezone" do
   user "root"
-  cod <<-EOH
+  code <<-EOH
       	echo "America/New_York" > /etc/timezone
 	/usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
   EOH
