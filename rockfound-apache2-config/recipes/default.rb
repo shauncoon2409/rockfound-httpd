@@ -123,8 +123,16 @@ template "/var/www/rockefeller/.env" do
   source '.env.erb'
   owner "nobody"
   mode "755"
-#  notifies :run, "execute[composer-phar]", :immediately
+  notifies :run, "execute[composer-phar]", :immediately
 end  
+
+# drop a php info file into place, too
+template "/var/www/rockefeller/html/phpino.php" do
+  source 'phpinfo.php.erb'
+  owner "nobody"
+  mode "755"
+end  
+
 
 
 execute "apache2-restart" do
