@@ -12,7 +12,7 @@ end
 
 
 package "mysql-client-5.6" do 
-  action : install
+  action :install
 end
 
 package "php5-mysql" do
