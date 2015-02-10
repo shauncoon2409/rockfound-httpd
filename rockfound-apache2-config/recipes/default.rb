@@ -45,6 +45,12 @@ end
 ###  action :create # see actions section below
 ###end
 
+# this directory gets installed by apache2 by default;
+# it needs to be removed, or the git will fail:
+directory "/var/www/html"
+  action :delete
+end  
+
 
 git "/var/www" do
   repository "https://github.com/shauncoon2409/rockfound-httpd.git"
