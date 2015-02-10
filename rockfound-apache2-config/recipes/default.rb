@@ -47,7 +47,8 @@ end
 
 # this directory gets installed by apache2 by default;
 # it needs to be removed, or the git will fail:
-directory "/var/www/html"
+directory "/var/www/html" do
+  recursive true
   action :delete
 end  
 
@@ -62,6 +63,8 @@ end
 link "/var/www/rockefeller" do
   to "/var/www/rockfound-wp-code/"
 end
+
+
 
 
 
