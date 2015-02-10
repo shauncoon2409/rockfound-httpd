@@ -99,7 +99,6 @@ execute "composer-phar" do
   action :run
 end
 
-
 # put the .env.erb file in place based on whatever variables we
 # need, and then run composer:
 template "/var/www/rockefeller/.env" do
