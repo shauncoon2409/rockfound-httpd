@@ -84,6 +84,7 @@ end
 
 #add composer
 bash "download and install composer" do
+  cwd '/var/www/rockefeller'
   user "root"
   code <<-EOH
      /usr/bin/php -r "readfile('https://getcomposer.org/installer');" | php
