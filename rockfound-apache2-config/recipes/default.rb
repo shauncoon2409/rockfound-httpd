@@ -11,6 +11,10 @@ bash "set EST timezone" do
 end
 
 
+package "mysql-client-5.6" do 
+  action : install
+end
+
 package "php5-mysql" do
     action :install
 end
