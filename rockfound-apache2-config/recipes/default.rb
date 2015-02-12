@@ -11,6 +11,7 @@ bash "set EST timezone" do
 end
 
 
+
 package "mysql-client-5.6" do 
   action :install
 end
@@ -99,6 +100,7 @@ end
 ##end  
 
 
+
 #add composer
 bash "download and install composer" do
   cwd '/var/www/rockefeller'
@@ -127,7 +129,7 @@ template "/var/www/rockefeller/.env" do
 end  
 
 # drop a php info file into place, too
-template "/var/www/rockefeller/html/phpino.php" do
+template "/var/www/rockefeller/html/phpinfo.php" do
   source 'phpinfo.php.erb'
   owner "nobody"
   mode "755"
