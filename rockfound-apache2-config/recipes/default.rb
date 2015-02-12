@@ -129,7 +129,7 @@ template "/var/www/rockefeller/.env" do
 end  
 
 # drop a php info file into place, too
-template "/var/www/rockefeller/html/phpinfo.php" do
+template "/var/www/rockefeller/html/phpinfo-test.php" do
   source 'phpinfo.php.erb'
   owner "nobody"
   mode "755"
